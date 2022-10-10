@@ -1,26 +1,26 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
+  "id": "example-mod",
   "version": "${version}",
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "示例模组",
+  "description": "这是描述。",
   "authors": [
-    "Me!"
+    "§e烨§b凌"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "",
+    "sources": "https://github.com/Iekrin/ExampleMod-Fabric"
   },
   "license": "CC0-1.0",
-  "icon": "assets/modid/icon.png",
+  "icon": "assets/example-mod/icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.fabricmc.example.ExampleMod"
+      "Iekrin.ExampleMod.Initializer.Main"
     ]
   },
   "mixins": [
-    "modid.mixins.json"
+    "mod.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.14.9",
