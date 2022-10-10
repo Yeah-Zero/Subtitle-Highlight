@@ -1,12 +1,12 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "Iekrin.ExampleMod.Mixin",
+  "package": "Iekrin.SubtitleHighlight.Mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
   ],
   "client": [
-    "Mixin"
+    "SubTitleMixin"
   ],
   "injectors": {
     "defaultRequire": 1

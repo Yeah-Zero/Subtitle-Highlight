@@ -1,4 +1,4 @@
-package Iekrin.ExampleMod.Configure;
+package Iekrin.SubtitleHighlight.Configure;
 
 import net.fabricmc.loader.api.FabricLoader;
 

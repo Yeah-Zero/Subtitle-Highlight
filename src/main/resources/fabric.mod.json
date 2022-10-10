@@ -1,25 +1,25 @@
 {
   "schemaVersion": 1,
-  "id": "example-mod",
+  "id": "subtitle-highlight",
   "version": "${version}",
-  "name": "示例模组",
+  "name": "字幕高亮",
   "description": "这是描述。",
   "authors": [
     "§e烨§b凌"
   ],
   "contact": {
     "homepage": "",
-    "sources": "https://github.com/Iekrin/ExampleMod-Fabric"
+    "sources": "https://github.com/Iekrin/Subtitle-Highlight"
   },
   "license": "CC0-1.0",
-  "icon": "assets/example-mod/icon.png",
+  "icon": "assets/subtitle-highlight/icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
-      "Iekrin.ExampleMod.Initializer.Main"
+      "Iekrin.SubtitleHighlight.Initializer.Main"
     ],
     "modmenu": [
-      "Iekrin.ExampleMod.Configure.Screen"
+      "Iekrin.SubtitleHighlight.Configure.Screen"
     ]
   },
   "mixins": [
