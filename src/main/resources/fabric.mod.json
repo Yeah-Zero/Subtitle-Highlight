@@ -17,6 +17,9 @@
   "entrypoints": {
     "main": [
       "Iekrin.ExampleMod.Initializer.Main"
+    ],
+    "modmenu": [
+      "Iekrin.ExampleMod.Configure.Screen"
     ]
   },
   "mixins": [
