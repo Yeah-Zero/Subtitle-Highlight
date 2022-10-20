@@ -6,7 +6,8 @@
   "mixins": [
   ],
   "client": [
-    "SubTitleMixin"
+    "SubtitleEntryMixin",
+    "SubtitlesHudMixin"
   ],
   "injectors": {
     "defaultRequire": 1
