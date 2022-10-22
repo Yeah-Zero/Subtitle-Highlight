@@ -8,10 +8,9 @@
     "§e烨§b凌"
   ],
   "contact": {
-    "homepage": "",
     "sources": "https://github.com/Iekrin/Subtitle-Highlight"
   },
-  "license": "CC0-1.0",
+  "license": "GNU 宽通用公共许可证 3.0",
   "icon": "assets/subtitle-highlight/icon.png",
   "environment": "*",
   "entrypoints": {
