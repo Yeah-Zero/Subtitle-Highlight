@@ -11,7 +11,10 @@ import net.minecraft.util.Util;
 import net.minecraft.util.math.MathHelper;
 import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.*;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.ModifyArgs;
+import org.spongepowered.asm.mixin.injection.ModifyVariable;
+import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
 
 import java.util.Iterator;
@@ -36,11 +39,11 @@ public class SubtitlesHudMixin {
     }
 
     @ModifyVariable(method = "render(Lnet/minecraft/client/util/math/MatrixStack;)V", at = @At("STORE"), ordinal = 7)
-    private int 方向显示颜色注入(int p) {
+    private int 方向显示颜色注入(int 原始赋值) {
         return MathHelper.floor(MathHelper.clampedLerp(255 * Configuration.起始比例, 255 * Configuration.终止比例, 持续时间比例));
     }
 
-    @ModifyArgs(method = "render(Lnet/minecraft/client/util/math/MatrixStack;)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/font/TextRenderer;draw(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/text/Text;FFI)I"), slice = @Slice(from = @At(value = "INVOKE", target = "Lcom/mojang/blaze3d/systems/RenderSystem;enableBlend()V"), to = @At(value = "INVOKE", target = "Lnet/minecraft/client/util/math/MatrixStack;pop()V")))
+    @ModifyArgs(method = "render(Lnet/minecraft/client/util/math/MatrixStack;)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/font/TextRenderer;draw(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/text/Text;FFI)I"))
     private void 字幕显示颜色注入(@NotNull Args 参数列表) {
         Text 文字 = 参数列表.get(1);
         参数列表.set(1, Text.literal(文字.getString()).setStyle(Style.EMPTY.withColor((TextColor) null).withBold(文字.getStyle().isBold()).withItalic(文字.getStyle().isItalic()).withUnderline(文字.getStyle().isUnderlined()).withStrikethrough(文字.getStyle().isStrikethrough()).withObfuscated(文字.getStyle().isObfuscated()).withClickEvent(文字.getStyle().getClickEvent()).withHoverEvent(文字.getStyle().getHoverEvent()).withInsertion(文字.getStyle().getInsertion()).withFont(文字.getStyle().getFont())));
