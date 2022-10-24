@@ -14,6 +14,10 @@ public class Configuration {
     public static double 起始比例 = 1;
     public static double 终止比例 = 75 / 255d;
 
+    enum 颜色类型 {
+        a, b, c, d;
+    }
+
     public static void 保存() {
         try (FileWriter 写入 = new FileWriter(文件, StandardCharsets.UTF_8, false)) {
 

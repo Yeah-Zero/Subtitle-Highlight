@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 
 public class Main implements ModInitializer {
-    public static final Logger 记录器 = LoggerFactory.getLogger("示例模组");
+    public static final Logger 记录器 = LoggerFactory.getLogger("字幕高亮");
 
     @Override
     public void onInitialize() {
