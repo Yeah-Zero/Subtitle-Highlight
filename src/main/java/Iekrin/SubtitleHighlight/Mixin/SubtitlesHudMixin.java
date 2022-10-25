@@ -9,7 +9,6 @@ import net.minecraft.text.Text;
 import net.minecraft.text.TextColor;
 import net.minecraft.util.Util;
 import net.minecraft.util.math.MathHelper;
-import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArgs;
@@ -27,14 +26,14 @@ public class SubtitlesHudMixin {
     private static double 持续时间比例;
 
     @Redirect(method = "render(Lnet/minecraft/client/util/math/MatrixStack;)V", at = @At(value = "INVOKE", target = "Ljava/util/Iterator;next()Ljava/lang/Object;", ordinal = 0))
-    private @NotNull Object 获取字幕条目(@NotNull Iterator 实例) {
+    private Object 获取字幕条目(Iterator 实例) {
         SubtitleEntry 字幕条目 = (SubtitleEntry) 实例.next();
         持续时间比例 = (Util.getMeasuringTimeMs() - 字幕条目.getTime()) / (double) (Configuration.最长持续时间);
         return 字幕条目;
     }
 
     @Redirect(method = "render(Lnet/minecraft/client/util/math/MatrixStack;)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/hud/SubtitlesHud$SubtitleEntry;getTime()J"))
-    private long 字幕时间重定向(@NotNull SubtitleEntry 实例) {
+    private long 字幕时间重定向(SubtitleEntry 实例) {
         return 实例.getTime() - 3000 + Configuration.最长持续时间;
     }
 
@@ -44,7 +43,7 @@ public class SubtitlesHudMixin {
     }
 
     @ModifyArgs(method = "render(Lnet/minecraft/client/util/math/MatrixStack;)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/font/TextRenderer;draw(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/text/Text;FFI)I"))
-    private void 字幕显示颜色注入(@NotNull Args 参数列表) {
+    private void 字幕显示颜色注入(Args 参数列表) {
         Text 文字 = 参数列表.get(1);
         参数列表.set(1, Text.literal(文字.getString()).setStyle(Style.EMPTY.withColor((TextColor) null).withBold(文字.getStyle().isBold()).withItalic(文字.getStyle().isItalic()).withUnderline(文字.getStyle().isUnderlined()).withStrikethrough(文字.getStyle().isStrikethrough()).withObfuscated(文字.getStyle().isObfuscated()).withClickEvent(文字.getStyle().getClickEvent()).withHoverEvent(文字.getStyle().getHoverEvent()).withInsertion(文字.getStyle().getInsertion()).withFont(文字.getStyle().getFont())));
         int 红, 绿, 蓝;
