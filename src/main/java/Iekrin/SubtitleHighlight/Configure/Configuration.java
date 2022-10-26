@@ -1,6 +1,8 @@
 package Iekrin.SubtitleHighlight.Configure;
 
 import Iekrin.SubtitleHighlight.Mixin.SimpleOptionMixin;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import me.shedaniel.clothconfig2.api.ConfigBuilder;
 import me.shedaniel.clothconfig2.impl.builders.SubCategoryBuilder;
 import net.fabricmc.loader.api.FabricLoader;
@@ -15,12 +17,15 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Configuration {
     public static final File 文件 = new File(FabricLoader.getInstance().getConfigDir().toFile().getPath(), "字幕高亮.json");
     public static long 最长持续时间 = 3000;
     public static double 起始比例 = 1;
     public static double 终止比例 = 75 / 255d;
+    public static List<自定义项> 自定义 = new ArrayList<>();
 
     public static void 保存() {
         try (FileWriter 写入 = new FileWriter(文件, StandardCharsets.UTF_8, false)) {
@@ -34,7 +39,7 @@ public class Configuration {
         try (FileReader 读取 = new FileReader(文件, StandardCharsets.UTF_8)) {
             char[] 内容 = new char[(int) 文件.length()];
             读取.read(内容);
-            System.out.println(内容);
+            Gson gson = new GsonBuilder().serializeNulls().disableHtmlEscaping().setPrettyPrinting().create();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -61,8 +66,8 @@ public class Configuration {
         基本颜色设置.add(构建器.entryBuilder().startTextDescription(Text.translatable("环境")).build());
         基本颜色设置.add(构建器.entryBuilder().startTextDescription(Text.translatable("方块")).build());
         基本颜色设置.add(构建器.entryBuilder().startTextDescription(Text.translatable("魔咒")).build());
-        SubCategoryBuilder 实体 = 构建器.entryBuilder().startSubCategory(Text.translatable("实体")).setExpanded(true);
-        SubCategoryBuilder 生物 = 构建器.entryBuilder().startSubCategory(Text.translatable("生物")).setExpanded(true);
+        SubCategoryBuilder 实体 = 构建器.entryBuilder().startSubCategory(Text.translatable("Entity")).setExpanded(true);
+        SubCategoryBuilder 生物 = 构建器.entryBuilder().startSubCategory(Text.translatable("Mob")).setExpanded(true);
         生物.add(构建器.entryBuilder().startTextDescription(Text.translatable("玩家")).build());
         生物.add(构建器.entryBuilder().startTextDescription(Text.translatable("被动生物")).build());
         生物.add(构建器.entryBuilder().startTextDescription(Text.translatable("中立生物")).build());
@@ -82,5 +87,45 @@ public class Configuration {
         构建器.getOrCreateCategory(Text.translatable("subtitle-highlight.configure.category.custom"))
                 .addEntry(构建器.entryBuilder().startTextDescription(Text.literal("开发中……")).build());
         return 构建器.build();
+    }
+
+    public class 自定义项 {
+        private String 本地化键名;
+        private String 格式化代码;
+        private String 文本;
+
+        自定义项(String 本地化键名, String 格式化代码) {
+            this(本地化键名, 格式化代码, "");
+        }
+
+        自定义项(String 本地化键名, String 格式化代码, String 文本) {
+            this.本地化键名 = 本地化键名;
+            this.格式化代码 = 格式化代码;
+            this.文本 = 文本;
+        }
+
+        public String 获取本地化键名() {
+            return 本地化键名;
+        }
+
+        public void 设置本地化键名(String 本地化键名) {
+            this.本地化键名 = 本地化键名;
+        }
+
+        public String 获取格式化代码() {
+            return 格式化代码;
+        }
+
+        public void 设置格式化代码(String 本地化键名) {
+            this.格式化代码 = 格式化代码;
+        }
+
+        public String 获取文本() {
+            return 文本;
+        }
+
+        public void 设置文本(String 文本) {
+            this.文本 = 文本;
+        }
     }
 }
