@@ -51,10 +51,10 @@ public class Configuration {
                 .addEntry(构建器.entryBuilder().startLongField(Text.translatable("subtitle-highlight.configure.category.general.remove_delay"), 最长持续时间).setDefaultValue(3000).setMin(0).setTooltip(Text.translatable("subtitle-highlight.configure.category.general.remove_delay.tooltip_1"), Text.translatable("subtitle-highlight.configure.category.general.remove_delay.tooltip_2")).setSaveConsumer((新值) -> {
                     最长持续时间 = 新值;
                 }).build())
-                .addEntry(构建器.entryBuilder().startDoubleField(Text.translatable("subtitle-highlight.configure.category.general.start_ratio"), 起始比例).setDefaultValue(1).setMax(1).setMin(0).setTooltip(Text.translatable("")).setSaveConsumer((新值) -> {
+                .addEntry(构建器.entryBuilder().startDoubleField(Text.translatable("subtitle-highlight.configure.category.general.start_ratio"), 起始比例).setDefaultValue(1).setMax(1).setMin(0).setTooltip(Text.translatable("subtitle-highlight.configure.category.general.start_ratio.tooltip_1"), Text.translatable("subtitle-highlight.configure.category.general.start_ratio.tooltip_2")).setSaveConsumer((新值) -> {
                     起始比例 = 新值;
                 }).build())
-                .addEntry(构建器.entryBuilder().startDoubleField(Text.translatable("subtitle-highlight.configure.category.general.end_ratio"), 终止比例).setDefaultValue(75 / 255d).setMax(1).setMin(0).setTooltip(Text.translatable("")).setSaveConsumer((新值) -> {
+                .addEntry(构建器.entryBuilder().startDoubleField(Text.translatable("subtitle-highlight.configure.category.general.end_ratio"), 终止比例).setDefaultValue(75 / 255d).setMax(1).setMin(0).setTooltip(Text.translatable("subtitle-highlight.configure.category.general.end_ratio.tooltip_1"), Text.translatable("subtitle-highlight.configure.category.general.end_ratio.tooltip_2")).setSaveConsumer((新值) -> {
                     终止比例 = 新值;
                 }).build()).setDescription(new MutableText[]{Text.translatable("subtitle-highlight.configure.category.general.description")});
         SubCategoryBuilder 基本颜色设置 = 构建器.entryBuilder().startSubCategory(Text.translatable("subtitle-highlight.configure.category.general.sub_category.color")).setExpanded(true).setTooltip(Text.translatable("subtitle-highlight.configure.category.general.sub_category.color.tooltip"));
