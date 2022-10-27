@@ -69,7 +69,7 @@ public class Configuration {
         生物.add(构建器.entryBuilder().startEnumSelector(Text.translatable("玩家"), ColorCode.class, 配置项.基本颜色设置.实体.生物.玩家).setDefaultValue(ColorCode.白色).setSaveConsumer((新值) -> {
             配置项.基本颜色设置.实体.生物.玩家 = 新值;
         }).build());
-        生物.add(构建器.entryBuilder().startEnumSelector(Text.translatable("被动生物"), ColorCode.class, 配置项.基本颜色设置.实体.生物.被动生物).setDefaultValue(ColorCode.白色).setSaveConsumer((新值) -> {
+        生物.add(构建器.entryBuilder().startEnumSelector(Text.translatable("被动生物"), ColorCode.class, 配置项.基本颜色设置.实体.生物.被动生物).setDefaultValue(ColorCode.绿色).setSaveConsumer((新值) -> {
             配置项.基本颜色设置.实体.生物.被动生物 = 新值;
         }).build());
         生物.add(构建器.entryBuilder().startEnumSelector(Text.translatable("中立生物"), ColorCode.class, 配置项.基本颜色设置.实体.生物.中立生物).setDefaultValue(ColorCode.黄色).setSaveConsumer((新值) -> {
@@ -87,6 +87,12 @@ public class Configuration {
         }).build());
         实体.add(构建器.entryBuilder().startEnumSelector(Text.translatable("弹射物"), ColorCode.class, 配置项.基本颜色设置.实体.弹射物).setDefaultValue(ColorCode.金色).setSaveConsumer((新值) -> {
             配置项.基本颜色设置.实体.弹射物 = 新值;
+        }).build());
+        实体.add(构建器.entryBuilder().startEnumSelector(Text.translatable("爆炸物"), ColorCode.class, 配置项.基本颜色设置.实体.爆炸物).setDefaultValue(ColorCode.红色).setSaveConsumer((新值) -> {
+            配置项.基本颜色设置.实体.爆炸物 = 新值;
+        }).build());
+        实体.add(构建器.entryBuilder().startEnumSelector(Text.translatable("装饰品"), ColorCode.class, 配置项.基本颜色设置.实体.装饰品).setDefaultValue(ColorCode.灰色).setSaveConsumer((新值) -> {
+            配置项.基本颜色设置.实体.装饰品 = 新值;
         }).build());
         实体.add(构建器.entryBuilder().startEnumSelector(Text.translatable("其它"), ColorCode.class, 配置项.基本颜色设置.实体.其它).setDefaultValue(ColorCode.灰色).setSaveConsumer((新值) -> {
             配置项.基本颜色设置.实体.其它 = 新值;

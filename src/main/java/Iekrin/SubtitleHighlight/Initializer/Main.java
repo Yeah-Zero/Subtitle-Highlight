@@ -12,7 +12,6 @@ public class Main implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        记录器.info("Hello Fabric world!");
         try {
             if (!Configuration.文件.exists()) {
                 Configuration.文件.createNewFile();

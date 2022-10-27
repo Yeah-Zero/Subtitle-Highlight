@@ -26,6 +26,8 @@ public class Setting {
             public Mob 生物;
             public ColorCode 载具;
             public ColorCode 弹射物;
+            public ColorCode 爆炸物;
+            public ColorCode 装饰品;
             public ColorCode 其它;
 
             public static class Mob {
