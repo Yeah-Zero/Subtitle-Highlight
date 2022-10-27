@@ -15,6 +15,6 @@
   "subtitle-highlight.configure.category.general.end_ratio.tooltip_1": "字幕消失时的颜色与设定颜色之比",
   "subtitle-highlight.configure.category.general.end_ratio.tooltip_2": "双精度浮点数 最小值：0 最大值：1",
   "subtitle-highlight.configure.category.general.sub_category.color": "基本颜色设置",
-  "subtitle-highlight.configure.category.general.sub_category.color.tooltip": "包含基本分类的颜色设置，只能选择颜色代码定义的颜色。",
+  "subtitle-highlight.configure.category.general.sub_category.color.tooltip": "包含基本分类的颜色设置，只能选择颜色代码定义的颜色",
   "subtitle-highlight.configure.category.custom": "自定义"
 }
