@@ -11,9 +11,9 @@ public class Setting {
     public ColorSetting 基本颜色设置;
     public ArrayList<Custom> 自定义;
 
-    public static class ColorSetting {
+    public class ColorSetting {
         public ColorCode 环境;
-        public ColorCode 方块;
+        public Block 方块;
         public ColorCode 魔咒;
         public Entity 实体;
         public ColorCode 事件;
@@ -22,7 +22,15 @@ public class Setting {
         public ColorCode 用户界面;
         public ColorCode 天气;
 
-        public static class Entity {
+        public class Block {
+            public ColorCode 互动;
+            public ColorCode 运作;
+            public ColorCode 危险;
+            public ColorCode 作物;
+            public ColorCode 其它;
+        }
+
+        public class Entity {
             public Mob 生物;
             public ColorCode 载具;
             public ColorCode 弹射物;
@@ -30,7 +38,7 @@ public class Setting {
             public ColorCode 装饰品;
             public ColorCode 其它;
 
-            public static class Mob {
+            public class Mob {
                 public ColorCode 玩家;
                 public ColorCode 被动生物;
                 public ColorCode 中立生物;
@@ -40,7 +48,7 @@ public class Setting {
         }
     }
 
-    public static class Custom {
+    public class Custom {
         public String 本地化键名;
         public String 格式化代码;
         public String 文本;

@@ -17,12 +17,15 @@
     "main": [
       "Iekrin.SubtitleHighlight.Initializer.Main"
     ],
+    "client": [
+      "Iekrin.SubtitleHighlight.Initializer.Client"
+    ],
     "modmenu": [
       "Iekrin.SubtitleHighlight.Configure.ScreenAPI"
     ]
   },
   "mixins": [
-    "mod.mixins.json"
+    "subtitle-highlight.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.14.9",

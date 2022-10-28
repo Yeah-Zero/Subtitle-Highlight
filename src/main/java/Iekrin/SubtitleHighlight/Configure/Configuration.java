@@ -60,10 +60,30 @@ public class Configuration {
                 .addEntry(构建器.entryBuilder().startDoubleField(Text.translatable("subtitle-highlight.configure.category.general.end_ratio"), 配置项.终止比例).setDefaultValue(0.29411764705882354).setMax(1).setMin(0).setTooltip(Text.translatable("subtitle-highlight.configure.category.general.end_ratio.tooltip_1"), Text.translatable("subtitle-highlight.configure.category.general.end_ratio.tooltip_2")).setSaveConsumer((新值) -> {
                     配置项.终止比例 = 新值;
                 }).build()).setDescription(new MutableText[]{Text.translatable("subtitle-highlight.configure.category.general.description")});
-        SubCategoryBuilder 基本颜色设置 = 构建器.entryBuilder().startSubCategory(Text.translatable("subtitle-highlight.configure.category.general.sub_category.color")).setExpanded(true).setTooltip(Text.translatable("subtitle-highlight.configure.category.general.sub_category.color.tooltip"));
-        基本颜色设置.add(构建器.entryBuilder().startEnumSelector(Text.translatable("环境"), ColorCode.class, ColorCode.白色).build());
-        基本颜色设置.add(构建器.entryBuilder().startEnumSelector(Text.translatable("方块"), ColorCode.class, ColorCode.白色).build());
-        基本颜色设置.add(构建器.entryBuilder().startEnumSelector(Text.translatable("魔咒"), ColorCode.class, ColorCode.白色).build());
+        SubCategoryBuilder 基本颜色设置 = 构建器.entryBuilder().startSubCategory(Text.translatable("subtitle-highlight.configure.category.general.sub.color")).setExpanded(true).setTooltip(Text.translatable("subtitle-highlight.configure.category.general.sub.color.tooltip"));
+        基本颜色设置.add(构建器.entryBuilder().startEnumSelector(Text.translatable("环境"), ColorCode.class, 配置项.基本颜色设置.环境).setDefaultValue(ColorCode.深红色).setSaveConsumer((新值) -> {
+            配置项.基本颜色设置.环境 = 新值;
+        }).build());
+        SubCategoryBuilder 方块 = 构建器.entryBuilder().startSubCategory(Text.translatable("方块")).setExpanded(true);
+        方块.add(构建器.entryBuilder().startEnumSelector(Text.translatable("互动"), ColorCode.class, 配置项.基本颜色设置.方块.互动).setDefaultValue(ColorCode.白色).setSaveConsumer((新值) -> {
+            配置项.基本颜色设置.方块.互动 = 新值;
+        }).build());
+        方块.add(构建器.entryBuilder().startEnumSelector(Text.translatable("运作"), ColorCode.class, 配置项.基本颜色设置.方块.运作).setDefaultValue(ColorCode.白色).setSaveConsumer((新值) -> {
+            配置项.基本颜色设置.方块.运作 = 新值;
+        }).build());
+        方块.add(构建器.entryBuilder().startEnumSelector(Text.translatable("危险"), ColorCode.class, 配置项.基本颜色设置.方块.危险).setDefaultValue(ColorCode.白色).setSaveConsumer((新值) -> {
+            配置项.基本颜色设置.方块.危险 = 新值;
+        }).build());
+        方块.add(构建器.entryBuilder().startEnumSelector(Text.translatable("作物"), ColorCode.class, 配置项.基本颜色设置.方块.作物).setDefaultValue(ColorCode.白色).setSaveConsumer((新值) -> {
+            配置项.基本颜色设置.方块.作物 = 新值;
+        }).build());
+        方块.add(构建器.entryBuilder().startEnumSelector(Text.translatable("其它"), ColorCode.class, 配置项.基本颜色设置.方块.其它).setDefaultValue(ColorCode.白色).setSaveConsumer((新值) -> {
+            配置项.基本颜色设置.方块.其它 = 新值;
+        }).build());
+        基本颜色设置.add(方块.build());
+        基本颜色设置.add(构建器.entryBuilder().startEnumSelector(Text.translatable("魔咒"), ColorCode.class, 配置项.基本颜色设置.魔咒).setDefaultValue(ColorCode.紫色).setSaveConsumer((新值) -> {
+            配置项.基本颜色设置.魔咒 = 新值;
+        }).build());
         SubCategoryBuilder 实体 = 构建器.entryBuilder().startSubCategory(Text.translatable("实体")).setExpanded(true);
         SubCategoryBuilder 生物 = 构建器.entryBuilder().startSubCategory(Text.translatable("生物")).setExpanded(true);
         生物.add(构建器.entryBuilder().startEnumSelector(Text.translatable("玩家"), ColorCode.class, 配置项.基本颜色设置.实体.生物.玩家).setDefaultValue(ColorCode.白色).setSaveConsumer((新值) -> {
@@ -98,11 +118,17 @@ public class Configuration {
             配置项.基本颜色设置.实体.其它 = 新值;
         }).build());
         基本颜色设置.add(实体.build());
-        基本颜色设置.add(构建器.entryBuilder().startEnumSelector(Text.translatable("事件"), ColorCode.class, ColorCode.白色).build());
+        基本颜色设置.add(构建器.entryBuilder().startEnumSelector(Text.translatable("事件"), ColorCode.class, 配置项.基本颜色设置.事件).setDefaultValue(ColorCode.红色).setSaveConsumer((新值) -> {
+            配置项.基本颜色设置.事件 = 新值;
+        }).build());
         基本颜色设置.add(构建器.entryBuilder().startEnumSelector(Text.translatable("物品"), ColorCode.class, ColorCode.白色).build());
-        基本颜色设置.add(构建器.entryBuilder().startEnumSelector(Text.translatable("粒子"), ColorCode.class, ColorCode.白色).build());
+        基本颜色设置.add(构建器.entryBuilder().startEnumSelector(Text.translatable("粒子"), ColorCode.class, 配置项.基本颜色设置.粒子).setDefaultValue(ColorCode.紫色).setSaveConsumer((新值) -> {
+            配置项.基本颜色设置.粒子 = 新值;
+        }).build());
         基本颜色设置.add(构建器.entryBuilder().startEnumSelector(Text.translatable("用户界面"), ColorCode.class, ColorCode.白色).build());
-        基本颜色设置.add(构建器.entryBuilder().startEnumSelector(Text.translatable("天气"), ColorCode.class, ColorCode.白色).build());
+        基本颜色设置.add(构建器.entryBuilder().startEnumSelector(Text.translatable("天气"), ColorCode.class, 配置项.基本颜色设置.天气).setDefaultValue(ColorCode.蓝色).setSaveConsumer((新值) -> {
+            配置项.基本颜色设置.天气 = 新值;
+        }).build());
         构建器.getOrCreateCategory(Text.translatable("subtitle-highlight.configure.category.general")).addEntry(基本颜色设置.build());
         构建器.getOrCreateCategory(Text.translatable("subtitle-highlight.configure.category.custom"))
                 .addEntry(构建器.entryBuilder().startTextDescription(Text.literal("开发中……")).build());
