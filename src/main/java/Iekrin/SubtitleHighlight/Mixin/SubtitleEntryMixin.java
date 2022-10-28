@@ -24,7 +24,7 @@ public class SubtitleEntryMixin {
     private static final String[] 头目生物 = {"ender_dragon", "wither"};
     private static final String[] 载具 = {"boat", "minecart"};
     private static final String[] 弹射物 = {"arrow", "egg", "ender_pearl", "potion", "shulker_bullet", "snowball"};
-    private static final String[] 爆炸物 = {"firework_rocket", "tnt"};
+    private static final String[] 爆炸物 = {"firework_rocket", "lightning_bolt", "tnt"};
     private static final String[] 装饰品 = {"armor_stand", "glow_item_frame", "item_frame", "painting"};
     @Shadow
     @Final
