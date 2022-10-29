@@ -23,10 +23,11 @@ public class Setting {
         public ColorCode 天气 = ColorCode.蓝色;
 
         public class Block {
+            public ColorCode 通用 = ColorCode.白色;
             public ColorCode 互动 = ColorCode.天蓝色;
             public ColorCode 运作 = ColorCode.湖蓝色;
-            public ColorCode 危险 = ColorCode.红色;
-            public ColorCode 作物 = ColorCode.深绿色;
+            public ColorCode 危险方块 = ColorCode.红色;
+            public ColorCode 农作物 = ColorCode.深绿色;
             public ColorCode 其它 = ColorCode.深灰色;
         }
 
@@ -39,11 +40,18 @@ public class Setting {
             public ColorCode 其它 = ColorCode.深灰色;
 
             public class Mob {
-                public ColorCode 玩家 = ColorCode.白色;
+
+                public Player 玩家 = new Player();
                 public ColorCode 被动生物 = ColorCode.绿色;
                 public ColorCode 中立生物 = ColorCode.黄色;
                 public ColorCode 敌对生物 = ColorCode.红色;
                 public ColorCode 头目生物 = ColorCode.粉红色;
+
+                public class Player {
+                    public ColorCode 攻击 = ColorCode.金色;
+                    public ColorCode 受伤 = ColorCode.红色;
+                    public ColorCode 其它 = ColorCode.白色;
+                }
             }
         }
     }

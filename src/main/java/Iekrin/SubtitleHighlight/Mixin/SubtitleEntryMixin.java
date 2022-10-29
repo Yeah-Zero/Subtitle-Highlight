@@ -22,9 +22,14 @@ public class SubtitleEntryMixin {
     private static final String[] 敌对生物 = {"blaze", "creeper", "drowned", "elder_guardian", "endermite", "evoker", "ghast", "guardian", "hoglin", "husk", "illusioner", "magma_cube", "phantom", "piglin_brute", "pillager", "ravager", "shulker", "silverfish", "skeleton", "slime", "stray", "vex", "vindicator", "warden", "witch", "wither_skeleton", "zoglin", "zombie", "zombie_villager"};
     private static final String[] 头目生物 = {"ender_dragon", "wither"};
     private static final String[] 载具 = {"boat", "minecart"};
-    private static final String[] 弹射物 = {"arrow", "egg", "ender_pearl", "potion", "shulker_bullet", "snowball"};
+    private static final String[] 弹射物 = {"arrow", "egg", "ender_eye", "ender_pearl", "potion", "shulker_bullet", "snowball"};
     private static final String[] 爆炸物 = {"firework_rocket", "lightning_bolt", "tnt"};
     private static final String[] 装饰品 = {"armor_stand", "glow_item_frame", "item_frame", "painting"};
+    private static final String[] 受伤 = {"big_fall", "burn", "death", "extinguish_fire", "hurt", "small_fall", "freeze_hurt", "hurt_drown", "hurt_on_fire"};
+    private static final String[] 互动 = {"anvil", "barrel", "bell", "big_dripleaf", "button", "cake", "chest", "comparator", "composter", "door", "enchantment_table", "end_portal_frame", "fence_gate", "grindstone", "growing_plant", "honey_block", "lever", "note_block", "pressure_plate", "pumpkin", "respawn_anchor", "sculk_sensor", "shulker_box", "smithing_table", "sweet_berry_bush", "trapdoor", "tripwire"};
+    private static final String[] 运作 = {"amethyst_block", "beacon", "beehive", "blastfurnace", "brewing_stand", "bubble_column", "candle", "conduit", "dispenser", "end_portal", "furnace", "iron_trapdoor", "piston", "portal", "redstone_torch", "sculk", "sculk_catalyst", "smoker", "water"};
+    private static final String[] 危险方块 = {"campfire", "fire", "lava", "pointed_dripstone", "sculk_shrieker"};
+    private static final String[] 农作物 = {"chorus_flower", "frogspawn"};
     @Shadow
     @Final
     private Text text;
@@ -39,13 +44,64 @@ public class SubtitleEntryMixin {
                         可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.环境.获取格式代码()));
                         return;
                     case "block":
-                        break;
+                        if (键值分割[2].equals("generic")) {
+                            可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.方块.通用.获取格式代码()));
+                            return;
+                        }
+                        for (String 元素 : 互动) {
+                            if (键值分割[2].equals(元素)) {
+                                if (键值分割[2].equals("anvil") && 键值分割[3].equals("land")) {
+                                    可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.方块.危险方块.获取格式代码()));
+                                    return;
+                                }
+                                可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.方块.互动.获取格式代码()));
+                                return;
+                            }
+                        }
+                        for (String 元素 : 运作) {
+                            if (键值分割[2].equals(元素)) {
+                                if (键值分割[2].equals("beacon") && 键值分割[3].equals("power_select")) {
+                                    可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.方块.互动.获取格式代码()));
+                                    return;
+                                }
+                                可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.方块.运作.获取格式代码()));
+                                return;
+                            }
+                        }
+                        for (String 元素 : 危险方块) {
+                            if (键值分割[2].equals(元素)) {
+                                可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.方块.危险方块.获取格式代码()));
+                                return;
+                            }
+                        }
+                        for (String 元素 : 农作物) {
+                            if (键值分割[2].equals(元素)) {
+                                可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.方块.农作物.获取格式代码()));
+                                return;
+                            }
+                        }
+                        可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.方块.其它.获取格式代码()));
+                        return;
                     case "enchant":
                         可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.魔咒.获取格式代码()));
                         return;
                     case "entity":
-                        if (键值分割[2].equals("player")) {
-                            可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.实体.生物.玩家.获取格式代码()));
+                        if (键值分割[2].equals("generic") || 键值分割[2].equals("player")) {
+                            if (键值分割[3].equals("attack")) {
+                                可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.实体.生物.玩家.攻击.获取格式代码()));
+                                return;
+                            }
+                            if (键值分割[3].equals("explode")) {
+                                可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.实体.爆炸物.获取格式代码()));
+                                return;
+                            }
+                            for (String 元素 : 受伤) {
+                                if (键值分割[3].equals(元素)) {
+                                    可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.实体.生物.玩家.受伤.获取格式代码()));
+                                    return;
+                                }
+                            }
+                            可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.实体.生物.玩家.其它.获取格式代码()));
                             return;
                         }
                         for (String 元素 : 被动生物) {

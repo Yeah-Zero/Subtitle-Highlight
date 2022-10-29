@@ -4,6 +4,7 @@ import Iekrin.SubtitleHighlight.FormattingCode.ColorCode;
 import Iekrin.SubtitleHighlight.Mixin.SimpleOptionMixin;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonSyntaxException;
 import me.shedaniel.clothconfig2.api.ConfigBuilder;
 import me.shedaniel.clothconfig2.impl.builders.SubCategoryBuilder;
 import net.fabricmc.loader.api.FabricLoader;
@@ -32,11 +33,27 @@ public class Configuration {
         }
     }
 
-    public static void 读取() {
+    public static void 加载() {
         try (FileReader 读取 = new FileReader(文件, StandardCharsets.UTF_8)) {
-            char[] 内容 = new char[(int) 文件.length()];
-            读取.read(内容);
-            配置项 = gson.fromJson(new String(内容).trim(), Setting.class);
+            if (!文件.exists()) {
+                文件.createNewFile();
+                配置项 = new Setting();
+                保存();
+            } else if (Configuration.文件.isDirectory()) {
+                文件.delete();
+                文件.createNewFile();
+                配置项 = new Setting();
+                保存();
+            } else {
+                char[] 内容 = new char[(int) 文件.length()];
+                读取.read(内容);
+                try {
+                    配置项 = gson.fromJson(new String(内容).trim(), Setting.class);
+                } catch (JsonSyntaxException e) {
+                    配置项 = new Setting();
+                    保存();
+                }
+            }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -60,17 +77,20 @@ public class Configuration {
             配置项.基本颜色设置.环境 = 新值;
         }).build());
         SubCategoryBuilder 方块 = 构建器.entryBuilder().startSubCategory(Text.translatable("方块")).setExpanded(true);
+        方块.add(构建器.entryBuilder().startEnumSelector(Text.translatable("通用"), ColorCode.class, 配置项.基本颜色设置.方块.通用).setDefaultValue(ColorCode.白色).setSaveConsumer((新值) -> {
+            配置项.基本颜色设置.方块.通用 = 新值;
+        }).build());
         方块.add(构建器.entryBuilder().startEnumSelector(Text.translatable("互动"), ColorCode.class, 配置项.基本颜色设置.方块.互动).setDefaultValue(ColorCode.天蓝色).setSaveConsumer((新值) -> {
             配置项.基本颜色设置.方块.互动 = 新值;
         }).build());
         方块.add(构建器.entryBuilder().startEnumSelector(Text.translatable("运作"), ColorCode.class, 配置项.基本颜色设置.方块.运作).setDefaultValue(ColorCode.湖蓝色).setSaveConsumer((新值) -> {
             配置项.基本颜色设置.方块.运作 = 新值;
         }).build());
-        方块.add(构建器.entryBuilder().startEnumSelector(Text.translatable("危险"), ColorCode.class, 配置项.基本颜色设置.方块.危险).setDefaultValue(ColorCode.红色).setSaveConsumer((新值) -> {
-            配置项.基本颜色设置.方块.危险 = 新值;
+        方块.add(构建器.entryBuilder().startEnumSelector(Text.translatable("危险方块"), ColorCode.class, 配置项.基本颜色设置.方块.危险方块).setDefaultValue(ColorCode.红色).setSaveConsumer((新值) -> {
+            配置项.基本颜色设置.方块.危险方块 = 新值;
         }).build());
-        方块.add(构建器.entryBuilder().startEnumSelector(Text.translatable("作物"), ColorCode.class, 配置项.基本颜色设置.方块.作物).setDefaultValue(ColorCode.深绿色).setSaveConsumer((新值) -> {
-            配置项.基本颜色设置.方块.作物 = 新值;
+        方块.add(构建器.entryBuilder().startEnumSelector(Text.translatable("农作物"), ColorCode.class, 配置项.基本颜色设置.方块.农作物).setDefaultValue(ColorCode.深绿色).setSaveConsumer((新值) -> {
+            配置项.基本颜色设置.方块.农作物 = 新值;
         }).build());
         方块.add(构建器.entryBuilder().startEnumSelector(Text.translatable("其它"), ColorCode.class, 配置项.基本颜色设置.方块.其它).setDefaultValue(ColorCode.深灰色).setSaveConsumer((新值) -> {
             配置项.基本颜色设置.方块.其它 = 新值;
@@ -81,9 +101,17 @@ public class Configuration {
         }).build());
         SubCategoryBuilder 实体 = 构建器.entryBuilder().startSubCategory(Text.translatable("实体")).setExpanded(true);
         SubCategoryBuilder 生物 = 构建器.entryBuilder().startSubCategory(Text.translatable("生物")).setExpanded(true);
-        生物.add(构建器.entryBuilder().startEnumSelector(Text.translatable("玩家"), ColorCode.class, 配置项.基本颜色设置.实体.生物.玩家).setDefaultValue(ColorCode.白色).setSaveConsumer((新值) -> {
-            配置项.基本颜色设置.实体.生物.玩家 = 新值;
+        SubCategoryBuilder 玩家 = 构建器.entryBuilder().startSubCategory(Text.translatable("玩家")).setExpanded(true);
+        玩家.add(构建器.entryBuilder().startEnumSelector(Text.translatable("攻击"), ColorCode.class, 配置项.基本颜色设置.实体.生物.玩家.攻击).setDefaultValue(ColorCode.金色).setSaveConsumer((新值) -> {
+            配置项.基本颜色设置.实体.生物.玩家.攻击 = 新值;
         }).build());
+        玩家.add(构建器.entryBuilder().startEnumSelector(Text.translatable("受伤"), ColorCode.class, 配置项.基本颜色设置.实体.生物.玩家.受伤).setDefaultValue(ColorCode.红色).setSaveConsumer((新值) -> {
+            配置项.基本颜色设置.实体.生物.玩家.受伤 = 新值;
+        }).build());
+        玩家.add(构建器.entryBuilder().startEnumSelector(Text.translatable("其它"), ColorCode.class, 配置项.基本颜色设置.实体.生物.玩家.其它).setDefaultValue(ColorCode.白色).setSaveConsumer((新值) -> {
+            配置项.基本颜色设置.实体.生物.玩家.其它 = 新值;
+        }).build());
+        生物.add(玩家.build());
         生物.add(构建器.entryBuilder().startEnumSelector(Text.translatable("被动生物"), ColorCode.class, 配置项.基本颜色设置.实体.生物.被动生物).setDefaultValue(ColorCode.绿色).setSaveConsumer((新值) -> {
             配置项.基本颜色设置.实体.生物.被动生物 = 新值;
         }).build());
