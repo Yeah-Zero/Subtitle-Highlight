@@ -36,80 +36,81 @@ public class SubtitleEntryMixin {
             if (键值分割[0].equals("subtitles")) {
                 switch (键值分割[1]) {
                     case "ambient":
-                        可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.环境.获取颜色格式()));
+                        可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.环境.获取格式代码()));
                         return;
                     case "block":
                         break;
                     case "enchant":
-                        可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.魔咒.获取颜色格式()));
+                        可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.魔咒.获取格式代码()));
                         return;
                     case "entity":
                         if (键值分割[2].equals("player")) {
-                            可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.实体.生物.玩家.获取颜色格式()));
+                            可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.实体.生物.玩家.获取格式代码()));
                             return;
                         }
                         for (String 元素 : 被动生物) {
                             if (键值分割[2].equals(元素)) {
-                                可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.实体.生物.被动生物.获取颜色格式()));
+                                可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.实体.生物.被动生物.获取格式代码()));
                                 return;
                             }
                         }
                         for (String 元素 : 中立生物) {
                             if (键值分割[2].equals(元素)) {
-                                可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.实体.生物.中立生物.获取颜色格式()));
+                                可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.实体.生物.中立生物.获取格式代码()));
                                 return;
                             }
                         }
                         for (String 元素 : 敌对生物) {
                             if (键值分割[2].equals(元素)) {
-                                可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.实体.生物.敌对生物.获取颜色格式()));
+                                可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.实体.生物.敌对生物.获取格式代码()));
                                 return;
                             }
                         }
                         for (String 元素 : 头目生物) {
                             if (键值分割[2].equals(元素)) {
-                                可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.实体.生物.头目生物.获取颜色格式()));
+                                可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.实体.生物.头目生物.获取格式代码()));
                                 return;
                             }
                         }
                         for (String 元素 : 载具) {
                             if (键值分割[2].equals(元素)) {
-                                可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.实体.载具.获取颜色格式()));
+                                可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.实体.载具.获取格式代码()));
                                 return;
                             }
                         }
                         for (String 元素 : 弹射物) {
                             if (键值分割[2].equals(元素)) {
-                                可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.实体.弹射物.获取颜色格式()));
+                                可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.实体.弹射物.获取格式代码()));
                                 return;
                             }
                         }
                         for (String 元素 : 爆炸物) {
                             if (键值分割[2].equals(元素)) {
-                                可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.实体.爆炸物.获取颜色格式()));
+                                可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.实体.爆炸物.获取格式代码()));
                                 return;
                             }
                         }
                         for (String 元素 : 装饰品) {
                             if (键值分割[2].equals(元素)) {
-                                可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.实体.装饰品.获取颜色格式()));
+                                可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.实体.装饰品.获取格式代码()));
                                 return;
                             }
                         }
-                        可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.实体.其它.获取颜色格式()));
+                        可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.实体.其它.获取格式代码()));
                         return;
                     case "event":
-                        可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.事件.获取颜色格式()));
+                        可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.事件.获取格式代码()));
                         return;
                     case "item":
                         break;
                     case "particle":
-                        可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.粒子.获取颜色格式()));
+                        可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.粒子.获取格式代码()));
                         return;
                     case "ui":
-                        break;
+                        可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.用户界面.获取格式代码()));
+                        return;
                     case "weather":
-                        可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.天气.获取颜色格式()));
+                        可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.天气.获取格式代码()));
                         return;
                     default:
                         break;

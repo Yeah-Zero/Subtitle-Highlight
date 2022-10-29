@@ -3,12 +3,13 @@
   "id": "subtitle-highlight",
   "version": "${version}",
   "name": "字幕高亮",
-  "description": "这是描述。",
+  "description": "为不同字幕添加样式以区分。",
   "authors": [
     "§e烨§b凌"
   ],
   "contact": {
-    "sources": "https://github.com/Iekrin/Subtitle-Highlight"
+    "sources": "https://github.com/Iekrin/Subtitle-Highlight",
+    "issues": "https://github.com/Iekrin/Subtitle-Highlight/issues"
   },
   "license": "GNU 宽通用公共许可证 3.0",
   "icon": "assets/subtitle-highlight/icon.png",

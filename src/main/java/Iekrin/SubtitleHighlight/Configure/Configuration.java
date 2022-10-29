@@ -22,7 +22,7 @@ import java.nio.charset.StandardCharsets;
 public class Configuration {
     public static final File 文件 = new File(FabricLoader.getInstance().getConfigDir().toFile().getPath(), "字幕高亮.json");
     public static Setting 配置项;
-    private static Gson gson;
+    public static Gson gson = new GsonBuilder().serializeNulls().disableHtmlEscaping().setPrettyPrinting().create();
 
     public static void 保存() {
         try (FileWriter 写入 = new FileWriter(文件, StandardCharsets.UTF_8, false)) {
@@ -36,7 +36,6 @@ public class Configuration {
         try (FileReader 读取 = new FileReader(文件, StandardCharsets.UTF_8)) {
             char[] 内容 = new char[(int) 文件.length()];
             读取.read(内容);
-            gson = new GsonBuilder().serializeNulls().disableHtmlEscaping().setPrettyPrinting().create();
             配置项 = gson.fromJson(new String(内容).trim(), Setting.class);
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -46,38 +45,34 @@ public class Configuration {
     public static Screen 屏幕(Screen 上级界面) {
         ConfigBuilder 构建器 = ConfigBuilder.create().setParentScreen(上级界面).setTitle(Text.translatable("subtitle-highlight.configure.title")).setDoesConfirmSave(false).setSavingRunnable(Configuration::保存).setDefaultBackgroundTexture(new Identifier("minecraft", "textures/block/white_concrete.png"));
         构建器.setGlobalized(true);
-        构建器.getOrCreateCategory(Text.translatable("subtitle-highlight.configure.category.general"))
-                .addEntry(构建器.entryBuilder().startBooleanToggle(Text.translatable("options.showSubtitles"), MinecraftClient.getInstance().options.getShowSubtitles().getValue()).setDefaultValue(((SimpleOptionMixin<Boolean>) (Object) MinecraftClient.getInstance().options.getShowSubtitles()).获取默认值()).setTooltip(Text.translatable("subtitle-highlight.configure.category.general.option.tooltip_1"), Text.translatable("subtitle-highlight.configure.category.general.option.tooltip_2")).setSaveConsumer((新值) -> {
-                    MinecraftClient.getInstance().options.getShowSubtitles().setValue(新值);
-                    MinecraftClient.getInstance().options.write();
-                }).build())
-                .addEntry(构建器.entryBuilder().startLongField(Text.translatable("subtitle-highlight.configure.category.general.remove_delay"), 配置项.最长持续时间).setDefaultValue(3000).setMin(0).setTooltip(Text.translatable("subtitle-highlight.configure.category.general.remove_delay.tooltip_1"), Text.translatable("subtitle-highlight.configure.category.general.remove_delay.tooltip_2")).setSaveConsumer((新值) -> {
-                    配置项.最长持续时间 = 新值;
-                }).build())
-                .addEntry(构建器.entryBuilder().startDoubleField(Text.translatable("subtitle-highlight.configure.category.general.start_ratio"), 配置项.起始比例).setDefaultValue(1).setMax(1).setMin(0).setTooltip(Text.translatable("subtitle-highlight.configure.category.general.start_ratio.tooltip_1"), Text.translatable("subtitle-highlight.configure.category.general.start_ratio.tooltip_2")).setSaveConsumer((新值) -> {
-                    配置项.起始比例 = 新值;
-                }).build())
-                .addEntry(构建器.entryBuilder().startDoubleField(Text.translatable("subtitle-highlight.configure.category.general.end_ratio"), 配置项.终止比例).setDefaultValue(0.29411764705882354).setMax(1).setMin(0).setTooltip(Text.translatable("subtitle-highlight.configure.category.general.end_ratio.tooltip_1"), Text.translatable("subtitle-highlight.configure.category.general.end_ratio.tooltip_2")).setSaveConsumer((新值) -> {
-                    配置项.终止比例 = 新值;
-                }).build()).setDescription(new MutableText[]{Text.translatable("subtitle-highlight.configure.category.general.description")});
+        构建器.getOrCreateCategory(Text.translatable("subtitle-highlight.configure.category.general")).addEntry(构建器.entryBuilder().startBooleanToggle(Text.translatable("options.showSubtitles"), MinecraftClient.getInstance().options.getShowSubtitles().getValue()).setDefaultValue(((SimpleOptionMixin<Boolean>) (Object) MinecraftClient.getInstance().options.getShowSubtitles()).获取默认值()).setTooltip(Text.translatable("subtitle-highlight.configure.category.general.option.tooltip_1"), Text.translatable("subtitle-highlight.configure.category.general.option.tooltip_2")).setSaveConsumer((新值) -> {
+            MinecraftClient.getInstance().options.getShowSubtitles().setValue(新值);
+            MinecraftClient.getInstance().options.write();
+        }).build()).addEntry(构建器.entryBuilder().startLongField(Text.translatable("subtitle-highlight.configure.category.general.remove_delay"), 配置项.最长持续时间).setDefaultValue(3000).setMin(0).setTooltip(Text.translatable("subtitle-highlight.configure.category.general.remove_delay.tooltip_1"), Text.translatable("subtitle-highlight.configure.category.general.remove_delay.tooltip_2")).setSaveConsumer((新值) -> {
+            配置项.最长持续时间 = 新值;
+        }).build()).addEntry(构建器.entryBuilder().startDoubleField(Text.translatable("subtitle-highlight.configure.category.general.start_ratio"), 配置项.起始比例).setDefaultValue(1).setMax(1).setMin(0).setTooltip(Text.translatable("subtitle-highlight.configure.category.general.start_ratio.tooltip_1"), Text.translatable("subtitle-highlight.configure.category.general.start_ratio.tooltip_2")).setSaveConsumer((新值) -> {
+            配置项.起始比例 = 新值;
+        }).build()).addEntry(构建器.entryBuilder().startDoubleField(Text.translatable("subtitle-highlight.configure.category.general.end_ratio"), 配置项.终止比例).setDefaultValue(0.29411764705882354).setMax(1).setMin(0).setTooltip(Text.translatable("subtitle-highlight.configure.category.general.end_ratio.tooltip_1"), Text.translatable("subtitle-highlight.configure.category.general.end_ratio.tooltip_2")).setSaveConsumer((新值) -> {
+            配置项.终止比例 = 新值;
+        }).build()).setDescription(new MutableText[]{Text.translatable("subtitle-highlight.configure.category.general.description")});
         SubCategoryBuilder 基本颜色设置 = 构建器.entryBuilder().startSubCategory(Text.translatable("subtitle-highlight.configure.category.general.sub.color")).setExpanded(true).setTooltip(Text.translatable("subtitle-highlight.configure.category.general.sub.color.tooltip"));
         基本颜色设置.add(构建器.entryBuilder().startEnumSelector(Text.translatable("环境"), ColorCode.class, 配置项.基本颜色设置.环境).setDefaultValue(ColorCode.深红色).setSaveConsumer((新值) -> {
             配置项.基本颜色设置.环境 = 新值;
         }).build());
         SubCategoryBuilder 方块 = 构建器.entryBuilder().startSubCategory(Text.translatable("方块")).setExpanded(true);
-        方块.add(构建器.entryBuilder().startEnumSelector(Text.translatable("互动"), ColorCode.class, 配置项.基本颜色设置.方块.互动).setDefaultValue(ColorCode.白色).setSaveConsumer((新值) -> {
+        方块.add(构建器.entryBuilder().startEnumSelector(Text.translatable("互动"), ColorCode.class, 配置项.基本颜色设置.方块.互动).setDefaultValue(ColorCode.天蓝色).setSaveConsumer((新值) -> {
             配置项.基本颜色设置.方块.互动 = 新值;
         }).build());
-        方块.add(构建器.entryBuilder().startEnumSelector(Text.translatable("运作"), ColorCode.class, 配置项.基本颜色设置.方块.运作).setDefaultValue(ColorCode.白色).setSaveConsumer((新值) -> {
+        方块.add(构建器.entryBuilder().startEnumSelector(Text.translatable("运作"), ColorCode.class, 配置项.基本颜色设置.方块.运作).setDefaultValue(ColorCode.湖蓝色).setSaveConsumer((新值) -> {
             配置项.基本颜色设置.方块.运作 = 新值;
         }).build());
-        方块.add(构建器.entryBuilder().startEnumSelector(Text.translatable("危险"), ColorCode.class, 配置项.基本颜色设置.方块.危险).setDefaultValue(ColorCode.白色).setSaveConsumer((新值) -> {
+        方块.add(构建器.entryBuilder().startEnumSelector(Text.translatable("危险"), ColorCode.class, 配置项.基本颜色设置.方块.危险).setDefaultValue(ColorCode.红色).setSaveConsumer((新值) -> {
             配置项.基本颜色设置.方块.危险 = 新值;
         }).build());
-        方块.add(构建器.entryBuilder().startEnumSelector(Text.translatable("作物"), ColorCode.class, 配置项.基本颜色设置.方块.作物).setDefaultValue(ColorCode.白色).setSaveConsumer((新值) -> {
+        方块.add(构建器.entryBuilder().startEnumSelector(Text.translatable("作物"), ColorCode.class, 配置项.基本颜色设置.方块.作物).setDefaultValue(ColorCode.深绿色).setSaveConsumer((新值) -> {
             配置项.基本颜色设置.方块.作物 = 新值;
         }).build());
-        方块.add(构建器.entryBuilder().startEnumSelector(Text.translatable("其它"), ColorCode.class, 配置项.基本颜色设置.方块.其它).setDefaultValue(ColorCode.白色).setSaveConsumer((新值) -> {
+        方块.add(构建器.entryBuilder().startEnumSelector(Text.translatable("其它"), ColorCode.class, 配置项.基本颜色设置.方块.其它).setDefaultValue(ColorCode.深灰色).setSaveConsumer((新值) -> {
             配置项.基本颜色设置.方块.其它 = 新值;
         }).build());
         基本颜色设置.add(方块.build());
@@ -114,7 +109,7 @@ public class Configuration {
         实体.add(构建器.entryBuilder().startEnumSelector(Text.translatable("装饰品"), ColorCode.class, 配置项.基本颜色设置.实体.装饰品).setDefaultValue(ColorCode.灰色).setSaveConsumer((新值) -> {
             配置项.基本颜色设置.实体.装饰品 = 新值;
         }).build());
-        实体.add(构建器.entryBuilder().startEnumSelector(Text.translatable("其它"), ColorCode.class, 配置项.基本颜色设置.实体.其它).setDefaultValue(ColorCode.灰色).setSaveConsumer((新值) -> {
+        实体.add(构建器.entryBuilder().startEnumSelector(Text.translatable("其它"), ColorCode.class, 配置项.基本颜色设置.实体.其它).setDefaultValue(ColorCode.深灰色).setSaveConsumer((新值) -> {
             配置项.基本颜色设置.实体.其它 = 新值;
         }).build());
         基本颜色设置.add(实体.build());
@@ -125,13 +120,14 @@ public class Configuration {
         基本颜色设置.add(构建器.entryBuilder().startEnumSelector(Text.translatable("粒子"), ColorCode.class, 配置项.基本颜色设置.粒子).setDefaultValue(ColorCode.紫色).setSaveConsumer((新值) -> {
             配置项.基本颜色设置.粒子 = 新值;
         }).build());
-        基本颜色设置.add(构建器.entryBuilder().startEnumSelector(Text.translatable("用户界面"), ColorCode.class, ColorCode.白色).build());
+        基本颜色设置.add(构建器.entryBuilder().startEnumSelector(Text.translatable("用户界面"), ColorCode.class, 配置项.基本颜色设置.用户界面).setDefaultValue(ColorCode.天蓝色).setSaveConsumer((新值) -> {
+            配置项.基本颜色设置.用户界面 = 新值;
+        }).build());
         基本颜色设置.add(构建器.entryBuilder().startEnumSelector(Text.translatable("天气"), ColorCode.class, 配置项.基本颜色设置.天气).setDefaultValue(ColorCode.蓝色).setSaveConsumer((新值) -> {
             配置项.基本颜色设置.天气 = 新值;
         }).build());
         构建器.getOrCreateCategory(Text.translatable("subtitle-highlight.configure.category.general")).addEntry(基本颜色设置.build());
-        构建器.getOrCreateCategory(Text.translatable("subtitle-highlight.configure.category.custom"))
-                .addEntry(构建器.entryBuilder().startTextDescription(Text.literal("开发中……")).build());
+        构建器.getOrCreateCategory(Text.translatable("subtitle-highlight.configure.category.custom")).addEntry(构建器.entryBuilder().startTextDescription(Text.literal("开发中……")).build());
         return 构建器.build();
     }
 }
