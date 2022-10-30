@@ -1,4 +1,4 @@
-package Iekrin.SubtitleHighlight.FormattingCode;
+package Yeah_Zero.Subtitle_Highlight.FormattingCode;
 
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;

@@ -1,4 +1,4 @@
-package Iekrin.SubtitleHighlight.Mixin;
+package Yeah_Zero.Subtitle_Highlight.Mixin;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

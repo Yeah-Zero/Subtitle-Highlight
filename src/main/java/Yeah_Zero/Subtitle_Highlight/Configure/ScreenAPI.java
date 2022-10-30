@@ -1,4 +1,4 @@
-package Iekrin.SubtitleHighlight.Configure;
+package Yeah_Zero.Subtitle_Highlight.Configure;
 
 import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;

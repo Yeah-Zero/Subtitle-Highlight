@@ -8,25 +8,26 @@
     "§e烨§b凌"
   ],
   "contact": {
-    "sources": "https://github.com/Iekrin/Subtitle-Highlight",
-    "issues": "https://github.com/Iekrin/Subtitle-Highlight/issues"
+    "homepage": "https://github.com/Yeah-Zero",
+    "sources": "https://github.com/Yeah-Zero/Subtitle-Highlight",
+    "issues": "https://github.com/Yeah-Zero/Subtitle-Highlight/issues"
   },
   "license": "GNU 宽通用公共许可证 3.0",
   "icon": "assets/subtitle-highlight/icon.png",
-  "environment": "*",
+  "environment": "client",
   "entrypoints": {
-    "main": [
-      "Iekrin.SubtitleHighlight.Initializer.Main"
-    ],
     "client": [
-      "Iekrin.SubtitleHighlight.Initializer.Client"
+      "Yeah_Zero.Subtitle_Highlight.Initializer.Client"
     ],
     "modmenu": [
-      "Iekrin.SubtitleHighlight.Configure.ScreenAPI"
+      "Yeah_Zero.Subtitle_Highlight.Configure.ScreenAPI"
     ]
   },
   "mixins": [
-    "subtitle-highlight.mixins.json"
+    {
+      "config": "subtitle-highlight.client-mixins.json",
+      "environment": "client"
+    }
   ],
   "depends": {
     "fabricloader": ">=0.14.9",
@@ -34,7 +35,20 @@
     "minecraft": "~1.19",
     "java": ">=17"
   },
+  "recommends": {
+    "modmenu": "*",
+    "cloth-api": "*"
+  },
   "suggests": {
-    "another-mod": "*"
+    "modsettings": "*"
+  },
+  "custom": {
+    "modmenu": {
+      "links": {
+        "modmenu.curseforge": "",
+        "modmenu.modrinth": ""
+      },
+      "badges": []
+    }
   }
 }

@@ -1,10 +1,9 @@
-package Iekrin.SubtitleHighlight.Mixin;
+package Yeah_Zero.Subtitle_Highlight.Mixin;
 
-import Iekrin.SubtitleHighlight.Configure.Configuration;
+import Yeah_Zero.Subtitle_Highlight.Configure.Configuration;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.hud.SubtitlesHud;
-import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.text.TextColor;
 import net.minecraft.util.Util;
@@ -45,7 +44,7 @@ public class SubtitlesHudMixin {
     @ModifyArgs(method = "render(Lnet/minecraft/client/util/math/MatrixStack;)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/font/TextRenderer;draw(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/text/Text;FFI)I"))
     private void 字幕显示颜色注入(Args 参数列表) {
         Text 文字 = 参数列表.get(1);
-        参数列表.set(1, Text.literal(文字.getString()).setStyle(Style.EMPTY.withColor((TextColor) null).withBold(文字.getStyle().isBold()).withItalic(文字.getStyle().isItalic()).withUnderline(文字.getStyle().isUnderlined()).withStrikethrough(文字.getStyle().isStrikethrough()).withObfuscated(文字.getStyle().isObfuscated()).withClickEvent(文字.getStyle().getClickEvent()).withHoverEvent(文字.getStyle().getHoverEvent()).withInsertion(文字.getStyle().getInsertion()).withFont(文字.getStyle().getFont())));
+        参数列表.set(1, Text.literal(文字.getString()).setStyle(文字.getStyle().withColor((TextColor) null)));
         int 红, 绿, 蓝;
         if (文字.getStyle().getColor() != null) {
             红 = (文字.getStyle().getColor().getRgb() >> 16) & 255;

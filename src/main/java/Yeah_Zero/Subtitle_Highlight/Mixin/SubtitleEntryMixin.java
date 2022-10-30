@@ -1,6 +1,6 @@
-package Iekrin.SubtitleHighlight.Mixin;
+package Yeah_Zero.Subtitle_Highlight.Mixin;
 
-import Iekrin.SubtitleHighlight.Configure.Configuration;
+import Yeah_Zero.Subtitle_Highlight.Configure.Configuration;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.hud.SubtitlesHud;
@@ -25,7 +25,7 @@ public class SubtitleEntryMixin {
     private static final String[] 弹射物 = {"arrow", "egg", "ender_eye", "ender_pearl", "potion", "shulker_bullet", "snowball"};
     private static final String[] 爆炸物 = {"firework_rocket", "lightning_bolt", "tnt"};
     private static final String[] 装饰品 = {"armor_stand", "glow_item_frame", "item_frame", "painting"};
-    private static final String[] 受伤 = {"big_fall", "burn", "death", "extinguish_fire", "hurt", "small_fall", "freeze_hurt", "hurt_drown", "hurt_on_fire"};
+    private static final String[] 受伤 = {"big_fall", "burn", "death", "explode", "extinguish_fire", "hurt", "small_fall", "freeze_hurt", "hurt_drown", "hurt_on_fire"};
     private static final String[] 互动 = {"anvil", "barrel", "bell", "big_dripleaf", "button", "cake", "chest", "comparator", "composter", "door", "enchantment_table", "end_portal_frame", "fence_gate", "grindstone", "growing_plant", "honey_block", "lever", "note_block", "pressure_plate", "pumpkin", "respawn_anchor", "sculk_sensor", "shulker_box", "smithing_table", "sweet_berry_bush", "trapdoor", "tripwire"};
     private static final String[] 运作 = {"amethyst_block", "beacon", "beehive", "blastfurnace", "brewing_stand", "bubble_column", "candle", "conduit", "dispenser", "end_portal", "furnace", "iron_trapdoor", "piston", "portal", "redstone_torch", "sculk", "sculk_catalyst", "smoker", "water"};
     private static final String[] 危险方块 = {"campfire", "fire", "lava", "pointed_dripstone", "sculk_shrieker"};
@@ -41,6 +41,7 @@ public class SubtitleEntryMixin {
             if (键值分割[0].equals("subtitles")) {
                 switch (键值分割[1]) {
                     case "ambient":
+                    case "weather":
                         可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.环境.获取格式代码()));
                         return;
                     case "block":
@@ -80,9 +81,10 @@ public class SubtitleEntryMixin {
                                 return;
                             }
                         }
-                        可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.方块.其它.获取格式代码()));
+                        可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.方块.方块_其它.获取格式代码()));
                         return;
                     case "enchant":
+                    case "particle":
                         可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.魔咒.获取格式代码()));
                         return;
                     case "entity":
@@ -91,17 +93,13 @@ public class SubtitleEntryMixin {
                                 可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.实体.生物.玩家.攻击.获取格式代码()));
                                 return;
                             }
-                            if (键值分割[3].equals("explode")) {
-                                可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.实体.爆炸物.获取格式代码()));
-                                return;
-                            }
                             for (String 元素 : 受伤) {
                                 if (键值分割[3].equals(元素)) {
                                     可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.实体.生物.玩家.受伤.获取格式代码()));
                                     return;
                                 }
                             }
-                            可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.实体.生物.玩家.其它.获取格式代码()));
+                            可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.实体.生物.玩家.玩家_其它.获取格式代码()));
                             return;
                         }
                         for (String 元素 : 被动生物) {
@@ -152,27 +150,19 @@ public class SubtitleEntryMixin {
                                 return;
                             }
                         }
-                        可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.实体.其它.获取格式代码()));
+                        可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.实体.实体_其它.获取格式代码()));
                         return;
                     case "event":
-                        可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.事件.获取格式代码()));
+                        可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.实体.生物.敌对生物.获取格式代码()));
                         return;
                     case "item":
                         break;
-                    case "particle":
-                        可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.粒子.获取格式代码()));
-                        return;
                     case "ui":
-                        可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.用户界面.获取格式代码()));
+                        可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.方块.互动.获取格式代码()));
                         return;
-                    case "weather":
-                        可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.天气.获取格式代码()));
-                        return;
-                    default:
-                        break;
                 }
             }
         }
-        可返回回调信息.setReturnValue(this.text);
+        可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.其它.获取格式代码()));
     }
 }

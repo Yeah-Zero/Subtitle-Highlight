@@ -1,6 +1,6 @@
-package Iekrin.SubtitleHighlight.Initializer;
+package Yeah_Zero.Subtitle_Highlight.Initializer;
 
-import Iekrin.SubtitleHighlight.Configure.Configuration;
+import Yeah_Zero.Subtitle_Highlight.Configure.Configuration;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
