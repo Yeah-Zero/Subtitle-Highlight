@@ -1,12 +1,15 @@
 package Yeah_Zero.Subtitle_Highlight.Mixin;
 
 import Yeah_Zero.Subtitle_Highlight.Configure.Configuration;
+import Yeah_Zero.Subtitle_Highlight.Configure.Setting;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.hud.SubtitlesHud;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
+import net.minecraft.text.TextColor;
 import net.minecraft.text.TranslatableTextContent;
+import net.minecraft.util.Formatting;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -40,14 +43,20 @@ public class SubtitleEntryMixin {
     @Inject(at = @At("RETURN"), method = "getText()Lnet/minecraft/text/Text;", cancellable = true)
     private void 字幕着色(CallbackInfoReturnable<Text> 可返回回调信息) {
         if (this.text.getContent() instanceof TranslatableTextContent) {
+            for (Setting.Custom 元素 : Configuration.配置项.自定义列表) {
+                if (((TranslatableTextContent) this.text.getContent()).getKey().equals(元素.本地化键名)) {
+                    可返回回调信息.setReturnValue(((MutableText) this.text).setStyle(this.text.getStyle().withColor(元素.颜色).withObfuscated(元素.随机).withBold(元素.粗体).withStrikethrough(元素.删除线).withUnderline(元素.下划线).withItalic(元素.斜体)));
+                    return;
+                }
+            }
             String[] 键名分割 = ((TranslatableTextContent) this.text.getContent()).getKey().split("\\.");
             if (键名分割[0].equals("subtitles")) {
                 switch (键名分割[1]) {
-                    case "ambient":
-                    case "weather":
+                    case "ambient", "weather" -> {
                         可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.环境.获取格式代码()));
                         return;
-                    case "block":
+                    }
+                    case "block" -> {
                         if (键名分割[2].equals("generic")) {
                             可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.方块.通用.获取格式代码()));
                             return;
@@ -86,11 +95,12 @@ public class SubtitleEntryMixin {
                         }
                         可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.方块.方块_其它.获取格式代码()));
                         return;
-                    case "enchant":
-                    case "particle":
+                    }
+                    case "enchant", "particle" -> {
                         可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.魔咒.获取格式代码()));
                         return;
-                    case "entity":
+                    }
+                    case "entity" -> {
                         if (键名分割[2].equals("generic") || 键名分割[2].equals("player")) {
                             if (键名分割[3].equals("attack")) {
                                 可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.实体.生物.玩家.攻击.获取格式代码()));
@@ -107,6 +117,10 @@ public class SubtitleEntryMixin {
                         }
                         for (String 元素 : 被动生物) {
                             if (键名分割[2].equals(元素)) {
+                                if (键名分割[2].equals("chicken")) {
+                                    可返回回调信息.setReturnValue(Text.translatable("subtitles.entity.kun." + 键名分割[3]).setStyle(this.text.getStyle().withColor(TextColor.fromFormatting(Formatting.GRAY)).withBold(true)));
+                                    return;
+                                }
                                 可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.实体.生物.被动生物.获取格式代码()));
                                 return;
                             }
@@ -155,10 +169,12 @@ public class SubtitleEntryMixin {
                         }
                         可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.实体.实体_其它.获取格式代码()));
                         return;
-                    case "event":
+                    }
+                    case "event" -> {
                         可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.实体.生物.敌对生物.获取格式代码()));
                         return;
-                    case "item":
+                    }
+                    case "item" -> {
                         for (String 元素 : 武器) {
                             if (键名分割[2].equals(元素)) {
                                 可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.物品.武器.获取格式代码()));
@@ -179,9 +195,11 @@ public class SubtitleEntryMixin {
                         }
                         可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.物品.物品_其它.获取格式代码()));
                         return;
-                    case "ui":
+                    }
+                    case "ui" -> {
                         可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.方块.互动.获取格式代码()));
                         return;
+                    }
                 }
             }
         }

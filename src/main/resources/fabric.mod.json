@@ -17,7 +17,7 @@
   "environment": "client",
   "entrypoints": {
     "client": [
-      "Yeah_Zero.Subtitle_Highlight.Initializer.Client"
+      "Yeah_Zero.Subtitle_Highlight.ClientInitializer"
     ],
     "modmenu": [
       "Yeah_Zero.Subtitle_Highlight.Configure.ScreenAPI"

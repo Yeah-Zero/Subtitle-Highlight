@@ -53,7 +53,7 @@
   "subtitle-highlight.configure.custom.entry.translation_key.tooltip": "原版字幕的本地化键名以“subtitles.”开头",
   "subtitle-highlight.configure.custom.entry.color": "颜色",
   "subtitle-highlight.configure.custom.entry.color.tooltip_1": "十六进制颜色代码",
-  "subtitle-highlight.configure.custom.entry.color.tooltip_2": "范围：0x000000~0xffffff",
+  "subtitle-highlight.configure.custom.entry.color.tooltip_2": "范围：0x000000～0xffffff",
   "subtitle-highlight.configure.custom.entry.obfuscated": "随机",
   "subtitle-highlight.configure.custom.entry.bold": "粗体",
   "subtitle-highlight.configure.custom.entry.strikethrough": "删除线",
@@ -78,5 +78,9 @@
   "modmenu.curseforge": "CurseForge",
   "modmenu.modrinth": "Modrinth",
   "modmenu.descriptionTranslation.subtitle-highlight": "这是描述。",
-  "modmenu.summaryTranslation.subtitle-highlight": "为不同字幕添加样式以区分。"
+  "modmenu.summaryTranslation.subtitle-highlight": "为不同字幕添加样式以区分。",
+  "subtitles.entity.kun.ambient": "蔡徐坤：鸡你太美",
+  "subtitles.entity.kun.death": "蔡徐坤：哎～呦",
+  "subtitles.entity.kun.egg": "蔡徐坤：鸡你实在是太美",
+  "subtitles.entity.kun.hurt": "蔡徐坤：你干嘛——"
 }

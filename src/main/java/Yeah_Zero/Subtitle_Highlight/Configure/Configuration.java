@@ -1,7 +1,6 @@
 package Yeah_Zero.Subtitle_Highlight.Configure;
 
-import Yeah_Zero.Subtitle_Highlight.FormattingCode.ColorCode;
-import Yeah_Zero.Subtitle_Highlight.Mixin.SimpleOptionMixin;
+import Yeah_Zero.Subtitle_Highlight.ColorCode;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
@@ -69,7 +68,7 @@ public class Configuration {
         try {
             ConfigBuilder 构建器 = ConfigBuilder.create().setParentScreen(上级界面).setTitle(Text.translatable("subtitle-highlight.configure.title")).setDoesConfirmSave(false).setSavingRunnable(Configuration::保存).setDefaultBackgroundTexture(new Identifier("minecraft", "textures/block/white_concrete.png"));
             构建器.setGlobalized(true);
-            构建器.getOrCreateCategory(Text.translatable("subtitle-highlight.configure.general")).addEntry(构建器.entryBuilder().startBooleanToggle(Text.translatable("options.showSubtitles"), MinecraftClient.getInstance().options.getShowSubtitles().getValue()).setTooltip(Text.translatable("subtitle-highlight.configure.general.option.tooltip")).setDefaultValue(((SimpleOptionMixin<Boolean>) (Object) MinecraftClient.getInstance().options.getShowSubtitles()).获取默认值()).setSaveConsumer((新值) -> {
+            构建器.getOrCreateCategory(Text.translatable("subtitle-highlight.configure.general")).addEntry(构建器.entryBuilder().startBooleanToggle(Text.translatable("options.showSubtitles"), MinecraftClient.getInstance().options.getShowSubtitles().getValue()).setTooltip(Text.translatable("subtitle-highlight.configure.general.option.tooltip")).setDefaultValue(false).setSaveConsumer((新值) -> {
                 MinecraftClient.getInstance().options.getShowSubtitles().setValue(新值);
                 MinecraftClient.getInstance().options.write();
             }).build()).addEntry(构建器.entryBuilder().startLongField(Text.translatable("subtitle-highlight.configure.general.remove_delay"), 配置项.最长持续时间).setTooltip(Text.translatable("subtitle-highlight.configure.general.remove_delay.tooltip_1"), Text.translatable("subtitle-highlight.configure.general.remove_delay.tooltip_2")).setDefaultValue(3000).setMin(0).setSaveConsumer((新值) -> {
@@ -149,7 +148,7 @@ public class Configuration {
             }).build());
             基本颜色设置.add(实体.build());
             SubCategoryBuilder 物品 = 构建器.entryBuilder().startSubCategory(Text.translatable("subtitle-highlight.configure.general.color.item")).setExpanded(true);
-            物品.add(构建器.entryBuilder().startEnumSelector(Text.translatable("subtitle-highlight.configure.general.color.item.weapon"), ColorCode.class, 配置项.基本颜色设置.物品.武器).setDefaultValue(ColorCode.天蓝色).setSaveConsumer((新值) -> {
+            物品.add(构建器.entryBuilder().startEnumSelector(Text.translatable("subtitle-highlight.configure.general.color.item.weapon"), ColorCode.class, 配置项.基本颜色设置.物品.武器).setDefaultValue(ColorCode.金色).setSaveConsumer((新值) -> {
                 配置项.基本颜色设置.物品.武器 = 新值;
             }).build());
             物品.add(构建器.entryBuilder().startEnumSelector(Text.translatable("subtitle-highlight.configure.general.color.item.armor"), ColorCode.class, 配置项.基本颜色设置.物品.防具).setDefaultValue(ColorCode.深绿色).setSaveConsumer((新值) -> {
@@ -190,6 +189,7 @@ public class Configuration {
             return 构建器.build();
         } catch (NullPointerException e) {
             配置项 = new Setting();
+            保存();
             return 屏幕(上级界面);
         }
     }
