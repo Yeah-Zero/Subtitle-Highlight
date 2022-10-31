@@ -9,7 +9,7 @@
 <p align="center">
 	<a href="https://github.com/Yeah-Zero/Subtitle-Highlight">
 		<img src="https://img.shields.io/github/downloads/Yeah-Zero/Subtitle-Highlight/total?label=GitHub%E4%B8%8B%E8%BD%BD%E9%87%8F&style=flat-square" /></a>
-    <a href="https://github.com/Yeah-Zero/Subtitle-Highlight/blob/%E4%B8%BB%E5%88%86%E6%94%AF/LICENSE">
+    <a href="./LICENSE">
 		<img src="https://img.shields.io/github/license/Yeah-Zero/Subtitle-Highlight?label=%E8%AE%B8%E5%8F%AF%E8%AF%81&style=flat-square" /></a>
 	<a href="">
 		<img src="https://img.shields.io/github/languages/code-size/Yeah-Zero/Subtitle-Highlight?label=%E4%BB%A3%E7%A0%81%E5%A4%A7%E5%B0%8F&style=flat-square" /></a>
