@@ -21,8 +21,8 @@ public class Setting {
         public ColorCode 其它 = ColorCode.白色;
 
         public class Item {
-            public ColorCode 武器 = ColorCode.蓝色;
-            public ColorCode 防具 = ColorCode.灰色;
+            public ColorCode 武器 = ColorCode.天蓝色;
+            public ColorCode 防具 = ColorCode.深绿色;
             public ColorCode 工具 = ColorCode.蓝色;
             public ColorCode 物品_其它 = ColorCode.白色;
         }

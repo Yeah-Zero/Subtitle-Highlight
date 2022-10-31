@@ -30,6 +30,9 @@ public class SubtitleEntryMixin {
     private static final String[] 运作 = {"amethyst_block", "beacon", "beehive", "blastfurnace", "brewing_stand", "bubble_column", "candle", "conduit", "dispenser", "end_portal", "furnace", "iron_trapdoor", "piston", "portal", "redstone_torch", "sculk", "sculk_catalyst", "smoker", "water"};
     private static final String[] 危险方块 = {"campfire", "fire", "lava", "pointed_dripstone", "sculk_shrieker"};
     private static final String[] 农作物 = {"chorus_flower", "frogspawn"};
+    private static final String[] 武器 = {"crossbow", "trident"};
+    private static final String[] 防具 = {"armor", "shield"};
+    private static final String[] 工具 = {"axe", "bottle", "bucket", "bundle", "flintandsteel", "hoe", "goat_horn", "lodestone_compass", "shears", "shovel", "spyglass", "totem"};
     @Shadow
     @Final
     private Text text;
@@ -37,21 +40,21 @@ public class SubtitleEntryMixin {
     @Inject(at = @At("RETURN"), method = "getText()Lnet/minecraft/text/Text;", cancellable = true)
     private void 字幕着色(CallbackInfoReturnable<Text> 可返回回调信息) {
         if (this.text.getContent() instanceof TranslatableTextContent) {
-            String[] 键值分割 = ((TranslatableTextContent) this.text.getContent()).getKey().split("\\.");
-            if (键值分割[0].equals("subtitles")) {
-                switch (键值分割[1]) {
+            String[] 键名分割 = ((TranslatableTextContent) this.text.getContent()).getKey().split("\\.");
+            if (键名分割[0].equals("subtitles")) {
+                switch (键名分割[1]) {
                     case "ambient":
                     case "weather":
                         可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.环境.获取格式代码()));
                         return;
                     case "block":
-                        if (键值分割[2].equals("generic")) {
+                        if (键名分割[2].equals("generic")) {
                             可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.方块.通用.获取格式代码()));
                             return;
                         }
                         for (String 元素 : 互动) {
-                            if (键值分割[2].equals(元素)) {
-                                if (键值分割[2].equals("anvil") && 键值分割[3].equals("land")) {
+                            if (键名分割[2].equals(元素)) {
+                                if (键名分割[2].equals("anvil") && 键名分割[3].equals("land")) {
                                     可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.方块.危险方块.获取格式代码()));
                                     return;
                                 }
@@ -60,8 +63,8 @@ public class SubtitleEntryMixin {
                             }
                         }
                         for (String 元素 : 运作) {
-                            if (键值分割[2].equals(元素)) {
-                                if (键值分割[2].equals("beacon") && 键值分割[3].equals("power_select")) {
+                            if (键名分割[2].equals(元素)) {
+                                if (键名分割[2].equals("beacon") && 键名分割[3].equals("power_select")) {
                                     可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.方块.互动.获取格式代码()));
                                     return;
                                 }
@@ -70,13 +73,13 @@ public class SubtitleEntryMixin {
                             }
                         }
                         for (String 元素 : 危险方块) {
-                            if (键值分割[2].equals(元素)) {
+                            if (键名分割[2].equals(元素)) {
                                 可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.方块.危险方块.获取格式代码()));
                                 return;
                             }
                         }
                         for (String 元素 : 农作物) {
-                            if (键值分割[2].equals(元素)) {
+                            if (键名分割[2].equals(元素)) {
                                 可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.方块.农作物.获取格式代码()));
                                 return;
                             }
@@ -88,13 +91,13 @@ public class SubtitleEntryMixin {
                         可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.魔咒.获取格式代码()));
                         return;
                     case "entity":
-                        if (键值分割[2].equals("generic") || 键值分割[2].equals("player")) {
-                            if (键值分割[3].equals("attack")) {
+                        if (键名分割[2].equals("generic") || 键名分割[2].equals("player")) {
+                            if (键名分割[3].equals("attack")) {
                                 可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.实体.生物.玩家.攻击.获取格式代码()));
                                 return;
                             }
                             for (String 元素 : 受伤) {
-                                if (键值分割[3].equals(元素)) {
+                                if (键名分割[3].equals(元素)) {
                                     可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.实体.生物.玩家.受伤.获取格式代码()));
                                     return;
                                 }
@@ -103,49 +106,49 @@ public class SubtitleEntryMixin {
                             return;
                         }
                         for (String 元素 : 被动生物) {
-                            if (键值分割[2].equals(元素)) {
+                            if (键名分割[2].equals(元素)) {
                                 可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.实体.生物.被动生物.获取格式代码()));
                                 return;
                             }
                         }
                         for (String 元素 : 中立生物) {
-                            if (键值分割[2].equals(元素)) {
+                            if (键名分割[2].equals(元素)) {
                                 可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.实体.生物.中立生物.获取格式代码()));
                                 return;
                             }
                         }
                         for (String 元素 : 敌对生物) {
-                            if (键值分割[2].equals(元素)) {
+                            if (键名分割[2].equals(元素)) {
                                 可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.实体.生物.敌对生物.获取格式代码()));
                                 return;
                             }
                         }
                         for (String 元素 : 头目生物) {
-                            if (键值分割[2].equals(元素)) {
+                            if (键名分割[2].equals(元素)) {
                                 可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.实体.生物.头目生物.获取格式代码()));
                                 return;
                             }
                         }
                         for (String 元素 : 载具) {
-                            if (键值分割[2].equals(元素)) {
+                            if (键名分割[2].equals(元素)) {
                                 可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.实体.载具.获取格式代码()));
                                 return;
                             }
                         }
                         for (String 元素 : 弹射物) {
-                            if (键值分割[2].equals(元素)) {
+                            if (键名分割[2].equals(元素)) {
                                 可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.实体.弹射物.获取格式代码()));
                                 return;
                             }
                         }
                         for (String 元素 : 爆炸物) {
-                            if (键值分割[2].equals(元素)) {
+                            if (键名分割[2].equals(元素)) {
                                 可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.实体.爆炸物.获取格式代码()));
                                 return;
                             }
                         }
                         for (String 元素 : 装饰品) {
-                            if (键值分割[2].equals(元素)) {
+                            if (键名分割[2].equals(元素)) {
                                 可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.实体.装饰品.获取格式代码()));
                                 return;
                             }
@@ -156,7 +159,26 @@ public class SubtitleEntryMixin {
                         可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.实体.生物.敌对生物.获取格式代码()));
                         return;
                     case "item":
-                        break;
+                        for (String 元素 : 武器) {
+                            if (键名分割[2].equals(元素)) {
+                                可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.物品.武器.获取格式代码()));
+                                return;
+                            }
+                        }
+                        for (String 元素 : 防具) {
+                            if (键名分割[2].equals(元素)) {
+                                可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.物品.防具.获取格式代码()));
+                                return;
+                            }
+                        }
+                        for (String 元素 : 工具) {
+                            if (键名分割[2].equals(元素)) {
+                                可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.物品.工具.获取格式代码()));
+                                return;
+                            }
+                        }
+                        可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.物品.物品_其它.获取格式代码()));
+                        return;
                     case "ui":
                         可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.方块.互动.获取格式代码()));
                         return;
