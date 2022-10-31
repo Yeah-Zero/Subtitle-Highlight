@@ -4,6 +4,12 @@
 
 此模组正在开发中，功能并不完善。
 
+#### 依赖项
+
+Cloth
+Config（[GitHub](https://github.com/shedaniel/cloth-config) [CurseForge](https://www.curseforge.com/minecraft/mc-mods/cloth-config) [Modrinth](https://modrinth.com/mod/cloth-config)
+）
+
 #### 默认配置
 
 - 最长持续时间：3秒
