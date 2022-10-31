@@ -29,8 +29,7 @@
 		<img src="https://img.shields.io/github/watchers/Yeah-Zero/Subtitle-Highlight?label=%E5%85%B3%E6%B3%A8%E6%95%B0&style=flat-square" /></a>
 </p>
 <p align="center">
-    <a href="https://zh.crowdin.com/project/Subtitle-Highlight">
-		<img src="https://badges.crowdin.net/Subtitle-Highlight/localized.svg" /></a>
+    <b>点击这里帮忙翻译</b>————→<a href="https://zh.crowdin.com/project/Subtitle-Highlight"><img src="https://badges.crowdin.net/Subtitle-Highlight/localized.svg" /></a>←————<b>点击这里帮忙翻译</b>
 </p>
 #### 依赖项
 
