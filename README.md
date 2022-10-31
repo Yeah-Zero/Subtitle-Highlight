@@ -10,6 +10,8 @@ Cloth
 Config（[GitHub](https://github.com/shedaniel/cloth-config) [CurseForge](https://www.curseforge.com/minecraft/mc-mods/cloth-config) [Modrinth](https://modrinth.com/mod/cloth-config)
 ）
 
+Fabric Loader（[官网](https://fabricmc.net/) [GitHub](https://github.com/FabricMC/fabric-loader)）
+
 #### 默认配置
 
 - 最长持续时间：3秒
