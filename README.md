@@ -31,6 +31,7 @@
 <p align="center">
     <b>点击这里帮忙翻译</b>————→<a href="https://zh.crowdin.com/project/Subtitle-Highlight"><img src="https://badges.crowdin.net/Subtitle-Highlight/localized.svg" /></a>←————<b>点击这里帮忙翻译</b>
 </p>
+
 #### 依赖项
 
 Cloth Config（[GitHub](https://github.com/shedaniel/cloth-config) [CurseForge](https://www.curseforge.com/minecraft/mc-mods/cloth-config) [Modrinth](https://modrinth.com/mod/cloth-config)）
