@@ -32,6 +32,12 @@
     <b>点击这里帮忙翻译</b>————→<a href="https://zh.crowdin.com/project/Subtitle-Highlight"><img src="https://badges.crowdin.net/Subtitle-Highlight/localized.svg" /></a>←————<b>点击这里帮忙翻译</b>
 </p>
 
+<p align="center">
+    <img src="./演示图片/效果演示1.png" />
+    <img src="./演示图片/效果演示2.png" />
+    <img src="./演示图片/效果演示3.png" />
+</p>
+
 #### 依赖项
 
 Cloth Config（[GitHub](https://github.com/shedaniel/cloth-config) [CurseForge](https://www.curseforge.com/minecraft/mc-mods/cloth-config) [Modrinth](https://modrinth.com/mod/cloth-config)）
