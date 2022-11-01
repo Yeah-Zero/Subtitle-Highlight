@@ -3,7 +3,7 @@
 </h1> 
 
 <p align="center">
-	为不同字幕添加样式以区分。
+	为不同字幕添加样式以区分，同时提供对单个字幕的自定义设置。
 </p>
 
 <p align="center">
@@ -37,14 +37,23 @@
     <img src="./演示图片/效果演示2.png" />
     <img src="./演示图片/效果演示3.png" />
 </p>
+## 链接
 
-#### 依赖项
+[Modrinth](https://modrinth.com/mod/subtitle-highlight)
 
-Cloth Config（[GitHub](https://github.com/shedaniel/cloth-config) [CurseForge](https://www.curseforge.com/minecraft/mc-mods/cloth-config) [Modrinth](https://modrinth.com/mod/cloth-config)）
+### 依赖项
+
+Cloth
+Config（[GitHub](https://github.com/shedaniel/cloth-config) [CurseForge](https://www.curseforge.com/minecraft/mc-mods/cloth-config) [Modrinth](https://modrinth.com/mod/cloth-config)
+）
+
+Fabric
+API（[GitHub](https://github.com/FabricMC/fabric) [CurseForge](https://www.curseforge.com/minecraft/mc-mods/fabric-api) [Modrinth](https://modrinth.com/mod/fabric-api)
+）
 
 Fabric Loader（[官网](https://fabricmc.net/) [GitHub](https://github.com/FabricMC/fabric-loader)）
 
-#### 默认配置
+### 默认配置
 
 配置文件保存在”<游戏目录>\config\字幕高亮.json“。
 

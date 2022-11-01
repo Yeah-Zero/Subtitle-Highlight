@@ -8,8 +8,7 @@
     "§e烨§b凌"
   ],
   "contact": {
-    "homepage": "https://github.com/Yeah-Zero",
-    "sources": "https://github.com/Yeah-Zero/Subtitle-Highlight",
+    "homepage": "https://github.com/Yeah-Zero/Subtitle-Highlight",
     "issues": "https://github.com/Yeah-Zero/Subtitle-Highlight/issues"
   },
   "license": "GNU 宽通用公共许可证 3.0",
@@ -32,14 +31,15 @@
   "depends": {
     "cloth-config": "*",
     "fabricloader": ">=0.14.9",
+    "fabric-api": "*",
     "minecraft": "~1.19",
     "java": ">=17"
   },
   "custom": {
     "modmenu": {
       "links": {
-        "modmenu.curseforge": "",
-        "modmenu.modrinth": ""
+        "modmenu.curseforge": "暂未发布",
+        "modmenu.modrinth": "https://modrinth.com/mod/subtitle-highlight"
       }
     }
   }
