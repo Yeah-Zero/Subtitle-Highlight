@@ -25,7 +25,7 @@
 
 ## Links
 
-[GitHub](https://github.com/Yeah-Zero/Subtitle-Highlight) [CurseForge](https://www.curseforge.com/minecraft/mc-mods/subtitle-highlight) [Modrinth](https://modrinth.com/mod/subtitle-highlight)
+[GitHub](https://github.com/Yeah-Zero/Subtitle-Highlight) [CurseForge](https://www.curseforge.com/minecraft/mc-mods/subtitle-highlight) [Modrinth](https://modrinth.com/mod/subtitle-highlight) [MCmod](https://www.mcmod.cn/class/8183.html)
 
 ### Dependencies
 
