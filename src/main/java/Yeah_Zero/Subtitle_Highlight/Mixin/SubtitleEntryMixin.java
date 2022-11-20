@@ -1,7 +1,7 @@
 package Yeah_Zero.Subtitle_Highlight.Mixin;
 
 import Yeah_Zero.Subtitle_Highlight.Configure.Configuration;
-import Yeah_Zero.Subtitle_Highlight.Configure.Setting;
+import Yeah_Zero.Subtitle_Highlight.Configure.Settings;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.hud.SubtitlesHud;
@@ -43,7 +43,7 @@ public class SubtitleEntryMixin {
     @Inject(at = @At("RETURN"), method = "getText()Lnet/minecraft/text/Text;", cancellable = true)
     private void 字幕着色(CallbackInfoReturnable<Text> 可返回回调信息) {
         if (this.text.getContent() instanceof TranslatableTextContent) {
-            for (Setting.Custom 元素 : Configuration.配置项.自定义列表) {
+            for (Settings.Custom 元素 : Configuration.配置项.自定义列表) {
                 if (((TranslatableTextContent) this.text.getContent()).getKey().equals(元素.本地化键名)) {
                     可返回回调信息.setReturnValue(((MutableText) this.text).setStyle(this.text.getStyle().withColor(元素.颜色).withObfuscated(元素.随机).withBold(元素.粗体).withStrikethrough(元素.删除线).withUnderline(元素.下划线).withItalic(元素.斜体)));
                     return;
@@ -117,7 +117,7 @@ public class SubtitleEntryMixin {
                         }
                         for (String 元素 : 被动生物) {
                             if (键名分割[2].equals(元素)) {
-                                if (键名分割[2].equals("chicken")) {
+                                if (键名分割[2].equals("chicken") && Configuration.配置项.iKun彩蛋) {
                                     可返回回调信息.setReturnValue(Text.translatable("subtitles.entity.kun." + 键名分割[3]).setStyle(this.text.getStyle().withColor(TextColor.fromFormatting(Formatting.GRAY)).withBold(true)));
                                     return;
                                 }

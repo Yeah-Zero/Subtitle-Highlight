@@ -24,7 +24,7 @@
   },
   "mixins": [
     {
-      "config": "subtitle-highlight.client-mixins.json",
+      "config": "mixins.client.json",
       "environment": "client"
     }
   ],
@@ -38,6 +38,7 @@
   "custom": {
     "modmenu": {
       "links": {
+        "modmenu.mcmod": "https://www.mcmod.cn/class/8183.html",
         "modmenu.curseforge": "https://www.curseforge.com/minecraft/mc-mods/subtitle-highlight",
         "modmenu.modrinth": "https://modrinth.com/mod/subtitle-highlight"
       }

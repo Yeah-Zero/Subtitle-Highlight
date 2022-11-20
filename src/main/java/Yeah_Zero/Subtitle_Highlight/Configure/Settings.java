@@ -5,11 +5,12 @@ import net.minecraft.text.TextColor;
 
 import java.util.ArrayList;
 
-public class Setting {
+public class Settings {
     public long 最长持续时间 = 3000;
     public double 起始比例 = 1;
     public double 终止比例 = 0.29411764705882354;
     public ColorSetting 基本颜色设置 = new ColorSetting();
+    public Boolean iKun彩蛋 = true;
     public ArrayList<Custom> 自定义列表 = new ArrayList<>();
 
     public class ColorSetting {

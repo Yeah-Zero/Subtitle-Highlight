@@ -22,10 +22,6 @@
 </p>
 
 <p align="center">
-	<b>点击这里帮忙翻译</b>————→<a href="https://zh.crowdin.com/project/Subtitle-Highlight"><img src="https://badges.crowdin.net/Subtitle-Highlight/localized.svg" /></a>←————<b>点击这里帮忙翻译</b>
-</p>
-
-<p align="center">
     <img src="./演示图片/效果演示1.png" />
     <img src="./演示图片/效果演示2.png" />
     <img src="./演示图片/效果演示3.png" />
@@ -59,7 +55,7 @@ Fabric Loader（[官网](https://fabricmc.net/) [GitHub](https://github.com/Fabr
     - 方块
         - 通用：白色
         - 互动：天蓝色
-        - 运作：湖蓝色
+        - 工作：湖蓝色
         - 危险方块：红色
         - 农作物：深绿色
         - 方块\_其它：深灰色

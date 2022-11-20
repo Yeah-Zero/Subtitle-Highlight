@@ -18,10 +18,6 @@
 </p>
 
 <p align="center">
-	<b>Click here to help translate</b>————→<a href="https://zh.crowdin.com/project/Subtitle-Highlight"><img src="https://badges.crowdin.net/Subtitle-Highlight/localized.svg" /></a>←————<b>Click here to help translate</b>
-</p>
-
-<p align="center">
     <img src="./演示图片/效果演示1.png" />
     <img src="./演示图片/效果演示2.png" />
     <img src="./演示图片/效果演示3.png" />
