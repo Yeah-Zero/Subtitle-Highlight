@@ -14,7 +14,7 @@
 	<a href="./LICENSE">
 		<img src="https://img.shields.io/github/license/Yeah-Zero/Subtitle-Highlight?&style=flat-square" /></a>
 	<img src="https://img.shields.io/github/languages/code-size/Yeah-Zero/Subtitle-Highlight?&style=flat-square" />
-	<img src="https://img.shields.io/static/v1?label=Mod%20Loader&message=Fabric&color=brightgreen&style=flat-square" />
+	<img src="https://img.shields.io/static/v1?label=Mod%20Loader&message=Fabric | Quilt&color=brightgreen&style=flat-square" />
 </p>
 
 <p align="center">
