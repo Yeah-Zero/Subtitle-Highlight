@@ -18,7 +18,7 @@
 	<a href="./LICENSE">
 		<img src="https://img.shields.io/github/license/Yeah-Zero/Subtitle-Highlight?label=%E8%AE%B8%E5%8F%AF%E8%AF%81&style=flat-square" /></a>
 	<img src="https://img.shields.io/github/languages/code-size/Yeah-Zero/Subtitle-Highlight?label=%E5%A4%A7%E5%B0%8F&style=flat-square" />
-	<img src="https://img.shields.io/static/v1?label=%E5%8A%A0%E8%BD%BD%E5%99%A8&message=Fabric&color=brightgreen&style=flat-square" />
+	<img src="https://img.shields.io/static/v1?label=%E5%8A%A0%E8%BD%BD%E5%99%A8&message=Fabric | Quilt&color=brightgreen&style=flat-square" />
 </p>
 
 <p align="center">
