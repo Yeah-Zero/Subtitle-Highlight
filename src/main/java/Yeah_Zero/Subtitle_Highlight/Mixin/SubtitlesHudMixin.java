@@ -41,7 +41,7 @@ public class SubtitlesHudMixin {
         return MathHelper.floor(MathHelper.clampedLerp(255 * Configuration.配置项.起始比例, 255 * Configuration.配置项.终止比例, 持续时间比例));
     }
 
-    @ModifyArgs(method = "render(Lnet/minecraft/client/util/math/MatrixStack;)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/hud/SubtitlesHud;drawTextWithShadow(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/font/TextRenderer;Lnet/minecraft/text/Text;III)V"))
+    @ModifyArgs(method = "render(Lnet/minecraft/client/util/math/MatrixStack;)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/font/TextRenderer;draw(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/text/Text;FFI)I"))
     private void 字幕显示颜色注入(Args 参数列表) {
         Text 文字 = 参数列表.get(2);
         参数列表.set(2, Text.literal(文字.getString()).setStyle(文字.getStyle().withColor((TextColor) null)));
