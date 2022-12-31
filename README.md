@@ -29,7 +29,7 @@
 
 ## 链接
 
-[GitHub](https://github.com/Yeah-Zero/Subtitle-Highlight) [CurseForge](https://www.curseforge.com/minecraft/mc-mods/subtitle-highlight) [Modrinth](https://modrinth.com/mod/subtitle-highlight) [MC百科](https://www.mcmod.cn/class/8183.html)
+[GitHub](https://github.com/Yeah-Zero/Subtitle-Highlight) [CurseForge](https://www.curseforge.com/minecraft/mc-mods/subtitle-highlight) [Modrinth](https://modrinth.com/mod/subtitle-highlight) [我的世界中文论坛](https://www.mcbbs.net/thread-1398903-1-1.html) [MC百科](https://www.mcmod.cn/class/8183.html)
 
 ### 依赖项
 
