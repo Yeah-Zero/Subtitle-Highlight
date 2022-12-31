@@ -43,8 +43,8 @@ public class SubtitlesHudMixin {
 
     @ModifyArgs(method = "render(Lnet/minecraft/client/util/math/MatrixStack;)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/font/TextRenderer;draw(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/text/Text;FFI)I"))
     private void 字幕显示颜色注入(Args 参数列表) {
-        Text 文字 = 参数列表.get(2);
-        参数列表.set(2, Text.literal(文字.getString()).setStyle(文字.getStyle().withColor((TextColor) null)));
+        Text 文字 = 参数列表.get(1);
+        参数列表.set(1, Text.literal(文字.getString()).setStyle(文字.getStyle().withColor((TextColor) null)));
         int 红, 绿, 蓝;
         if (文字.getStyle().getColor() != null) {
             红 = (文字.getStyle().getColor().getRgb() >> 16) & 255;
@@ -56,6 +56,6 @@ public class SubtitlesHudMixin {
         int 红色剩余 = MathHelper.floor(MathHelper.clampedLerp(红 * Configuration.配置项.起始比例, 红 * Configuration.配置项.终止比例, 持续时间比例));
         int 绿色剩余 = MathHelper.floor(MathHelper.clampedLerp(绿 * Configuration.配置项.起始比例, 绿 * Configuration.配置项.终止比例, 持续时间比例));
         int 蓝色剩余 = MathHelper.floor(MathHelper.clampedLerp(蓝 * Configuration.配置项.起始比例, 蓝 * Configuration.配置项.终止比例, 持续时间比例));
-        参数列表.set(5, (红色剩余 << 16 | 绿色剩余 << 8 | 蓝色剩余) - 16777216);
+        参数列表.set(4, (红色剩余 << 16 | 绿色剩余 << 8 | 蓝色剩余) - 16777216);
     }
 }
