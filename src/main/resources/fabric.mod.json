@@ -31,13 +31,14 @@
   "depends": {
     "cloth-config": "*",
     "fabricloader": ">=0.14.9",
-    "fabric-api": "*",
+    "fabric-resource-loader-v0": "*",
     "minecraft": "~1.19",
     "java": ">=17"
   },
   "custom": {
     "modmenu": {
       "links": {
+        "modmenu.mcbbs": "https://www.mcbbs.net/thread-1398903-1-1.html",
         "modmenu.mcmod": "https://www.mcmod.cn/class/8183.html",
         "modmenu.curseforge": "https://www.curseforge.com/minecraft/mc-mods/subtitle-highlight",
         "modmenu.modrinth": "https://modrinth.com/mod/subtitle-highlight"
