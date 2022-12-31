@@ -24,7 +24,7 @@
   },
   "mixins": [
     {
-      "config": "mixins.json",
+      "config": "mixins.client.json",
       "environment": "client"
     }
   ],
