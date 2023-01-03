@@ -43,6 +43,10 @@ API（[GitHub](https://github.com/FabricMC/fabric) [CurseForge](https://www.curs
 
 Fabric Loader（[官网](https://fabricmc.net/) [GitHub](https://github.com/FabricMC/fabric-loader)）
 
+### 说明
+
+此模组含有令部分人感到不适的彩蛋，可以通过配置屏幕中的”iKun彩蛋“关闭。
+
 ### 默认配置
 
 配置文件保存在“<游戏目录>\config\字幕高亮.json”。

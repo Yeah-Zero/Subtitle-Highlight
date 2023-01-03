@@ -37,6 +37,11 @@ API ([GitHub](https://github.com/FabricMC/fabric) [CurseForge](https://www.curse
 
 Fabric Loader ([Official website](https://fabricmc.net) [GitHub](https://github.com/FabricMC/fabric-loader))
 
+### Instruction
+
+This module contains an Easter Egg that makes some people feel uncomfortable, which can be closed by "iKun (Easter Egg)"
+in the configure screen.
+
 ### Default Configuration
 
 Configuration file is saved at "<Game Directory>\config\字幕高亮.json".
