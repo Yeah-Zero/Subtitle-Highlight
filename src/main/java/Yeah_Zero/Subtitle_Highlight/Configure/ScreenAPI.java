@@ -7,6 +7,8 @@ import me.shedaniel.clothconfig2.api.ConfigBuilder;
 import me.shedaniel.clothconfig2.gui.entries.MultiElementListEntry;
 import me.shedaniel.clothconfig2.gui.entries.NestedListListEntry;
 import me.shedaniel.clothconfig2.impl.builders.SubCategoryBuilder;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
@@ -17,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Environment(EnvType.CLIENT)
 public class ScreenAPI implements ModMenuApi {
     @Override
     public ConfigScreenFactory<?> getModConfigScreenFactory() {
@@ -32,6 +35,8 @@ public class ScreenAPI implements ModMenuApi {
                     Configuration.配置项.起始比例 = 新值;
                 }).build()).addEntry(构建器.entryBuilder().startDoubleField(Text.translatable("subtitle-highlight.configure.general.end_ratio"), Configuration.配置项.终止比例).setTooltip(Text.translatable("subtitle-highlight.configure.general.end_ratio.tooltip_1"), Text.translatable("subtitle-highlight.configure.general.end_ratio.tooltip_2")).setDefaultValue(0.29411764705882354).setMax(1).setMin(0).setSaveConsumer((新值) -> {
                     Configuration.配置项.终止比例 = 新值;
+                }).build()).addEntry(构建器.entryBuilder().startBooleanToggle(Text.translatable("subtitle-highlight.configure.general.ikun"), Configuration.配置项.iKun彩蛋).setTooltip(Text.translatable("subtitle-highlight.configure.general.ikun.tooltip_1"), Text.translatable("subtitle-highlight.configure.general.ikun.tooltip_2")).setDefaultValue(true).setSaveConsumer((新值) -> {
+                    Configuration.配置项.iKun彩蛋 = 新值;
                 }).build()).setDescription(new MutableText[]{Text.translatable("subtitle-highlight.configure.general.description")});
                 SubCategoryBuilder 基本颜色设置 = 构建器.entryBuilder().startSubCategory(Text.translatable("subtitle-highlight.configure.general.color")).setTooltip(Text.translatable("subtitle-highlight.configure.general.color.tooltip")).setExpanded(true);
                 基本颜色设置.add(构建器.entryBuilder().startEnumSelector(Text.translatable("subtitle-highlight.configure.general.color.ambient"), ColorCode.class, Configuration.配置项.基本颜色设置.环境).setDefaultValue(ColorCode.深蓝色).setSaveConsumer((新值) -> {
@@ -119,9 +124,7 @@ public class ScreenAPI implements ModMenuApi {
                 基本颜色设置.add(构建器.entryBuilder().startEnumSelector(Text.translatable("subtitle-highlight.configure.general.color.other"), ColorCode.class, Configuration.配置项.基本颜色设置.其它).setDefaultValue(ColorCode.白色).setSaveConsumer((新值) -> {
                     Configuration.配置项.基本颜色设置.其它 = 新值;
                 }).build());
-                构建器.getOrCreateCategory(Text.translatable("subtitle-highlight.configure.general")).addEntry(基本颜色设置.build()).addEntry(构建器.entryBuilder().startBooleanToggle(Text.translatable("subtitle-highlight.configure.general.easter_egg.ikun"), Configuration.配置项.iKun彩蛋).setDefaultValue(true).setSaveConsumer((新值) -> {
-                    Configuration.配置项.iKun彩蛋 = 新值;
-                }).build());
+                构建器.getOrCreateCategory(Text.translatable("subtitle-highlight.configure.general")).addEntry(基本颜色设置.build());
                 构建器.getOrCreateCategory(Text.translatable("subtitle-highlight.configure.custom")).addEntry(new NestedListListEntry<>(Text.translatable("subtitle-highlight.configure.custom.list"), Configuration.配置项.自定义列表, true, Optional::empty, (新值) -> {
                     Configuration.配置项.自定义列表 = (ArrayList<Settings.Custom>) 新值;
                 }, List::of, 构建器.entryBuilder().getResetButtonKey(), true, true, (元素, 条目) -> {
