@@ -31,15 +31,13 @@
 
 [GitHub](https://github.com/Yeah-Zero/Subtitle-Highlight) [CurseForge](https://www.curseforge.com/minecraft/mc-mods/subtitle-highlight) [Modrinth](https://modrinth.com/mod/subtitle-highlight) [我的世界中文论坛](https://www.mcbbs.net/thread-1398903-1-1.html) [MC百科](https://www.mcmod.cn/class/8183.html)
 
+[LyingChat的介绍视频（哔哩哔哩）](https://www.bilibili.com/video/BV14M41117mU/?t=89)
+
 ### 依赖项
 
-Cloth
-Config（[GitHub](https://github.com/shedaniel/cloth-config) [CurseForge](https://www.curseforge.com/minecraft/mc-mods/cloth-config) [Modrinth](https://modrinth.com/mod/cloth-config)
-）
+Cloth Config（[GitHub](https://github.com/shedaniel/cloth-config) [CurseForge](https://www.curseforge.com/minecraft/mc-mods/cloth-config) [Modrinth](https://modrinth.com/mod/cloth-config)）
 
-Fabric
-API（[GitHub](https://github.com/FabricMC/fabric) [CurseForge](https://www.curseforge.com/minecraft/mc-mods/fabric-api) [Modrinth](https://modrinth.com/mod/fabric-api)
-）
+Fabric API（[GitHub](https://github.com/FabricMC/fabric) [CurseForge](https://www.curseforge.com/minecraft/mc-mods/fabric-api) [Modrinth](https://modrinth.com/mod/fabric-api)）
 
 Fabric Loader（[官网](https://fabricmc.net/) [GitHub](https://github.com/FabricMC/fabric-loader)）
 
