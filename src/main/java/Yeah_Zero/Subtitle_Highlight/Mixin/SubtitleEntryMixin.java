@@ -20,7 +20,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Environment(EnvType.CLIENT)
 @Mixin(SubtitlesHud.SubtitleEntry.class)
 public class SubtitleEntryMixin {
-    private static final String[] 被动生物 = {"allay", "axolotl", "bat", "cat", "chicken", "cod", "cow", "donkey", "fox", "frog", "glow_squid", "horse", "mooshroom", "mule", "ocelot", "parrot", "pig", "puffer_fish", "rabbit", "salmon", "sheep", "skeleton_horse", "snow_golem", "squid", "strider", "tadpole", "tropical_fish", "turtle", "villager", "wandering_trader", "zombie_horse"};
+    private static final String[] 友好生物 = {"allay", "axolotl", "bat", "camel", "cat", "chicken", "cod", "cow", "donkey", "fox", "frog", "glow_squid", "horse", "mooshroom", "mule", "ocelot", "parrot", "pig", "puffer_fish", "rabbit", "salmon", "sheep", "skeleton_horse", "snow_golem", "squid", "strider", "tadpole", "tropical_fish", "turtle", "villager", "wandering_trader", "zombie_horse"};
     private static final String[] 中立生物 = {"bee", "dolphin", "enderman", "goat", "iron_golem", "llama", "panda", "piglin", "polar_bear", "spider", "wolf", "zombified_piglin"};
     private static final String[] 敌对生物 = {"blaze", "creeper", "drowned", "elder_guardian", "endermite", "evoker", "ghast", "guardian", "hoglin", "husk", "illusioner", "magma_cube", "phantom", "piglin_brute", "pillager", "ravager", "shulker", "silverfish", "skeleton", "slime", "stray", "vex", "vindicator", "warden", "witch", "wither_skeleton", "zoglin", "zombie", "zombie_villager"};
     private static final String[] 头目生物 = {"ender_dragon", "wither"};
@@ -115,7 +115,7 @@ public class SubtitleEntryMixin {
                             可返回回调信息.setReturnValue(((MutableText) this.text).formatted(Configuration.配置项.基本颜色设置.实体.生物.玩家.玩家_其它.获取格式代码()));
                             return;
                         }
-                        for (String 元素 : 被动生物) {
+                        for (String 元素 : 友好生物) {
                             if (键名分割[2].equals(元素)) {
                                 if (键名分割[2].equals("chicken") && Configuration.配置项.iKun彩蛋) {
                                     可返回回调信息.setReturnValue(Text.translatable("subtitles.entity.kun." + 键名分割[3]).setStyle(this.text.getStyle().withColor(TextColor.fromFormatting(Formatting.GRAY)).withBold(true)));

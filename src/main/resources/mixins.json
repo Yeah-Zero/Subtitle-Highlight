@@ -3,10 +3,12 @@
   "minVersion": "0.8",
   "package": "Yeah_Zero.Subtitle_Highlight.Mixin",
   "compatibilityLevel": "JAVA_17",
+  "mixins": [],
   "client": [
     "SubtitleEntryMixin",
     "SubtitlesHudMixin"
   ],
+  "server": [],
   "injectors": {
     "defaultRequire": 1
   }

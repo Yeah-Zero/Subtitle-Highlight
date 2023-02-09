@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "id": "subtitle-highlight",
+  "id": "subtitle_highlight",
   "version": "${version}",
   "name": "字幕高亮",
   "description": "为不同字幕添加样式以区分，同时提供对单个字幕的自定义设置。",
   "authors": [
-    "§e烨§b凌"
+    "§e烨§b凌§r"
   ],
   "contact": {
     "homepage": "https://github.com/Yeah-Zero/Subtitle-Highlight",
@@ -23,10 +23,7 @@
     ]
   },
   "mixins": [
-    {
-      "config": "mixins.client.json",
-      "environment": "client"
-    }
+    "mixins.json"
   ],
   "depends": {
     "cloth-config": "*",
