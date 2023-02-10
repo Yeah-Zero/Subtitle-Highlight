@@ -137,9 +137,9 @@ public class ScreenAPI implements ModMenuApi {
                     Configuration.配置项.自定义列表 = (ArrayList<Settings.Custom>) 新值;
                 }, List::of, 构建器.entryBuilder().getResetButtonKey(), true, true, (元素, 条目) -> {
                     Settings.Custom 自定义项 = 元素 == null ? Configuration.配置项.new Custom() : 元素;
-                    return new MultiElementListEntry<>(Text.translatable("subtitle_highlight.configure.custom.entry"), 自定义项, List.of(构建器.entryBuilder().startStrField(Text.translatable("formatting_code.translation_key"), 自定义项.本地化键名).setTooltip(Text.translatable("formatting_code.translation_key.tooltip")).setDefaultValue("").setSaveConsumer((新值) -> {
+                    return new MultiElementListEntry<>(Text.translatable("subtitle_highlight.configure.custom.entry"), 自定义项, List.of(构建器.entryBuilder().startStrField(Text.translatable("subtitle_highlight.configure.custom.entry.translation_key"), 自定义项.本地化键名).setTooltip(Text.translatable("subtitle_highlight.configure.custom.entry.translation_key.tooltip")).setDefaultValue("").setSaveConsumer((新值) -> {
                         自定义项.本地化键名 = 新值;
-                    }).build(), 构建器.entryBuilder().startColorField(Text.translatable("formatting_code.color"), 自定义项.颜色).setTooltip(Text.translatable("formatting_code.color.tooltip_1"), Text.translatable("formatting_code.color.tooltip_2")).setDefaultValue(TextColor.fromRgb(0xffffff)).setSaveConsumer((新值) -> {
+                    }).build(), 构建器.entryBuilder().startColorField(Text.translatable("subtitle_highlight.configure.custom.entry.color"), 自定义项.颜色).setTooltip(Text.translatable("subtitle_highlight.configure.custom.entry.color.tooltip_1"), Text.translatable("subtitle_highlight.configure.custom.entry.color.tooltip_2")).setDefaultValue(TextColor.fromRgb(0xffffff)).setSaveConsumer((新值) -> {
                         自定义项.颜色 = TextColor.fromRgb(新值);
                     }).build(), 构建器.entryBuilder().startBooleanToggle(Text.translatable("formatting_code.obfuscated"), 自定义项.随机).setDefaultValue(false).setSaveConsumer((新值) -> {
                         自定义项.随机 = 新值;
