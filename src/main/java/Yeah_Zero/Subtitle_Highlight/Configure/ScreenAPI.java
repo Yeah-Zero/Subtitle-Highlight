@@ -35,6 +35,14 @@ public class ScreenAPI implements ModMenuApi {
                     Configuration.配置项.起始比例 = 新值;
                 }).build()).addEntry(构建器.entryBuilder().startDoubleField(Text.translatable("subtitle_highlight.configure.general.end_ratio"), Configuration.配置项.终止比例).setTooltip(Text.translatable("subtitle_highlight.configure.general.end_ratio.tooltip_1"), Text.translatable("subtitle_highlight.configure.general.end_ratio.tooltip_2")).setDefaultValue(0.29411764705882354).setMax(1).setMin(0).setSaveConsumer((新值) -> {
                     Configuration.配置项.终止比例 = 新值;
+                }).build()).addEntry(构建器.entryBuilder().startAlphaColorField(Text.translatable("subtitle_highlight.configure.general.background_color"), Configuration.配置项.背景颜色).setTooltip(Text.translatable("subtitle_highlight.configure.general.background_color.tooltip_1"), Text.translatable("subtitle_highlight.configure.general.background_color.tooltip_2")).setDefaultValue(0xcc000000).setSaveConsumer((新值) -> {
+                    Configuration.配置项.背景颜色 = 新值;
+                }).build()).addEntry(构建器.entryBuilder().startFloatField(Text.translatable("subtitle_highlight.configure.general.scale"), Configuration.配置项.缩放).setTooltip(Text.translatable("subtitle_highlight.configure.general.scale.tooltip_1"), Text.translatable("subtitle_highlight.configure.general.scale.tooltip_2")).setDefaultValue(1).setSaveConsumer((新值) -> {
+                    Configuration.配置项.缩放 = 新值;
+                }).build()).addEntry(构建器.entryBuilder().startFloatField(Text.translatable("subtitle_highlight.configure.general.bottom_margin"), Configuration.配置项.底部边距).setTooltip(Text.translatable("subtitle_highlight.configure.general.bottom_margin.tooltip_1"), Text.translatable("subtitle_highlight.configure.general.bottom_margin.tooltip_2")).setDefaultValue(30).setSaveConsumer((新值) -> {
+                    Configuration.配置项.底部边距 = 新值;
+                }).build()).addEntry(构建器.entryBuilder().startFloatField(Text.translatable("subtitle_highlight.configure.general.side_margin"), Configuration.配置项.侧边边距).setTooltip(Text.translatable("subtitle_highlight.configure.general.side_margin.tooltip_1"), Text.translatable("subtitle_highlight.configure.general.side_margin.tooltip_2")).setDefaultValue(1).setSaveConsumer((新值) -> {
+                    Configuration.配置项.侧边边距 = 新值;
                 }).build()).addEntry(构建器.entryBuilder().startBooleanToggle(Text.translatable("subtitle_highlight.configure.general.ikun"), Configuration.配置项.iKun彩蛋).setTooltip(Text.translatable("subtitle_highlight.configure.general.ikun.tooltip_1"), Text.translatable("subtitle_highlight.configure.general.ikun.tooltip_2")).setDefaultValue(true).setSaveConsumer((新值) -> {
                     Configuration.配置项.iKun彩蛋 = 新值;
                 }).build()).setDescription(new MutableText[]{Text.translatable("subtitle_highlight.configure.general.description")});

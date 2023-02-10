@@ -12,7 +12,7 @@
     "issues": "https://github.com/Yeah-Zero/Subtitle-Highlight/issues"
   },
   "license": "GNU 宽通用公共许可证 3.0",
-  "icon": "assets/subtitle-highlight/icon.png",
+  "icon": "assets/subtitle_highlight/icon.png",
   "environment": "client",
   "entrypoints": {
     "client": [

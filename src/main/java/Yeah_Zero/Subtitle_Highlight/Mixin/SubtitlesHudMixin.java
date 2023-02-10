@@ -3,12 +3,15 @@ package Yeah_Zero.Subtitle_Highlight.Mixin;
 import Yeah_Zero.Subtitle_Highlight.Configure.Configuration;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.hud.SubtitlesHud;
 import net.minecraft.text.Text;
 import net.minecraft.text.TextColor;
 import net.minecraft.util.Util;
 import net.minecraft.util.math.MathHelper;
+import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArgs;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
@@ -23,6 +26,9 @@ import static net.minecraft.client.gui.hud.SubtitlesHud.SubtitleEntry;
 @Mixin(SubtitlesHud.class)
 public class SubtitlesHudMixin {
     private static double 持续时间比例;
+    @Shadow
+    @Final
+    private MinecraftClient client;
 
     @Redirect(method = "render(Lnet/minecraft/client/util/math/MatrixStack;)V", at = @At(value = "INVOKE", target = "Ljava/util/Iterator;next()Ljava/lang/Object;", ordinal = 0))
     private Object 获取字幕条目(Iterator 实例) {
@@ -37,12 +43,12 @@ public class SubtitlesHudMixin {
     }
 
     @ModifyVariable(method = "render(Lnet/minecraft/client/util/math/MatrixStack;)V", at = @At("STORE"), ordinal = 7)
-    private int 方向显示颜色注入(int 原始赋值) {
+    private int 方向显示颜色修改(int 原始赋值) {
         return MathHelper.floor(MathHelper.clampedLerp(255 * Configuration.配置项.起始比例, 255 * Configuration.配置项.终止比例, 持续时间比例));
     }
 
     @ModifyArgs(method = "render(Lnet/minecraft/client/util/math/MatrixStack;)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/hud/SubtitlesHud;drawTextWithShadow(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/font/TextRenderer;Lnet/minecraft/text/Text;III)V"))
-    private void 字幕显示颜色注入(Args 参数列表) {
+    private void 字幕显示颜色修改(Args 参数列表) {
         Text 文字 = 参数列表.get(2);
         参数列表.set(2, Text.literal(文字.getString()).setStyle(文字.getStyle().withColor((TextColor) null)));
         int 红, 绿, 蓝;
@@ -57,5 +63,24 @@ public class SubtitlesHudMixin {
         int 绿色剩余 = MathHelper.floor(MathHelper.clampedLerp(绿 * Configuration.配置项.起始比例, 绿 * Configuration.配置项.终止比例, 持续时间比例));
         int 蓝色剩余 = MathHelper.floor(MathHelper.clampedLerp(蓝 * Configuration.配置项.起始比例, 蓝 * Configuration.配置项.终止比例, 持续时间比例));
         参数列表.set(5, (红色剩余 << 16 | 绿色剩余 << 8 | 蓝色剩余) - 16777216);
+    }
+
+    @ModifyArgs(method = "render(Lnet/minecraft/client/util/math/MatrixStack;)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/util/math/MatrixStack;translate(FFF)V"))
+    private void 平移修改(Args 参数列表) {
+        float 宽度 = -((float) 参数列表.get(0) - this.client.getWindow().getScaledWidth() + 2);
+        float 高度 = -((float) 参数列表.get(1) - this.client.getWindow().getScaledHeight() + 35);
+        参数列表.set(0, this.client.getWindow().getScaledWidth() - (宽度 + 1) * Math.abs(Configuration.配置项.缩放) - Configuration.配置项.侧边边距);
+        参数列表.set(1, this.client.getWindow().getScaledHeight() - (高度 + 5) * Math.abs(Configuration.配置项.缩放) - Configuration.配置项.底部边距);
+    }
+
+    @ModifyArgs(method = "render(Lnet/minecraft/client/util/math/MatrixStack;)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/util/math/MatrixStack;scale(FFF)V"))
+    private void 缩放修改(Args 参数列表) {
+        参数列表.set(0, Configuration.配置项.缩放);
+        参数列表.set(1, Configuration.配置项.缩放);
+    }
+
+    @ModifyArgs(method = "render(Lnet/minecraft/client/util/math/MatrixStack;)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/hud/SubtitlesHud;fill(Lnet/minecraft/client/util/math/MatrixStack;IIIII)V"))
+    private void 填充修改(Args 参数列表) {
+        参数列表.set(5, Configuration.配置项.背景颜色);
     }
 }

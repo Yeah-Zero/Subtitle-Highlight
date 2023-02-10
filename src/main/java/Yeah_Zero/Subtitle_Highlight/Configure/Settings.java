@@ -9,8 +9,12 @@ public class Settings {
     public long 最长持续时间 = 3000;
     public double 起始比例 = 1;
     public double 终止比例 = 0.29411764705882354;
-    public ColorSetting 基本颜色设置 = new ColorSetting();
+    public int 背景颜色 = 0xcc000000;
+    public float 缩放 = 1;
+    public float 底部边距 = 30;
+    public float 侧边边距 = 1;
     public Boolean iKun彩蛋 = true;
+    public ColorSetting 基本颜色设置 = new ColorSetting();
     public ArrayList<Custom> 自定义列表 = new ArrayList<>();
 
     public class ColorSetting {
