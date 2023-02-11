@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "id": "subtitle_highlight",
+  "version": "${version}",
+  "name": "字幕高亮",
+  "description": "为不同字幕添加样式以区分，同时提供对单个字幕的自定义设置。",
+  "authors": [
+    "§e烨§b凌§r"
+  ],
+  "contact": {
+    "homepage": "https://github.com/Yeah-Zero/Subtitle-Highlight",
+    "issues": "https://github.com/Yeah-Zero/Subtitle-Highlight/issues"
+  },
+  "license": "GNU 宽通用公共许可证 3.0",
+  "icon": "assets/subtitle_highlight/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "Yeah_Zero.Subtitle_Highlight.ClientInitializer"
+    ],
+    "modmenu": [
+      "Yeah_Zero.Subtitle_Highlight.Configure.ScreenAPI"
+    ]
+  },
+  "mixins": [
+    "mixins.json"
+  ],
+  "depends": {
+    "cloth-config2": "*",
+    "fabricloader": ">=0.14.9",
+    "fabric-resource-loader-v0": "*",
+    "minecraft": "~1.17",
+    "java": ">=17"
+  },
+  "custom": {
+    "modmenu": {
+      "links": {
+        "modmenu.mcbbs": "https://www.mcbbs.net/thread-1398903-1-1.html",
+        "modmenu.mcmod": "https://www.mcmod.cn/class/8183.html",
+        "modmenu.curseforge": "https://www.curseforge.com/minecraft/mc-mods/subtitle-highlight",
+        "modmenu.modrinth": "https://modrinth.com/mod/subtitle-highlight"
+      }
+    }
+  }
+}
