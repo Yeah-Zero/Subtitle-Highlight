@@ -1,6 +1,7 @@
 <p align="left">
-	<img src="./src/main/resources/assets/subtitle-highlight/icon.png" />
+	<img src="./1.19.3/src/main/resources/assets/subtitle_highlight/icon.png" />
 </p>
+
 
 <h1 align="center">
 	Subtitle Highlight

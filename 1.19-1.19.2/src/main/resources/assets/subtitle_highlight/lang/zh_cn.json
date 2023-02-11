@@ -58,8 +58,8 @@
   "subtitle_highlight.configure.general.color.item.other": "物品_其它",
   "subtitle_highlight.configure.general.color.other": "其它",
   "subtitle_highlight.configure.general.ikun": "§f§liKun彩蛋§r",
-  "subtitle_highlight.configure.general.ikun.tooltip_1": "不喜欢可以关闭，没必要指责。",
-  "subtitle_highlight.configure.general.ikun.tooltip_2": "“是啊我看到了短评，不过我并不打算移除这个彩蛋。 :/”",
+  "subtitle_highlight.configure.general.ikun.tooltip_1": "全民制作人们 大家好",
+  "subtitle_highlight.configure.general.ikun.tooltip_2": "我是练习时长两年半的个人练习生……",
   "subtitle_highlight.configure.custom": "自定义",
   "subtitle_highlight.configure.custom.description": "此处用于设定特定字幕的样式",
   "subtitle_highlight.configure.custom.list": "自定义列表",
@@ -97,8 +97,8 @@
   "modmenu.modrinth": "Modrinth",
   "modmenu.descriptionTranslation.subtitle_highlight": "为不同字幕添加样式以区分，同时提供对单个字幕的自定义设置。",
   "modmenu.summaryTranslation.subtitle_highlight": "为不同字幕添加样式以区分。",
-  "subtitles.entity.kun.ambient": "蔡徐坤：鸡你太美",
-  "subtitles.entity.kun.death": "蔡徐坤：哎～呦",
-  "subtitles.entity.kun.egg": "蔡徐坤：鸡你实在是太美",
-  "subtitles.entity.kun.hurt": "蔡徐坤：你干嘛——"
+  "subtitles.entity.kun.ambient": "坤坤：鸡你太美",
+  "subtitles.entity.kun.death": "坤坤：哎～呦",
+  "subtitles.entity.kun.egg": "坤坤：鸡你实在是太美",
+  "subtitles.entity.kun.hurt": "坤坤：你干嘛——"
 }

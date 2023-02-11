@@ -1,10 +1,10 @@
 <p align="right">
 	<a href="./README-en.md"><b>English Version</b></a>
 </p>
-
 <p align="left">
-	<img src="./src/main/resources/assets/subtitle-highlight/icon.png" />
+	<img src="./1.19.3/src/main/resources/assets/subtitle_highlight/icon.png" />
 </p>
+
 
 <h1 align="center">
 	字幕高亮
