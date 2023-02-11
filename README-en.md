@@ -22,6 +22,7 @@
     <img src="./演示图片/效果演示1.png" />
     <img src="./演示图片/效果演示2.png" />
     <img src="./演示图片/效果演示3.png" />
+    <img src="./演示图片/效果演示4.png" />
 </p>
 
 ## Links
@@ -45,7 +46,7 @@ in the configure screen.
 
 ### Default Configuration
 
-Configuration file is saved at "<Game Directory>\config\字幕高亮.json".
+Configuration file is saved at "<Game Directory>\config\subtitle_highlight.json".
 
 - Remove Delay: 3 seconds
 - Start Ratio: 1
