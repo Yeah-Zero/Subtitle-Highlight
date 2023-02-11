@@ -48,7 +48,7 @@ Fabric Loader（[官网](https://fabricmc.net/) [GitHub](https://github.com/Fabr
 
 ### 默认配置
 
-配置文件保存在“<游戏目录>\config\字幕高亮.json”。
+配置文件保存在“<游戏目录>\config\subtitle_highlight.json”。
 
 - 最长持续时间：3秒
 - 起始比例：1
