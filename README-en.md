@@ -50,6 +50,10 @@ Configuration file is saved at "<Game Directory>\config\subtitle_highlight.json"
 - Remove Delay: 3 seconds
 - Start Ratio: 1
 - End Ratio: 0.29411764705882354
+- Background Color：#cc000000
+- Scale：1
+- Bottom Margin：25 (1.18.2 and before) or 30 (1.19 and after)
+- Side Margin：1
 - Basic Color Settings
     - Ambient: Dark Blue
     - Block
