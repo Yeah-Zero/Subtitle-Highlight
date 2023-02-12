@@ -23,7 +23,7 @@
     ]
   },
   "mixins": [
-    "mixins.json"
+    "subtitle_highlight.mixins.json"
   ],
   "depends": {
     "cloth-config2": "*",
