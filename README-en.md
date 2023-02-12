@@ -20,8 +20,8 @@
 
 <p align="center">
     <img src="./演示图片/效果演示1.png" />
-    <img src="./演示图片/效果演示2.png" />
     <img src="./演示图片/效果演示3.png" />
+    <img src="./演示图片/效果演示4.png" />
 </p>
 
 ## Links
