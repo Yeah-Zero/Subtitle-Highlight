@@ -72,7 +72,7 @@ Fabric Loader（[官网](https://fabricmc.net/) [GitHub](https://github.com/Fabr
                 - 攻击：金色
                 - 受伤：深红色
                 - 玩家\_其它：白色
-            - 被动生物：绿色
+            - 友好生物：绿色
             - 中立生物：黄色
             - 敌对生物：红色
             - 头目生物：粉红色
