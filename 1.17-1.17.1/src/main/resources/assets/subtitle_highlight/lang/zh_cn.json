@@ -1,5 +1,4 @@
 {
-  "subtitle_highlight.mod_name": "字幕高亮",
   "subtitle_highlight.configure.title": "字幕高亮配置屏幕",
   "subtitle_highlight.configure.general": "常规",
   "subtitle_highlight.configure.general.description": "基础功能设置",
@@ -95,8 +94,9 @@
   "modmenu.mcmod": "MC百科",
   "modmenu.curseforge": "CurseForge",
   "modmenu.modrinth": "Modrinth",
+  "modmenu.nameTranslation.subtitle_highlight": "字幕高亮",
   "modmenu.descriptionTranslation.subtitle_highlight": "为不同字幕添加样式以区分，同时提供对单个字幕的自定义设置。",
-  "modmenu.summaryTranslation.subtitle_highlight": "为不同字幕添加样式以区分。",
+  "modmenu.summaryTranslation.subtitle_highlight": "为不同字幕添加样式以区分，同时提供对单个字幕的自定义设置。",
   "subtitles.entity.kun.ambient": "坤坤：鸡你太美",
   "subtitles.entity.kun.death": "坤坤：哎～呦",
   "subtitles.entity.kun.egg": "坤坤：鸡你实在是太美",
