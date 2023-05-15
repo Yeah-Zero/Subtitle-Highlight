@@ -1,5 +1,5 @@
 <p align="left">
-	<img src="./1.19.3/src/main/resources/assets/subtitle_highlight/icon.png" />
+	<img src="./1.19.3-1.19.4/src/main/resources/assets/subtitle_highlight/icon.png" />
 </p>
 
 
