@@ -16,12 +16,11 @@
 		<img src="https://img.shields.io/github/license/Yeah-Zero/Subtitle-Highlight?&style=flat-square" /></a>
 	<img src="https://img.shields.io/static/v1?label=Mod%20Loader&message=Fabric | Quilt&color=brightgreen&style=flat-square" />
 </p>
-
 <p align="center">
     <img src="./演示图片/效果演示1.png" />
     <img src="./演示图片/效果演示3.png" />
-    <img src="./演示图片/效果演示4.png" />
 </p>
+
 
 ## Links
 
@@ -42,49 +41,4 @@ Fabric Loader ([Official website](https://fabricmc.net) [GitHub](https://github.
 This mod contains an Easter Egg that makes some people feel uncomfortable, which can be closed by "iKun (Easter Egg)"
 in the configure screen.
 
-### Default Configuration
-
 Configuration file is saved at "<Game Directory>\config\subtitle_highlight.json".
-
-- Remove Delay: 3 seconds
-- Start Ratio: 1
-- End Ratio: 0.29411764705882354
-- Background Color：#cc000000
-- Scale：1
-- Bottom Margin：25 (1.18.2 and before) or 30 (1.19 and after)
-- Side Margin：1
-- Basic Color Settings
-    - Ambient: Dark Blue
-    - Block
-        - Generic: White
-        - Interactive: Aqua
-        - Working: Dark Aqua
-        - Dangerous: Red
-        - Crop: Dark Green
-        - Block(other): Dark Gray
-    - Enchantment: Purple
-    - Entity
-        - Mob
-            - Player
-                - Attack: Gold
-                - Hurt: Dark Red
-                - Player(other): White
-            - Passive: Green
-            - Neutral: Yellow
-            - Hostile: Red
-            - Boss: Light Purple
-        - Vehicle: Gray
-        - Projectile: Gold
-        - Explosive: Red
-        - Decoration: Gray
-        - Entity(other): Dark Gray
-    - Item
-        - Weapon: Gold
-        - Armor: Dark Green
-        - Tool: Blue
-        - Item(other): White
-    - Other: White
-- Custom List
-    - ...
-    - ...
-    - ...

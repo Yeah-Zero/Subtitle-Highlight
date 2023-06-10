@@ -11,12 +11,19 @@ public enum ColorCode {
         this.格式代码 = Formatting.byCode(颜色代码);
     }
 
+    public static Text 格式代码翻译(Formatting 格式代码) {
+        return Text.translatable("formatting_code." + 格式代码.getName()).formatted(格式代码);
+    }
+
     public Formatting 获取格式代码() {
         return this.格式代码;
     }
 
-    @Override
-    public String toString() {
-        return this.格式代码.toString() + Text.translatable("formatting_code." + this.格式代码.getName()).getString();
+    public static Text 颜色代码翻译(Enum<ColorCode> 枚举类型) {
+        if (枚举类型 instanceof ColorCode 颜色代码) {
+            return 格式代码翻译(颜色代码.获取格式代码());
+        } else {
+            return Text.literal("????");
+        }
     }
 }
