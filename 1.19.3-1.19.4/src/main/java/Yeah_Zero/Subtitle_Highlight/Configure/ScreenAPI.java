@@ -1,6 +1,6 @@
 package Yeah_Zero.Subtitle_Highlight.Configure;
 
-import Yeah_Zero.Subtitle_Highlight.ColorCode;
+import Yeah_Zero.Subtitle_Highlight.Util.ColorCode;
 import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;
 import me.shedaniel.clothconfig2.api.ConfigBuilder;

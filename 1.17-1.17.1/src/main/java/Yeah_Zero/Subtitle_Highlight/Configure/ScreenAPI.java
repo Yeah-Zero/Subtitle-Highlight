@@ -47,89 +47,89 @@ public class ScreenAPI implements ModMenuApi {
                     Configuration.配置项.iKun彩蛋 = 新值;
                 }).build()).setDescription(new MutableText[]{new TranslatableText("subtitle_highlight.configure.general.description")});
                 SubCategoryBuilder 基本颜色设置 = 构建器.entryBuilder().startSubCategory(new TranslatableText("subtitle_highlight.configure.general.color")).setTooltip(new TranslatableText("subtitle_highlight.configure.general.color.tooltip")).setExpanded(true);
-                基本颜色设置.add(构建器.entryBuilder().startEnumSelector(new TranslatableText("subtitle_highlight.configure.general.color.ambient"), ColorCode.class, Configuration.配置项.基本颜色设置.环境).setDefaultValue(ColorCode.深蓝色).setSaveConsumer((新值) -> {
+                基本颜色设置.add(构建器.entryBuilder().startEnumSelector(new TranslatableText("subtitle_highlight.configure.general.color.ambient"), ColorCode.class, Configuration.配置项.基本颜色设置.环境).setDefaultValue(ColorCode.深蓝色).setEnumNameProvider(ColorCode::颜色代码翻译).setSaveConsumer((新值) -> {
                     Configuration.配置项.基本颜色设置.环境 = 新值;
                 }).build());
                 SubCategoryBuilder 方块 = 构建器.entryBuilder().startSubCategory(new TranslatableText("subtitle_highlight.configure.general.color.block")).setExpanded(true);
-                方块.add(构建器.entryBuilder().startEnumSelector(new TranslatableText("subtitle_highlight.configure.general.color.block.generic"), ColorCode.class, Configuration.配置项.基本颜色设置.方块.通用).setDefaultValue(ColorCode.白色).setSaveConsumer((新值) -> {
+                方块.add(构建器.entryBuilder().startEnumSelector(new TranslatableText("subtitle_highlight.configure.general.color.block.generic"), ColorCode.class, Configuration.配置项.基本颜色设置.方块.通用).setDefaultValue(ColorCode.白色).setEnumNameProvider(ColorCode::颜色代码翻译).setSaveConsumer((新值) -> {
                     Configuration.配置项.基本颜色设置.方块.通用 = 新值;
                 }).build());
-                方块.add(构建器.entryBuilder().startEnumSelector(new TranslatableText("subtitle_highlight.configure.general.color.block.interact"), ColorCode.class, Configuration.配置项.基本颜色设置.方块.互动).setDefaultValue(ColorCode.天蓝色).setSaveConsumer((新值) -> {
+                方块.add(构建器.entryBuilder().startEnumSelector(new TranslatableText("subtitle_highlight.configure.general.color.block.interact"), ColorCode.class, Configuration.配置项.基本颜色设置.方块.互动).setDefaultValue(ColorCode.天蓝色).setEnumNameProvider(ColorCode::颜色代码翻译).setSaveConsumer((新值) -> {
                     Configuration.配置项.基本颜色设置.方块.互动 = 新值;
                 }).build());
-                方块.add(构建器.entryBuilder().startEnumSelector(new TranslatableText("subtitle_highlight.configure.general.color.block.working"), ColorCode.class, Configuration.配置项.基本颜色设置.方块.运作).setDefaultValue(ColorCode.湖蓝色).setSaveConsumer((新值) -> {
+                方块.add(构建器.entryBuilder().startEnumSelector(new TranslatableText("subtitle_highlight.configure.general.color.block.working"), ColorCode.class, Configuration.配置项.基本颜色设置.方块.运作).setDefaultValue(ColorCode.湖蓝色).setEnumNameProvider(ColorCode::颜色代码翻译).setSaveConsumer((新值) -> {
                     Configuration.配置项.基本颜色设置.方块.运作 = 新值;
                 }).build());
-                方块.add(构建器.entryBuilder().startEnumSelector(new TranslatableText("subtitle_highlight.configure.general.color.block.dangerous"), ColorCode.class, Configuration.配置项.基本颜色设置.方块.危险方块).setDefaultValue(ColorCode.红色).setSaveConsumer((新值) -> {
+                方块.add(构建器.entryBuilder().startEnumSelector(new TranslatableText("subtitle_highlight.configure.general.color.block.dangerous"), ColorCode.class, Configuration.配置项.基本颜色设置.方块.危险方块).setDefaultValue(ColorCode.红色).setEnumNameProvider(ColorCode::颜色代码翻译).setSaveConsumer((新值) -> {
                     Configuration.配置项.基本颜色设置.方块.危险方块 = 新值;
                 }).build());
-                方块.add(构建器.entryBuilder().startEnumSelector(new TranslatableText("subtitle_highlight.configure.general.color.block.crop"), ColorCode.class, Configuration.配置项.基本颜色设置.方块.农作物).setDefaultValue(ColorCode.深绿色).setSaveConsumer((新值) -> {
+                方块.add(构建器.entryBuilder().startEnumSelector(new TranslatableText("subtitle_highlight.configure.general.color.block.crop"), ColorCode.class, Configuration.配置项.基本颜色设置.方块.农作物).setDefaultValue(ColorCode.深绿色).setEnumNameProvider(ColorCode::颜色代码翻译).setSaveConsumer((新值) -> {
                     Configuration.配置项.基本颜色设置.方块.农作物 = 新值;
                 }).build());
-                方块.add(构建器.entryBuilder().startEnumSelector(new TranslatableText("subtitle_highlight.configure.general.color.block.other"), ColorCode.class, Configuration.配置项.基本颜色设置.方块.方块_其它).setDefaultValue(ColorCode.深灰色).setSaveConsumer((新值) -> {
+                方块.add(构建器.entryBuilder().startEnumSelector(new TranslatableText("subtitle_highlight.configure.general.color.block.other"), ColorCode.class, Configuration.配置项.基本颜色设置.方块.方块_其它).setDefaultValue(ColorCode.深灰色).setEnumNameProvider(ColorCode::颜色代码翻译).setSaveConsumer((新值) -> {
                     Configuration.配置项.基本颜色设置.方块.方块_其它 = 新值;
                 }).build());
                 基本颜色设置.add(方块.build());
-                基本颜色设置.add(构建器.entryBuilder().startEnumSelector(new TranslatableText("subtitle_highlight.configure.general.color.enchant"), ColorCode.class, Configuration.配置项.基本颜色设置.魔咒).setDefaultValue(ColorCode.紫色).setSaveConsumer((新值) -> {
+                基本颜色设置.add(构建器.entryBuilder().startEnumSelector(new TranslatableText("subtitle_highlight.configure.general.color.enchant"), ColorCode.class, Configuration.配置项.基本颜色设置.魔咒).setDefaultValue(ColorCode.紫色).setEnumNameProvider(ColorCode::颜色代码翻译).setSaveConsumer((新值) -> {
                     Configuration.配置项.基本颜色设置.魔咒 = 新值;
                 }).build());
                 SubCategoryBuilder 实体 = 构建器.entryBuilder().startSubCategory(new TranslatableText("subtitle_highlight.configure.general.color.entity")).setExpanded(true);
                 SubCategoryBuilder 生物 = 构建器.entryBuilder().startSubCategory(new TranslatableText("subtitle_highlight.configure.general.color.entity.mob")).setExpanded(true);
                 SubCategoryBuilder 玩家 = 构建器.entryBuilder().startSubCategory(new TranslatableText("subtitle_highlight.configure.general.color.entity.mob.player")).setExpanded(true);
-                玩家.add(构建器.entryBuilder().startEnumSelector(new TranslatableText("subtitle_highlight.configure.general.color.entity.mob.player.attack"), ColorCode.class, Configuration.配置项.基本颜色设置.实体.生物.玩家.攻击).setDefaultValue(ColorCode.金色).setSaveConsumer((新值) -> {
+                玩家.add(构建器.entryBuilder().startEnumSelector(new TranslatableText("subtitle_highlight.configure.general.color.entity.mob.player.attack"), ColorCode.class, Configuration.配置项.基本颜色设置.实体.生物.玩家.攻击).setDefaultValue(ColorCode.金色).setEnumNameProvider(ColorCode::颜色代码翻译).setSaveConsumer((新值) -> {
                     Configuration.配置项.基本颜色设置.实体.生物.玩家.攻击 = 新值;
                 }).build());
-                玩家.add(构建器.entryBuilder().startEnumSelector(new TranslatableText("subtitle_highlight.configure.general.color.entity.mob.player.hurt"), ColorCode.class, Configuration.配置项.基本颜色设置.实体.生物.玩家.受伤).setDefaultValue(ColorCode.深红色).setSaveConsumer((新值) -> {
+                玩家.add(构建器.entryBuilder().startEnumSelector(new TranslatableText("subtitle_highlight.configure.general.color.entity.mob.player.hurt"), ColorCode.class, Configuration.配置项.基本颜色设置.实体.生物.玩家.受伤).setDefaultValue(ColorCode.深红色).setEnumNameProvider(ColorCode::颜色代码翻译).setSaveConsumer((新值) -> {
                     Configuration.配置项.基本颜色设置.实体.生物.玩家.受伤 = 新值;
                 }).build());
-                玩家.add(构建器.entryBuilder().startEnumSelector(new TranslatableText("subtitle_highlight.configure.general.color.entity.mob.player.other"), ColorCode.class, Configuration.配置项.基本颜色设置.实体.生物.玩家.玩家_其它).setDefaultValue(ColorCode.白色).setSaveConsumer((新值) -> {
+                玩家.add(构建器.entryBuilder().startEnumSelector(new TranslatableText("subtitle_highlight.configure.general.color.entity.mob.player.other"), ColorCode.class, Configuration.配置项.基本颜色设置.实体.生物.玩家.玩家_其它).setDefaultValue(ColorCode.白色).setEnumNameProvider(ColorCode::颜色代码翻译).setSaveConsumer((新值) -> {
                     Configuration.配置项.基本颜色设置.实体.生物.玩家.玩家_其它 = 新值;
                 }).build());
                 生物.add(玩家.build());
-                生物.add(构建器.entryBuilder().startEnumSelector(new TranslatableText("subtitle_highlight.configure.general.color.entity.mob.passive"), ColorCode.class, Configuration.配置项.基本颜色设置.实体.生物.被动生物).setDefaultValue(ColorCode.绿色).setSaveConsumer((新值) -> {
+                生物.add(构建器.entryBuilder().startEnumSelector(new TranslatableText("subtitle_highlight.configure.general.color.entity.mob.passive"), ColorCode.class, Configuration.配置项.基本颜色设置.实体.生物.被动生物).setDefaultValue(ColorCode.绿色).setEnumNameProvider(ColorCode::颜色代码翻译).setSaveConsumer((新值) -> {
                     Configuration.配置项.基本颜色设置.实体.生物.被动生物 = 新值;
                 }).build());
-                生物.add(构建器.entryBuilder().startEnumSelector(new TranslatableText("subtitle_highlight.configure.general.color.entity.mob.neutral"), ColorCode.class, Configuration.配置项.基本颜色设置.实体.生物.中立生物).setDefaultValue(ColorCode.黄色).setSaveConsumer((新值) -> {
+                生物.add(构建器.entryBuilder().startEnumSelector(new TranslatableText("subtitle_highlight.configure.general.color.entity.mob.neutral"), ColorCode.class, Configuration.配置项.基本颜色设置.实体.生物.中立生物).setDefaultValue(ColorCode.黄色).setEnumNameProvider(ColorCode::颜色代码翻译).setSaveConsumer((新值) -> {
                     Configuration.配置项.基本颜色设置.实体.生物.中立生物 = 新值;
                 }).build());
-                生物.add(构建器.entryBuilder().startEnumSelector(new TranslatableText("subtitle_highlight.configure.general.color.entity.mob.hostile"), ColorCode.class, Configuration.配置项.基本颜色设置.实体.生物.敌对生物).setDefaultValue(ColorCode.红色).setSaveConsumer((新值) -> {
+                生物.add(构建器.entryBuilder().startEnumSelector(new TranslatableText("subtitle_highlight.configure.general.color.entity.mob.hostile"), ColorCode.class, Configuration.配置项.基本颜色设置.实体.生物.敌对生物).setDefaultValue(ColorCode.红色).setEnumNameProvider(ColorCode::颜色代码翻译).setSaveConsumer((新值) -> {
                     Configuration.配置项.基本颜色设置.实体.生物.敌对生物 = 新值;
                 }).build());
-                生物.add(构建器.entryBuilder().startEnumSelector(new TranslatableText("subtitle_highlight.configure.general.color.entity.mob.boss"), ColorCode.class, Configuration.配置项.基本颜色设置.实体.生物.头目生物).setDefaultValue(ColorCode.粉红色).setSaveConsumer((新值) -> {
+                生物.add(构建器.entryBuilder().startEnumSelector(new TranslatableText("subtitle_highlight.configure.general.color.entity.mob.boss"), ColorCode.class, Configuration.配置项.基本颜色设置.实体.生物.头目生物).setDefaultValue(ColorCode.粉红色).setEnumNameProvider(ColorCode::颜色代码翻译).setSaveConsumer((新值) -> {
                     Configuration.配置项.基本颜色设置.实体.生物.头目生物 = 新值;
                 }).build());
                 实体.add(生物.build());
-                实体.add(构建器.entryBuilder().startEnumSelector(new TranslatableText("subtitle_highlight.configure.general.color.entity.vehicle"), ColorCode.class, Configuration.配置项.基本颜色设置.实体.载具).setDefaultValue(ColorCode.灰色).setSaveConsumer((新值) -> {
+                实体.add(构建器.entryBuilder().startEnumSelector(new TranslatableText("subtitle_highlight.configure.general.color.entity.vehicle"), ColorCode.class, Configuration.配置项.基本颜色设置.实体.载具).setDefaultValue(ColorCode.灰色).setEnumNameProvider(ColorCode::颜色代码翻译).setSaveConsumer((新值) -> {
                     Configuration.配置项.基本颜色设置.实体.载具 = 新值;
                 }).build());
-                实体.add(构建器.entryBuilder().startEnumSelector(new TranslatableText("subtitle_highlight.configure.general.color.entity.projectile"), ColorCode.class, Configuration.配置项.基本颜色设置.实体.弹射物).setDefaultValue(ColorCode.金色).setSaveConsumer((新值) -> {
+                实体.add(构建器.entryBuilder().startEnumSelector(new TranslatableText("subtitle_highlight.configure.general.color.entity.projectile"), ColorCode.class, Configuration.配置项.基本颜色设置.实体.弹射物).setDefaultValue(ColorCode.金色).setEnumNameProvider(ColorCode::颜色代码翻译).setSaveConsumer((新值) -> {
                     Configuration.配置项.基本颜色设置.实体.弹射物 = 新值;
                 }).build());
-                实体.add(构建器.entryBuilder().startEnumSelector(new TranslatableText("subtitle_highlight.configure.general.color.entity.explosive"), ColorCode.class, Configuration.配置项.基本颜色设置.实体.爆炸物).setDefaultValue(ColorCode.红色).setSaveConsumer((新值) -> {
+                实体.add(构建器.entryBuilder().startEnumSelector(new TranslatableText("subtitle_highlight.configure.general.color.entity.explosive"), ColorCode.class, Configuration.配置项.基本颜色设置.实体.爆炸物).setDefaultValue(ColorCode.红色).setEnumNameProvider(ColorCode::颜色代码翻译).setSaveConsumer((新值) -> {
                     Configuration.配置项.基本颜色设置.实体.爆炸物 = 新值;
                 }).build());
-                实体.add(构建器.entryBuilder().startEnumSelector(new TranslatableText("subtitle_highlight.configure.general.color.entity.decoration"), ColorCode.class, Configuration.配置项.基本颜色设置.实体.装饰品).setDefaultValue(ColorCode.灰色).setSaveConsumer((新值) -> {
+                实体.add(构建器.entryBuilder().startEnumSelector(new TranslatableText("subtitle_highlight.configure.general.color.entity.decoration"), ColorCode.class, Configuration.配置项.基本颜色设置.实体.装饰品).setDefaultValue(ColorCode.灰色).setEnumNameProvider(ColorCode::颜色代码翻译).setSaveConsumer((新值) -> {
                     Configuration.配置项.基本颜色设置.实体.装饰品 = 新值;
                 }).build());
-                实体.add(构建器.entryBuilder().startEnumSelector(new TranslatableText("subtitle_highlight.configure.general.color.entity.other"), ColorCode.class, Configuration.配置项.基本颜色设置.实体.实体_其它).setDefaultValue(ColorCode.深灰色).setSaveConsumer((新值) -> {
+                实体.add(构建器.entryBuilder().startEnumSelector(new TranslatableText("subtitle_highlight.configure.general.color.entity.other"), ColorCode.class, Configuration.配置项.基本颜色设置.实体.实体_其它).setDefaultValue(ColorCode.深灰色).setEnumNameProvider(ColorCode::颜色代码翻译).setSaveConsumer((新值) -> {
                     Configuration.配置项.基本颜色设置.实体.实体_其它 = 新值;
                 }).build());
                 基本颜色设置.add(实体.build());
                 SubCategoryBuilder 物品 = 构建器.entryBuilder().startSubCategory(new TranslatableText("subtitle_highlight.configure.general.color.item")).setExpanded(true);
-                物品.add(构建器.entryBuilder().startEnumSelector(new TranslatableText("subtitle_highlight.configure.general.color.item.weapon"), ColorCode.class, Configuration.配置项.基本颜色设置.物品.武器).setDefaultValue(ColorCode.金色).setSaveConsumer((新值) -> {
+                物品.add(构建器.entryBuilder().startEnumSelector(new TranslatableText("subtitle_highlight.configure.general.color.item.weapon"), ColorCode.class, Configuration.配置项.基本颜色设置.物品.武器).setDefaultValue(ColorCode.金色).setEnumNameProvider(ColorCode::颜色代码翻译).setSaveConsumer((新值) -> {
                     Configuration.配置项.基本颜色设置.物品.武器 = 新值;
                 }).build());
-                物品.add(构建器.entryBuilder().startEnumSelector(new TranslatableText("subtitle_highlight.configure.general.color.item.armor"), ColorCode.class, Configuration.配置项.基本颜色设置.物品.防具).setDefaultValue(ColorCode.深绿色).setSaveConsumer((新值) -> {
+                物品.add(构建器.entryBuilder().startEnumSelector(new TranslatableText("subtitle_highlight.configure.general.color.item.armor"), ColorCode.class, Configuration.配置项.基本颜色设置.物品.防具).setDefaultValue(ColorCode.深绿色).setEnumNameProvider(ColorCode::颜色代码翻译).setSaveConsumer((新值) -> {
                     Configuration.配置项.基本颜色设置.物品.防具 = 新值;
                 }).build());
-                物品.add(构建器.entryBuilder().startEnumSelector(new TranslatableText("subtitle_highlight.configure.general.color.item.tool"), ColorCode.class, Configuration.配置项.基本颜色设置.物品.工具).setDefaultValue(ColorCode.蓝色).setSaveConsumer((新值) -> {
+                物品.add(构建器.entryBuilder().startEnumSelector(new TranslatableText("subtitle_highlight.configure.general.color.item.tool"), ColorCode.class, Configuration.配置项.基本颜色设置.物品.工具).setDefaultValue(ColorCode.蓝色).setEnumNameProvider(ColorCode::颜色代码翻译).setSaveConsumer((新值) -> {
                     Configuration.配置项.基本颜色设置.物品.工具 = 新值;
                 }).build());
-                物品.add(构建器.entryBuilder().startEnumSelector(new TranslatableText("subtitle_highlight.configure.general.color.item.other"), ColorCode.class, Configuration.配置项.基本颜色设置.物品.物品_其它).setDefaultValue(ColorCode.白色).setSaveConsumer((新值) -> {
+                物品.add(构建器.entryBuilder().startEnumSelector(new TranslatableText("subtitle_highlight.configure.general.color.item.other"), ColorCode.class, Configuration.配置项.基本颜色设置.物品.物品_其它).setDefaultValue(ColorCode.白色).setEnumNameProvider(ColorCode::颜色代码翻译).setSaveConsumer((新值) -> {
                     Configuration.配置项.基本颜色设置.物品.物品_其它 = 新值;
                 }).build());
                 基本颜色设置.add(物品.build());
-                基本颜色设置.add(构建器.entryBuilder().startEnumSelector(new TranslatableText("subtitle_highlight.configure.general.color.other"), ColorCode.class, Configuration.配置项.基本颜色设置.其它).setDefaultValue(ColorCode.白色).setSaveConsumer((新值) -> {
+                基本颜色设置.add(构建器.entryBuilder().startEnumSelector(new TranslatableText("subtitle_highlight.configure.general.color.other"), ColorCode.class, Configuration.配置项.基本颜色设置.其它).setDefaultValue(ColorCode.白色).setEnumNameProvider(ColorCode::颜色代码翻译).setSaveConsumer((新值) -> {
                     Configuration.配置项.基本颜色设置.其它 = 新值;
                 }).build());
                 构建器.getOrCreateCategory(new TranslatableText("subtitle_highlight.configure.general")).addEntry(基本颜色设置.build());
