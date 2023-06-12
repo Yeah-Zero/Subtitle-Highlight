@@ -1,4 +1,4 @@
-package Yeah_Zero.Subtitle_Highlight;
+package Yeah_Zero.Subtitle_Highlight.Util;
 
 import net.minecraft.text.LiteralText;
 import net.minecraft.text.Text;
