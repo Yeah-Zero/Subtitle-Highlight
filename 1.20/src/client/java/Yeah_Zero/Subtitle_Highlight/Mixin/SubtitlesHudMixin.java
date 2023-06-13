@@ -25,16 +25,10 @@ import static net.minecraft.client.gui.hud.SubtitlesHud.SubtitleEntry;
 @Environment(EnvType.CLIENT)
 @Mixin(SubtitlesHud.class)
 public class SubtitlesHudMixin {
-    private static double 通知显示时长;
     private static double 持续时间比例;
     @Shadow
     @Final
     private MinecraftClient client;
-
-    @ModifyVariable(method = "render(Lnet/minecraft/client/gui/DrawContext;)V", at = @At("STORE"), ordinal = 0)
-    private double 获取通知显示时长(double 原始赋值) {
-        return 通知显示时长 = 原始赋值;
-    }
 
     @Redirect(method = "render(Lnet/minecraft/client/gui/DrawContext;)V", at = @At(value = "INVOKE", target = "Ljava/util/Iterator;next()Ljava/lang/Object;", ordinal = 0))
     private Object 获取字幕条目(Iterator 实例) {
@@ -45,7 +39,7 @@ public class SubtitlesHudMixin {
 
     @Redirect(method = "render(Lnet/minecraft/client/gui/DrawContext;)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/hud/SubtitlesHud$SubtitleEntry;getTime()J"))
     private long 字幕时间重定向(SubtitleEntry 实例) {
-        return 实例.getTime() - 3000 + Configuration.配置项.最长持续时间;
+        return (long) (实例.getTime() - 3000 * this.client.options.getNotificationDisplayTime().getValue() + Configuration.配置项.最长持续时间 * this.client.options.getNotificationDisplayTime().getValue());
     }
 
     @ModifyVariable(method = "render(Lnet/minecraft/client/gui/DrawContext;)V", at = @At("STORE"), ordinal = 7)
