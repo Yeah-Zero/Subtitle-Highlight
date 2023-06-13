@@ -1,6 +1,6 @@
 package Yeah_Zero.Subtitle_Highlight.Configure;
 
-import Yeah_Zero.Subtitle_Highlight.ColorCode;
+import Yeah_Zero.Subtitle_Highlight.Util.ColorCode;
 import net.minecraft.text.TextColor;
 
 import java.util.ArrayList;
