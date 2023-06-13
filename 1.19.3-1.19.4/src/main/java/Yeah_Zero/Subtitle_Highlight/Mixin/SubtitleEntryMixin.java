@@ -2,7 +2,7 @@ package Yeah_Zero.Subtitle_Highlight.Mixin;
 
 import Yeah_Zero.Subtitle_Highlight.Configure.Configuration;
 import Yeah_Zero.Subtitle_Highlight.Configure.Settings;
-import Yeah_Zero.Subtitle_Highlight.Util.SubtitleTextSplitArray;
+import Yeah_Zero.Subtitle_Highlight.Util.SplitKeyArrays;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.hud.SubtitlesHud;
@@ -47,7 +47,7 @@ public class SubtitleEntryMixin {
                             可返回回调信息.setReturnValue(字幕文本.formatted(Configuration.配置项.基本颜色设置.方块.通用.获取格式代码()));
                             return;
                         }
-                        for (String 元素 : SubtitleTextSplitArray.互动) {
+                        for (String 元素 : SplitKeyArrays.互动) {
                             if (键名分割[2].equals(元素)) {
                                 if ((键名分割[2].equals("anvil") && 键名分割[3].equals("land")) || (键名分割[2].equals("tripwire") && 键名分割[3].equals("click"))) {
                                     可返回回调信息.setReturnValue(字幕文本.formatted(Configuration.配置项.基本颜色设置.方块.危险方块.获取格式代码()));
@@ -57,7 +57,7 @@ public class SubtitleEntryMixin {
                                 return;
                             }
                         }
-                        for (String 元素 : SubtitleTextSplitArray.工作) {
+                        for (String 元素 : SplitKeyArrays.工作) {
                             if (键名分割[2].equals(元素)) {
                                 if (键名分割[2].equals("beacon") && 键名分割[3].equals("power_select")) {
                                     可返回回调信息.setReturnValue(字幕文本.formatted(Configuration.配置项.基本颜色设置.方块.互动.获取格式代码()));
@@ -67,13 +67,13 @@ public class SubtitleEntryMixin {
                                 return;
                             }
                         }
-                        for (String 元素 : SubtitleTextSplitArray.危险方块) {
+                        for (String 元素 : SplitKeyArrays.危险方块) {
                             if (键名分割[2].equals(元素)) {
                                 可返回回调信息.setReturnValue(字幕文本.formatted(Configuration.配置项.基本颜色设置.方块.危险方块.获取格式代码()));
                                 return;
                             }
                         }
-                        for (String 元素 : SubtitleTextSplitArray.农作物) {
+                        for (String 元素 : SplitKeyArrays.农作物) {
                             if (键名分割[2].equals(元素)) {
                                 可返回回调信息.setReturnValue(字幕文本.formatted(Configuration.配置项.基本颜色设置.方块.农作物.获取格式代码()));
                                 return;
@@ -96,7 +96,7 @@ public class SubtitleEntryMixin {
                                 可返回回调信息.setReturnValue(字幕文本.formatted(Configuration.配置项.基本颜色设置.实体.生物.玩家.攻击.获取格式代码()));
                                 return;
                             }
-                            for (String 元素 : SubtitleTextSplitArray.受伤) {
+                            for (String 元素 : SplitKeyArrays.受伤) {
                                 if (键名分割[3].equals(元素)) {
                                     可返回回调信息.setReturnValue(字幕文本.formatted(Configuration.配置项.基本颜色设置.实体.生物.玩家.受伤.获取格式代码()));
                                     return;
@@ -105,7 +105,7 @@ public class SubtitleEntryMixin {
                             可返回回调信息.setReturnValue(字幕文本.formatted(Configuration.配置项.基本颜色设置.实体.生物.玩家.玩家_其它.获取格式代码()));
                             return;
                         }
-                        for (String 元素 : SubtitleTextSplitArray.友好生物) {
+                        for (String 元素 : SplitKeyArrays.友好生物) {
                             if (键名分割[2].equals(元素)) {
                                 if (键名分割[2].equals("chicken") && Configuration.配置项.iKun彩蛋) {
                                     可返回回调信息.setReturnValue(Text.translatable("subtitles.entity.kun." + 键名分割[3]).setStyle(字幕文本.getStyle().withColor(TextColor.fromFormatting(Formatting.GRAY)).withBold(true)));
@@ -115,43 +115,43 @@ public class SubtitleEntryMixin {
                                 return;
                             }
                         }
-                        for (String 元素 : SubtitleTextSplitArray.中立生物) {
+                        for (String 元素 : SplitKeyArrays.中立生物) {
                             if (键名分割[2].equals(元素)) {
                                 可返回回调信息.setReturnValue(字幕文本.formatted(Configuration.配置项.基本颜色设置.实体.生物.中立生物.获取格式代码()));
                                 return;
                             }
                         }
-                        for (String 元素 : SubtitleTextSplitArray.敌对生物) {
+                        for (String 元素 : SplitKeyArrays.敌对生物) {
                             if (键名分割[2].equals(元素)) {
                                 可返回回调信息.setReturnValue(字幕文本.formatted(Configuration.配置项.基本颜色设置.实体.生物.敌对生物.获取格式代码()));
                                 return;
                             }
                         }
-                        for (String 元素 : SubtitleTextSplitArray.头目生物) {
+                        for (String 元素 : SplitKeyArrays.头目生物) {
                             if (键名分割[2].equals(元素)) {
                                 可返回回调信息.setReturnValue(字幕文本.formatted(Configuration.配置项.基本颜色设置.实体.生物.头目生物.获取格式代码()));
                                 return;
                             }
                         }
-                        for (String 元素 : SubtitleTextSplitArray.载具) {
+                        for (String 元素 : SplitKeyArrays.载具) {
                             if (键名分割[2].equals(元素)) {
                                 可返回回调信息.setReturnValue(字幕文本.formatted(Configuration.配置项.基本颜色设置.实体.载具.获取格式代码()));
                                 return;
                             }
                         }
-                        for (String 元素 : SubtitleTextSplitArray.弹射物) {
+                        for (String 元素 : SplitKeyArrays.弹射物) {
                             if (键名分割[2].equals(元素)) {
                                 可返回回调信息.setReturnValue(字幕文本.formatted(Configuration.配置项.基本颜色设置.实体.弹射物.获取格式代码()));
                                 return;
                             }
                         }
-                        for (String 元素 : SubtitleTextSplitArray.爆炸物) {
+                        for (String 元素 : SplitKeyArrays.爆炸物) {
                             if (键名分割[2].equals(元素)) {
                                 可返回回调信息.setReturnValue(字幕文本.formatted(Configuration.配置项.基本颜色设置.实体.爆炸物.获取格式代码()));
                                 return;
                             }
                         }
-                        for (String 元素 : SubtitleTextSplitArray.装饰品) {
+                        for (String 元素 : SplitKeyArrays.装饰品) {
                             if (键名分割[2].equals(元素)) {
                                 可返回回调信息.setReturnValue(字幕文本.formatted(Configuration.配置项.基本颜色设置.实体.装饰品.获取格式代码()));
                                 return;
@@ -165,19 +165,19 @@ public class SubtitleEntryMixin {
                         return;
                     }
                     case "item" -> {
-                        for (String 元素 : SubtitleTextSplitArray.武器) {
+                        for (String 元素 : SplitKeyArrays.武器) {
                             if (键名分割[2].equals(元素)) {
                                 可返回回调信息.setReturnValue(字幕文本.formatted(Configuration.配置项.基本颜色设置.物品.武器.获取格式代码()));
                                 return;
                             }
                         }
-                        for (String 元素 : SubtitleTextSplitArray.防具) {
+                        for (String 元素 : SplitKeyArrays.防具) {
                             if (键名分割[2].equals(元素)) {
                                 可返回回调信息.setReturnValue(字幕文本.formatted(Configuration.配置项.基本颜色设置.物品.防具.获取格式代码()));
                                 return;
                             }
                         }
-                        for (String 元素 : SubtitleTextSplitArray.工具) {
+                        for (String 元素 : SplitKeyArrays.工具) {
                             if (键名分割[2].equals(元素)) {
                                 可返回回调信息.setReturnValue(字幕文本.formatted(Configuration.配置项.基本颜色设置.物品.工具.获取格式代码()));
                                 return;
