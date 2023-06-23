@@ -14,7 +14,7 @@
   "subtitle_highlight.configure.general.end_ratio.tooltip_2": "双精度浮点数 最小值：0 最大值：1",
   "subtitle_highlight.configure.general.background_color": "背景颜色",
   "subtitle_highlight.configure.general.background_color.tooltip_1": "十六进制不透明度颜色代码",
-  "subtitle_highlight.configure.general.background_color.tooltip_2": "范围：0x00000000～0xffffffff",
+  "subtitle_highlight.configure.general.background_color.tooltip_2": "范围：0x00000000~0xffffffff",
   "subtitle_highlight.configure.general.scale": "缩放",
   "subtitle_highlight.configure.general.scale.tooltip_1": "字幕的显示大小",
   "subtitle_highlight.configure.general.scale.tooltip_2": "浮点数",

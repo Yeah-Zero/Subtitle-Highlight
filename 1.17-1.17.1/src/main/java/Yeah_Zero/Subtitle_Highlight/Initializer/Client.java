@@ -1,6 +1,6 @@
 package Yeah_Zero.Subtitle_Highlight.Initializer;
 
-import Yeah_Zero.Subtitle_Highlight.Configure.Configuration;
+import Yeah_Zero.Subtitle_Highlight.Configure.Manager;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -9,6 +9,6 @@ import net.fabricmc.api.Environment;
 public class Client implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-        Configuration.加载();
+        Manager.加载();
     }
 }
