@@ -27,7 +27,7 @@ public class SubtitleEntryMixin {
 
     @Inject(at = @At("RETURN"), method = "getText()Lnet/minecraft/text/Text;", cancellable = true)
     private void 字幕着色(CallbackInfoReturnable<Text> 可返回回调信息) {
-        MutableText 字幕文本 = this.text.copy();
+        MutableText 字幕文本 = ((MutableText) this.text).formatted(Formatting.RESET);
         if (字幕文本 instanceof TranslatableText) {
             for (Settings.Custom 元素 : Manager.配置项.自定义列表) {
                 if (((TranslatableText) 字幕文本).getKey().equals(元素.本地化键名)) {
