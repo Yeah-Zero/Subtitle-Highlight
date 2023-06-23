@@ -6,6 +6,7 @@
   "subtitle_highlight.configure.general.remove_delay": "最长持续时间",
   "subtitle_highlight.configure.general.remove_delay.tooltip_1": "字幕在屏幕上留存的时间",
   "subtitle_highlight.configure.general.remove_delay.tooltip_2": "长整数 单位：毫秒 最小值：0",
+  "subtitle_highlight.configure.general.remove_delay.tooltip_3": "实际持续时间=最长持续时间×通知显示时长",
   "subtitle_highlight.configure.general.start_ratio": "起始比例",
   "subtitle_highlight.configure.general.start_ratio.tooltip_1": "字幕出现时的颜色与设定颜色之比",
   "subtitle_highlight.configure.general.start_ratio.tooltip_2": "双精度浮点数 最小值：0 最大值：1",
