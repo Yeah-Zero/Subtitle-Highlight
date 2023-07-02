@@ -11,8 +11,8 @@ public class SplitKeyArrays {
     public static final String[] 装饰品 = {"armor_stand", "glow_item_frame", "item_frame", "painting"};
     public static final String[] 受伤 = {"big_fall", "burn", "death", "explode", "extinguish_fire", "hurt", "small_fall", "freeze_hurt", "hurt_drown", "hurt_on_fire"};
     public static final String[] 互动 = {"anvil", "barrel", "bell", "big_dripleaf", "button", "cake", "chest", "comparator", "composter", "door", "enchantment_table", "end_portal_frame", "fence_gate", "grindstone", "growing_plant", "honey_block", "lever", "note_block", "pressure_plate", "pumpkin", "respawn_anchor", "sculk_sensor", "shulker_box", "sign", "smithing_table", "sweet_berry_bush", "trapdoor", "tripwire"};
-    public static final String[] 工作 = {"amethyst_block", "beacon", "beehive", "blastfurnace", "brewing_stand", "bubble_column", "candle", "conduit", "decorated_pot", "dispenser", "end_portal", "furnace", "iron_trapdoor", "piston", "portal", "redstone_torch", "sculk", "sculk_catalyst", "smoker", "sniffer_egg", "water"};
-    public static final String[] 危险方块 = {"campfire", "fire", "lava", "pointed_dripstone", "sculk_shrieker"};
+    public static final String[] 工作 = {"amethyst_block", "beacon", "beehive", "blastfurnace", "brewing_stand", "bubble_column", "candle", "conduit", "decorated_pot", "dispenser", "end_portal", "furnace", "iron_trapdoor", "piston", "pointed_dripstone", "portal", "redstone_torch", "sculk", "sculk_catalyst", "smoker", "sniffer_egg", "water"};
+    public static final String[] 危险方块 = {"campfire", "fire", "lava", "sculk_shrieker"};
     public static final String[] 农作物 = {"chorus_flower", "frogspawn"};
     public static final String[] 武器 = {"crossbow", "trident"};
     public static final String[] 防具 = {"armor", "shield"};

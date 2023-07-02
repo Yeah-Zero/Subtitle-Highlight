@@ -65,8 +65,12 @@ public class SubtitleEntryMixin {
                         }
                         for (String 元素 : SplitKeyArrays.工作) {
                             if (键名分割[2].equals(元素)) {
-                                if (键名分割[2].equals("beacon") && 键名分割[3].equals("power_select")) {
+                                if ((键名分割[2].equals("beacon") && 键名分割[3].equals("power_select")) || (键名分割[2].equals("beehive") && 键名分割[3].equals("shear"))) {
                                     可返回回调信息.setReturnValue(字幕文本.formatted(Manager.配置项.基本颜色设置.方块.互动.获取格式代码()));
+                                    return;
+                                }
+                                if (键名分割[2].equals("pointed_dripstone") && (键名分割[3].startsWith("drip_lava") || 键名分割[3].equals("land"))) {
+                                    可返回回调信息.setReturnValue(字幕文本.formatted(Manager.配置项.基本颜色设置.方块.危险方块.获取格式代码()));
                                     return;
                                 }
                                 可返回回调信息.setReturnValue(字幕文本.formatted(Manager.配置项.基本颜色设置.方块.运作.获取格式代码()));
