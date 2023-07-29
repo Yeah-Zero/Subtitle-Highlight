@@ -23,7 +23,6 @@
     ]
   },
   "mixins": [
-    "subtitle_highlight.mixins.json",
     {
       "config": "subtitle_highlight.client.mixins.json",
       "environment": "client"

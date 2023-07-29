@@ -1,5 +1,4 @@
 {
-  "modmenu.descriptionTranslation.formatting_code": "Субтитрларны аеру өчен бүтән аңа стильләрне өстәгез һәм кайбер субтитрлар өчен көйләүләрне бирегез.",
   "formatting_code.black": "Кара",
   "formatting_code.dark_blue": "Куе зәңгәр",
   "formatting_code.dark_green": "Куе яшел",
@@ -21,5 +20,7 @@
   "formatting_code.strikethrough": "Сызылган",
   "formatting_code.underline": "Ассызыкланган",
   "formatting_code.italic": "Курсив",
-  "formatting_code.reset": "Ташлау"
+  "formatting_code.reset": "Ташлау",
+  "modmenu.descriptionTranslation.subtitle_highlight": "Субтитрларны аеру өчен бүтән аңа стильләрне өстәгез һәм кайбер субтитрлар өчен көйләүләрне бирегез.",
+  "modmenu.summaryTranslation.subtitle_highlight": "Субтитрларны аеру өчен бүтән аңа стильләрне өстәгез һәм кайбер субтитрлар өчен көйләүләрне бирегез."
 }
