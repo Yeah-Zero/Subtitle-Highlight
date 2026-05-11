@@ -19,7 +19,7 @@ Subtitle Highlight API 提供了一个灵活的接口，允许其他模组注册
 
 ```gradle
 dependencies {
-    modImplementation "com.qituo:shur:1.0.1-1.21.11"
+    modImplementation "com.qituo:shur:1.0.3-1.21.11"
 }
 ```
 
