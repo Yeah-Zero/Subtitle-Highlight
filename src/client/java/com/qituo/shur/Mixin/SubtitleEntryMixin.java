@@ -58,83 +58,37 @@ public class SubtitleEntryMixin {
                             }
                             return;
                         }
-                        for (String element : SplitKeyArrays.interact) {
-                            if (keyParts[2].equals(element)) {
-                                if ((keyParts[2].equals("anvil") && keyParts[3].equals("land")) || (keyParts[2].equals("tripwire") && keyParts[3].equals("click"))) {
-                                    com.qituo.shur.Util.ColorCode colorCode = SubtitleTypeLoader.getColor("block", "dangerous");
-                                    if (colorCode != null) {
-                                        cir.setReturnValue(subtitleText.formatted(colorCode.getFormatting()));
-                                    } else {
-                                        cir.setReturnValue(subtitleText.formatted(Manager.settings.colorSettings.block.dangerous.getFormatting()));
-                                    }
-                                    return;
-                                }
-                                com.qituo.shur.Util.ColorCode colorCode = SubtitleTypeLoader.getColor("block", "interact");
-                                if (colorCode != null) {
-                                    cir.setReturnValue(subtitleText.formatted(colorCode.getFormatting()));
-                                } else {
-                                    cir.setReturnValue(subtitleText.formatted(Manager.settings.colorSettings.block.interact.getFormatting()));
-                                }
-                                return;
+                        String blockKey = keyParts[2];
+                        String subKey = keyParts.length > 3 ? keyParts[3] : "";
+                        
+                        // 使用 HashSet 进行 O(1) 查找
+                        if (SplitKeyArrays.interactSet.contains(blockKey)) {
+                            if ((blockKey.equals("anvil") && subKey.equals("land")) || (blockKey.equals("tripwire") && subKey.equals("click"))) {
+                                applyColor(cir, subtitleText, SubtitleTypeLoader.getColor("block", "dangerous"), Manager.settings.colorSettings.block.dangerous);
+                            } else {
+                                applyColor(cir, subtitleText, SubtitleTypeLoader.getColor("block", "interact"), Manager.settings.colorSettings.block.interact);
                             }
+                            return;
                         }
-                        for (String element : SplitKeyArrays.working) {
-                            if (keyParts[2].equals(element)) {
-                                if ((keyParts[2].equals("beacon") && keyParts[3].equals("power_select")) || (keyParts[2].equals("beehive") && keyParts[3].equals("shear"))) {
-                                    com.qituo.shur.Util.ColorCode colorCode = SubtitleTypeLoader.getColor("block", "interact");
-                                    if (colorCode != null) {
-                                        cir.setReturnValue(subtitleText.formatted(colorCode.getFormatting()));
-                                    } else {
-                                        cir.setReturnValue(subtitleText.formatted(Manager.settings.colorSettings.block.interact.getFormatting()));
-                                    }
-                                    return;
-                                }
-                                if (keyParts[2].equals("pointed_dripstone") && (keyParts[3].startsWith("drip_lava") || keyParts[3].equals("land"))) {
-                                    com.qituo.shur.Util.ColorCode colorCode = SubtitleTypeLoader.getColor("block", "dangerous");
-                                    if (colorCode != null) {
-                                        cir.setReturnValue(subtitleText.formatted(colorCode.getFormatting()));
-                                    } else {
-                                        cir.setReturnValue(subtitleText.formatted(Manager.settings.colorSettings.block.dangerous.getFormatting()));
-                                    }
-                                    return;
-                                }
-                                com.qituo.shur.Util.ColorCode colorCode = SubtitleTypeLoader.getColor("block", "working");
-                                if (colorCode != null) {
-                                    cir.setReturnValue(subtitleText.formatted(colorCode.getFormatting()));
-                                } else {
-                                    cir.setReturnValue(subtitleText.formatted(Manager.settings.colorSettings.block.working.getFormatting()));
-                                }
-                                return;
+                        if (SplitKeyArrays.workingSet.contains(blockKey)) {
+                            if ((blockKey.equals("beacon") && subKey.equals("power_select")) || (blockKey.equals("beehive") && subKey.equals("shear"))) {
+                                applyColor(cir, subtitleText, SubtitleTypeLoader.getColor("block", "interact"), Manager.settings.colorSettings.block.interact);
+                            } else if (blockKey.equals("pointed_dripstone") && (subKey.startsWith("drip_lava") || subKey.equals("land"))) {
+                                applyColor(cir, subtitleText, SubtitleTypeLoader.getColor("block", "dangerous"), Manager.settings.colorSettings.block.dangerous);
+                            } else {
+                                applyColor(cir, subtitleText, SubtitleTypeLoader.getColor("block", "working"), Manager.settings.colorSettings.block.working);
                             }
+                            return;
                         }
-                        for (String element : SplitKeyArrays.dangerousBlocks) {
-                            if (keyParts[2].equals(element)) {
-                                com.qituo.shur.Util.ColorCode colorCode = SubtitleTypeLoader.getColor("block", "dangerous");
-                                if (colorCode != null) {
-                                    cir.setReturnValue(subtitleText.formatted(colorCode.getFormatting()));
-                                } else {
-                                    cir.setReturnValue(subtitleText.formatted(Manager.settings.colorSettings.block.dangerous.getFormatting()));
-                                }
-                                return;
-                            }
+                        if (SplitKeyArrays.dangerousBlocksSet.contains(blockKey)) {
+                            applyColor(cir, subtitleText, SubtitleTypeLoader.getColor("block", "dangerous"), Manager.settings.colorSettings.block.dangerous);
+                            return;
                         }
-                        for (String element : SplitKeyArrays.crops) {
-                            if (keyParts[2].equals(element)) {
-                                com.qituo.shur.Util.ColorCode colorCode = SubtitleTypeLoader.getColor("block", "crop");
-                                if (colorCode != null) {
-                                    cir.setReturnValue(subtitleText.formatted(colorCode.getFormatting()));
-                                } else {
-                                    cir.setReturnValue(subtitleText.formatted(Manager.settings.colorSettings.block.crop.getFormatting()));
-                                }
-                                return;
-                            }
+                        if (SplitKeyArrays.cropsSet.contains(blockKey)) {
+                            applyColor(cir, subtitleText, SubtitleTypeLoader.getColor("block", "crop"), Manager.settings.colorSettings.block.crop);
+                            return;
                         }
-                        com.qituo.shur.Util.ColorCode colorCode = SubtitleTypeLoader.getColor("block", "other");
-                        if (colorCode != null) {
-                            cir.setReturnValue(subtitleText.formatted(colorCode.getFormatting()));
-                        } else {
-                            cir.setReturnValue(subtitleText.formatted(Manager.settings.colorSettings.block.other.getFormatting()));
-                        }
+                        applyColor(cir, subtitleText, SubtitleTypeLoader.getColor("block", "other"), Manager.settings.colorSettings.block.other);
                         return;
                     }
                     case "chiseled_bookshelf", "ui" -> {
@@ -151,133 +105,58 @@ public class SubtitleEntryMixin {
                         return;
                     }
                     case "entity" -> {
-                        if (keyParts[2].equals("generic") || keyParts[2].equals("player")) {
-                            if (keyParts[3].equals("attack")) {
-                                com.qituo.shur.Util.ColorCode colorCode = SubtitleTypeLoader.getColor("entity.mob.player", "attack");
-                                if (colorCode != null) {
-                                    cir.setReturnValue(subtitleText.formatted(colorCode.getFormatting()));
-                                } else {
-                                    cir.setReturnValue(subtitleText.formatted(Manager.settings.colorSettings.entity.mob.player.attack.getFormatting()));
-                                }
-                                return;
-                            }
-                            for (String element : SplitKeyArrays.hurt) {
-                                if (keyParts[3].equals(element)) {
-                                    com.qituo.shur.Util.ColorCode colorCode = SubtitleTypeLoader.getColor("entity.mob.player", "hurt");
-                                    if (colorCode != null) {
-                                        cir.setReturnValue(subtitleText.formatted(colorCode.getFormatting()));
-                                    } else {
-                                        cir.setReturnValue(subtitleText.formatted(Manager.settings.colorSettings.entity.mob.player.hurt.getFormatting()));
-                                    }
-                                    return;
-                                }
-                            }
-                            com.qituo.shur.Util.ColorCode colorCode = SubtitleTypeLoader.getColor("entity.mob.player", "other");
-                            if (colorCode != null) {
-                                cir.setReturnValue(subtitleText.formatted(colorCode.getFormatting()));
+                        String entityKey = keyParts[2];
+                        String subKey = keyParts.length > 3 ? keyParts[3] : "";
+                        
+                        if (entityKey.equals("generic") || entityKey.equals("player")) {
+                            if (subKey.equals("attack")) {
+                                applyColor(cir, subtitleText, SubtitleTypeLoader.getColor("entity.mob.player", "attack"), Manager.settings.colorSettings.entity.mob.player.attack);
+                            } else if (SplitKeyArrays.hurtSet.contains(subKey)) {
+                                applyColor(cir, subtitleText, SubtitleTypeLoader.getColor("entity.mob.player", "hurt"), Manager.settings.colorSettings.entity.mob.player.hurt);
                             } else {
-                                cir.setReturnValue(subtitleText.formatted(Manager.settings.colorSettings.entity.mob.player.other.getFormatting()));
+                                applyColor(cir, subtitleText, SubtitleTypeLoader.getColor("entity.mob.player", "other"), Manager.settings.colorSettings.entity.mob.player.other);
                             }
                             return;
                         }
-                        for (String element : SplitKeyArrays.friendlyMobs) {
-                            if (keyParts[2].equals(element)) {
-                                if (keyParts[2].equals("chicken") && Manager.settings.ikunEasterEgg) {
-                                    cir.setReturnValue(Text.translatable("subtitles.entity.kun." + keyParts[3]).setStyle(subtitleText.getStyle().withColor(TextColor.fromFormatting(Formatting.GRAY)).withBold(true)));
-                                    return;
-                                }
-                                com.qituo.shur.Util.ColorCode colorCode = SubtitleTypeLoader.getColor("entity.mob", "passive");
-                                if (colorCode != null) {
-                                    cir.setReturnValue(subtitleText.formatted(colorCode.getFormatting()));
-                                } else {
-                                    cir.setReturnValue(subtitleText.formatted(Manager.settings.colorSettings.entity.mob.passive.getFormatting()));
-                                }
-                                return;
+                        
+                        // 使用 HashSet 进行 O(1) 查找
+                        if (SplitKeyArrays.friendlyMobsSet.contains(entityKey)) {
+                            if (entityKey.equals("chicken") && Manager.settings.ikunEasterEgg) {
+                                cir.setReturnValue(Text.translatable("subtitles.entity.kun." + subKey).setStyle(subtitleText.getStyle().withColor(TextColor.fromFormatting(Formatting.GRAY)).withBold(true)));
+                            } else {
+                                applyColor(cir, subtitleText, SubtitleTypeLoader.getColor("entity.mob", "passive"), Manager.settings.colorSettings.entity.mob.passive);
                             }
+                            return;
                         }
-                        for (String element : SplitKeyArrays.neutralMobs) {
-                            if (keyParts[2].equals(element)) {
-                                com.qituo.shur.Util.ColorCode colorCode = SubtitleTypeLoader.getColor("entity.mob", "neutral");
-                                if (colorCode != null) {
-                                    cir.setReturnValue(subtitleText.formatted(colorCode.getFormatting()));
-                                } else {
-                                    cir.setReturnValue(subtitleText.formatted(Manager.settings.colorSettings.entity.mob.neutral.getFormatting()));
-                                }
-                                return;
-                            }
+                        if (SplitKeyArrays.neutralMobsSet.contains(entityKey)) {
+                            applyColor(cir, subtitleText, SubtitleTypeLoader.getColor("entity.mob", "neutral"), Manager.settings.colorSettings.entity.mob.neutral);
+                            return;
                         }
-                        for (String element : SplitKeyArrays.hostileMobs) {
-                            if (keyParts[2].equals(element)) {
-                                com.qituo.shur.Util.ColorCode colorCode = SubtitleTypeLoader.getColor("entity.mob", "hostile");
-                                if (colorCode != null) {
-                                    cir.setReturnValue(subtitleText.formatted(colorCode.getFormatting()));
-                                } else {
-                                    cir.setReturnValue(subtitleText.formatted(Manager.settings.colorSettings.entity.mob.hostile.getFormatting()));
-                                }
-                                return;
-                            }
+                        if (SplitKeyArrays.hostileMobsSet.contains(entityKey)) {
+                            applyColor(cir, subtitleText, SubtitleTypeLoader.getColor("entity.mob", "hostile"), Manager.settings.colorSettings.entity.mob.hostile);
+                            return;
                         }
-                        for (String element : SplitKeyArrays.bossMobs) {
-                            if (keyParts[2].equals(element)) {
-                                com.qituo.shur.Util.ColorCode colorCode = SubtitleTypeLoader.getColor("entity.mob", "boss");
-                                if (colorCode != null) {
-                                    cir.setReturnValue(subtitleText.formatted(colorCode.getFormatting()));
-                                } else {
-                                    cir.setReturnValue(subtitleText.formatted(Manager.settings.colorSettings.entity.mob.boss.getFormatting()));
-                                }
-                                return;
-                            }
+                        if (SplitKeyArrays.bossMobsSet.contains(entityKey)) {
+                            applyColor(cir, subtitleText, SubtitleTypeLoader.getColor("entity.mob", "boss"), Manager.settings.colorSettings.entity.mob.boss);
+                            return;
                         }
-                        for (String element : SplitKeyArrays.vehicles) {
-                            if (keyParts[2].equals(element)) {
-                                com.qituo.shur.Util.ColorCode colorCode = SubtitleTypeLoader.getColor("entity", "vehicle");
-                                if (colorCode != null) {
-                                    cir.setReturnValue(subtitleText.formatted(colorCode.getFormatting()));
-                                } else {
-                                    cir.setReturnValue(subtitleText.formatted(Manager.settings.colorSettings.entity.vehicle.getFormatting()));
-                                }
-                                return;
-                            }
+                        if (SplitKeyArrays.vehiclesSet.contains(entityKey)) {
+                            applyColor(cir, subtitleText, SubtitleTypeLoader.getColor("entity", "vehicle"), Manager.settings.colorSettings.entity.vehicle);
+                            return;
                         }
-                        for (String element : SplitKeyArrays.projectiles) {
-                            if (keyParts[2].equals(element)) {
-                                com.qituo.shur.Util.ColorCode colorCode = SubtitleTypeLoader.getColor("entity", "projectile");
-                                if (colorCode != null) {
-                                    cir.setReturnValue(subtitleText.formatted(colorCode.getFormatting()));
-                                } else {
-                                    cir.setReturnValue(subtitleText.formatted(Manager.settings.colorSettings.entity.projectile.getFormatting()));
-                                }
-                                return;
-                            }
+                        if (SplitKeyArrays.projectilesSet.contains(entityKey)) {
+                            applyColor(cir, subtitleText, SubtitleTypeLoader.getColor("entity", "projectile"), Manager.settings.colorSettings.entity.projectile);
+                            return;
                         }
-                        for (String element : SplitKeyArrays.explosives) {
-                            if (keyParts[2].equals(element)) {
-                                com.qituo.shur.Util.ColorCode colorCode = SubtitleTypeLoader.getColor("entity", "explosive");
-                                if (colorCode != null) {
-                                    cir.setReturnValue(subtitleText.formatted(colorCode.getFormatting()));
-                                } else {
-                                    cir.setReturnValue(subtitleText.formatted(Manager.settings.colorSettings.entity.explosive.getFormatting()));
-                                }
-                                return;
-                            }
+                        if (SplitKeyArrays.explosivesSet.contains(entityKey)) {
+                            applyColor(cir, subtitleText, SubtitleTypeLoader.getColor("entity", "explosive"), Manager.settings.colorSettings.entity.explosive);
+                            return;
                         }
-                        for (String element : SplitKeyArrays.decorations) {
-                            if (keyParts[2].equals(element)) {
-                                com.qituo.shur.Util.ColorCode colorCode = SubtitleTypeLoader.getColor("entity", "decoration");
-                                if (colorCode != null) {
-                                    cir.setReturnValue(subtitleText.formatted(colorCode.getFormatting()));
-                                } else {
-                                    cir.setReturnValue(subtitleText.formatted(Manager.settings.colorSettings.entity.decoration.getFormatting()));
-                                }
-                                return;
-                            }
+                        if (SplitKeyArrays.decorationsSet.contains(entityKey)) {
+                            applyColor(cir, subtitleText, SubtitleTypeLoader.getColor("entity", "decoration"), Manager.settings.colorSettings.entity.decoration);
+                            return;
                         }
-                        com.qituo.shur.Util.ColorCode colorCode = SubtitleTypeLoader.getColor("entity", "other");
-                        if (colorCode != null) {
-                            cir.setReturnValue(subtitleText.formatted(colorCode.getFormatting()));
-                        } else {
-                            cir.setReturnValue(subtitleText.formatted(Manager.settings.colorSettings.entity.other.getFormatting()));
-                        }
+                        applyColor(cir, subtitleText, SubtitleTypeLoader.getColor("entity", "other"), Manager.settings.colorSettings.entity.other);
                         return;
                     }
                     case "event" -> {
@@ -290,45 +169,22 @@ public class SubtitleEntryMixin {
                         return;
                     }
                     case "item" -> {
-                        for (String element : SplitKeyArrays.weapons) {
-                            if (keyParts[2].equals(element)) {
-                                com.qituo.shur.Util.ColorCode colorCode = SubtitleTypeLoader.getColor("item", "weapon");
-                                if (colorCode != null) {
-                                    cir.setReturnValue(subtitleText.formatted(colorCode.getFormatting()));
-                                } else {
-                                    cir.setReturnValue(subtitleText.formatted(Manager.settings.colorSettings.item.weapon.getFormatting()));
-                                }
-                                return;
-                            }
+                        String itemKey = keyParts[2];
+                        
+                        // 使用 HashSet 进行 O(1) 查找
+                        if (SplitKeyArrays.weaponsSet.contains(itemKey)) {
+                            applyColor(cir, subtitleText, SubtitleTypeLoader.getColor("item", "weapon"), Manager.settings.colorSettings.item.weapon);
+                            return;
                         }
-                        for (String element : SplitKeyArrays.armors) {
-                            if (keyParts[2].equals(element)) {
-                                com.qituo.shur.Util.ColorCode colorCode = SubtitleTypeLoader.getColor("item", "armor");
-                                if (colorCode != null) {
-                                    cir.setReturnValue(subtitleText.formatted(colorCode.getFormatting()));
-                                } else {
-                                    cir.setReturnValue(subtitleText.formatted(Manager.settings.colorSettings.item.armor.getFormatting()));
-                                }
-                                return;
-                            }
+                        if (SplitKeyArrays.armorsSet.contains(itemKey)) {
+                            applyColor(cir, subtitleText, SubtitleTypeLoader.getColor("item", "armor"), Manager.settings.colorSettings.item.armor);
+                            return;
                         }
-                        for (String element : SplitKeyArrays.tools) {
-                            if (keyParts[2].equals(element)) {
-                                com.qituo.shur.Util.ColorCode colorCode = SubtitleTypeLoader.getColor("item", "tool");
-                                if (colorCode != null) {
-                                    cir.setReturnValue(subtitleText.formatted(colorCode.getFormatting()));
-                                } else {
-                                    cir.setReturnValue(subtitleText.formatted(Manager.settings.colorSettings.item.tool.getFormatting()));
-                                }
-                                return;
-                            }
+                        if (SplitKeyArrays.toolsSet.contains(itemKey)) {
+                            applyColor(cir, subtitleText, SubtitleTypeLoader.getColor("item", "tool"), Manager.settings.colorSettings.item.tool);
+                            return;
                         }
-                        com.qituo.shur.Util.ColorCode colorCode = SubtitleTypeLoader.getColor("item", "other");
-                        if (colorCode != null) {
-                            cir.setReturnValue(subtitleText.formatted(colorCode.getFormatting()));
-                        } else {
-                            cir.setReturnValue(subtitleText.formatted(Manager.settings.colorSettings.item.other.getFormatting()));
-                        }
+                        applyColor(cir, subtitleText, SubtitleTypeLoader.getColor("item", "other"), Manager.settings.colorSettings.item.other);
                         return;
                     }
                 }
@@ -346,5 +202,13 @@ public class SubtitleEntryMixin {
         }
         
         cir.setReturnValue(processedText);
+    }
+    
+    private void applyColor(CallbackInfoReturnable<Text> cir, MutableText subtitleText, com.qituo.shur.Util.ColorCode dataColor, com.qituo.shur.Util.ColorCode configColor) {
+        if (dataColor != null) {
+            cir.setReturnValue(subtitleText.formatted(dataColor.getFormatting()));
+        } else {
+            cir.setReturnValue(subtitleText.formatted(configColor.getFormatting()));
+        }
     }
 }

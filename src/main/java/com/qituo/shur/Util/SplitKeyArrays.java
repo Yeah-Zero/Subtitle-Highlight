@@ -1,6 +1,11 @@
 package com.qituo.shur.Util;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 public class SplitKeyArrays {
+    // 原始数组保持不变，用于向后兼容
     public static final String[] friendlyMobs = {"allay", "axolotl", "bat", "camel", "cat", "chicken", "cod", "cow", "donkey", "fox", "frog", "glow_squid", "horse", "mooshroom", "mule", "ocelot", "parrot", "pig", "puffer_fish", "rabbit", "salmon", "sheep", "skeleton_horse", "sniffer", "snow_golem", "squid", "strider", "tadpole", "tropical_fish", "turtle", "villager", "wandering_trader", "zombie_horse"};
     public static final String[] neutralMobs = {"bee", "dolphin", "enderman", "goat", "iron_golem", "llama", "panda", "piglin", "polar_bear", "spider", "wolf", "zombified_piglin"};
     public static final String[] hostileMobs = {"blaze", "creeper", "drowned", "elder_guardian", "endermite", "evoker", "ghast", "guardian", "hoglin", "husk", "illusioner", "magma_cube", "phantom", "piglin_brute", "pillager", "ravager", "shulker", "silverfish", "skeleton", "slime", "stray", "vex", "vindicator", "warden", "witch", "wither_skeleton", "zoglin", "zombie", "zombie_villager"};
@@ -17,4 +22,22 @@ public class SplitKeyArrays {
     public static final String[] weapons = {"crossbow", "trident"};
     public static final String[] armors = {"armor", "shield"};
     public static final String[] tools = {"axe", "bottle", "brush", "bucket", "bundle", "flintandsteel", "hoe", "goat_horn", "lodestone_compass", "shears", "shovel", "spyglass", "totem"};
+
+    // HashSet 版本，用于 O(1) 快速查找
+    public static final Set<String> friendlyMobsSet = new HashSet<>(Arrays.asList(friendlyMobs));
+    public static final Set<String> neutralMobsSet = new HashSet<>(Arrays.asList(neutralMobs));
+    public static final Set<String> hostileMobsSet = new HashSet<>(Arrays.asList(hostileMobs));
+    public static final Set<String> bossMobsSet = new HashSet<>(Arrays.asList(bossMobs));
+    public static final Set<String> vehiclesSet = new HashSet<>(Arrays.asList(vehicles));
+    public static final Set<String> projectilesSet = new HashSet<>(Arrays.asList(projectiles));
+    public static final Set<String> explosivesSet = new HashSet<>(Arrays.asList(explosives));
+    public static final Set<String> decorationsSet = new HashSet<>(Arrays.asList(decorations));
+    public static final Set<String> hurtSet = new HashSet<>(Arrays.asList(hurt));
+    public static final Set<String> interactSet = new HashSet<>(Arrays.asList(interact));
+    public static final Set<String> workingSet = new HashSet<>(Arrays.asList(working));
+    public static final Set<String> dangerousBlocksSet = new HashSet<>(Arrays.asList(dangerousBlocks));
+    public static final Set<String> cropsSet = new HashSet<>(Arrays.asList(crops));
+    public static final Set<String> weaponsSet = new HashSet<>(Arrays.asList(weapons));
+    public static final Set<String> armorsSet = new HashSet<>(Arrays.asList(armors));
+    public static final Set<String> toolsSet = new HashSet<>(Arrays.asList(tools));
 }

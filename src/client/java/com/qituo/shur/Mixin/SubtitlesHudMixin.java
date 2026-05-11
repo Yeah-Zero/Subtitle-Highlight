@@ -22,6 +22,7 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
 
+import java.lang.reflect.Method;
 import java.util.Iterator;
 
 @Environment(EnvType.CLIENT)
@@ -31,12 +32,19 @@ public class SubtitlesHudMixin {
     @Shadow
     @Final
     private MinecraftClient client;
+    
+    // 缓存反射方法引用，避免每次渲染都进行反射查找
+    private static volatile Method getTimeMethod = null;
+    private static volatile Method drawTextWithShadowMethod = null;
+    private static volatile Class<?> drawContextClass = null;
 
     @Redirect(method = "render(Lnet/minecraft/client/gui/DrawContext;)V", at = @At(value = "INVOKE", target = "Ljava/util/Iterator;next()Ljava/lang/Object;", ordinal = 0))
     private Object getSubtitleEntry(Iterator instance) {
         Object subtitleEntry = instance.next();
         try {
-            long time = (long) subtitleEntry.getClass().getMethod("getTime").invoke(subtitleEntry);
+            // 使用缓存的反射方法
+            Method method = getTimeMethod(subtitleEntry.getClass());
+            long time = (long) method.invoke(subtitleEntry);
             durationRatio = (Util.getMeasuringTimeMs() - time) / (double) (Manager.settings.maxDuration);
         } catch (Exception e) {
             e.printStackTrace();
@@ -47,12 +55,25 @@ public class SubtitlesHudMixin {
     @Redirect(method = "render(Lnet/minecraft/client/gui/DrawContext;)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/hud/SubtitlesHud$SubtitleEntry;getTime()J"))
     private long redirectSubtitleTime(Object instance) {
         try {
-            long time = (long) instance.getClass().getMethod("getTime").invoke(instance);
+            // 使用缓存的反射方法
+            Method method = getTimeMethod(instance.getClass());
+            long time = (long) method.invoke(instance);
             return (long) (time - 3000 * this.client.options.getNotificationDisplayTime().getValue() + Manager.settings.maxDuration * this.client.options.getNotificationDisplayTime().getValue());
         } catch (Exception e) {
             e.printStackTrace();
             return 0;
         }
+    }
+    
+    private static Method getTimeMethod(Class<?> clazz) throws NoSuchMethodException {
+        if (getTimeMethod == null) {
+            synchronized (SubtitlesHudMixin.class) {
+                if (getTimeMethod == null) {
+                    getTimeMethod = clazz.getMethod("getTime");
+                }
+            }
+        }
+        return getTimeMethod;
     }
 
     @ModifyVariable(method = "render(Lnet/minecraft/client/gui/DrawContext;)V", at = @At("STORE"), ordinal = 7)
@@ -103,13 +124,25 @@ public class SubtitlesHudMixin {
         if (!isInFrustum()) {
             return 0;
         }
-        // 调用原始方法
+        // 调用原始方法（使用缓存的反射方法）
         try {
-            return (int) drawContext.getClass().getMethod("drawTextWithShadow", textRenderer.getClass(), text.getClass(), int.class, int.class, int.class).invoke(drawContext, textRenderer, text, x, y, color);
+            Method method = getDrawTextWithShadowMethod(drawContext.getClass(), textRenderer.getClass(), text.getClass());
+            return (int) method.invoke(drawContext, textRenderer, text, x, y, color);
         } catch (Exception e) {
             e.printStackTrace();
             return 0;
         }
+    }
+    
+    private static Method getDrawTextWithShadowMethod(Class<?> drawContextClazz, Class<?> textRendererClazz, Class<?> textClazz) throws NoSuchMethodException {
+        if (drawTextWithShadowMethod == null) {
+            synchronized (SubtitlesHudMixin.class) {
+                if (drawTextWithShadowMethod == null) {
+                    drawTextWithShadowMethod = drawContextClazz.getMethod("drawTextWithShadow", textRendererClazz, textClazz, int.class, int.class, int.class);
+                }
+            }
+        }
+        return drawTextWithShadowMethod;
     }
 
     private boolean isInFrustum() {
