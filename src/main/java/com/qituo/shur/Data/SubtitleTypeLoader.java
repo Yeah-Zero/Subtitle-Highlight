@@ -21,6 +21,9 @@ public class SubtitleTypeLoader implements SimpleSynchronousResourceReloadListen
     // 颜色查询缓存，使用并发 HashMap 实现 O(1) 查找
     private static final ConcurrentHashMap<String, ColorCode> colorCache = new ConcurrentHashMap<>();
     private static final String CACHE_KEY_SEPARATOR = ":";
+    
+    // 用于标记 null 结果的特殊值（ConcurrentHashMap 不允许 null 值）
+    private static final ColorCode NULL_MARKER = ColorCode.GRAY;
 
     @Override
     public Identifier getFabricId() {
@@ -140,15 +143,16 @@ public class SubtitleTypeLoader implements SimpleSynchronousResourceReloadListen
         // 先从缓存查找
         ColorCode cached = colorCache.get(cacheKey);
         if (cached != null) {
-            return cached;
+            // 如果缓存值是 NULL_MARKER，返回 null
+            return cached == NULL_MARKER ? null : cached;
         }
 
         // 缓存未命中，从实际数据中查找
         Map<String, ColorCode> map = subtitleTypes.get(path);
         ColorCode result = (map != null) ? map.get(key) : null;
 
-        // 缓存结果（即使是 null 也缓存，避免重复查询）
-        colorCache.put(cacheKey, result);
+        // 缓存结果（使用 NULL_MARKER 替代 null）
+        colorCache.put(cacheKey, result != null ? result : NULL_MARKER);
 
         return result;
     }
