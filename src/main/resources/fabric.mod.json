@@ -1,8 +1,8 @@
 {
 	"schemaVersion": 1,
-	"id": "shur",
+	"id": "subtitle_highlight",
 	"version": "${version}",
-	"name": "Subtitle-Highlight-Unofficial-reset",
+	"name": "Subtitle Highlight",
 	"description": "为不同字幕添加样式以区分，同时提供对单个字幕的自定义设置。",
 	"authors": [
 		"Yeah-Zero",
@@ -10,23 +10,23 @@
 		"Yifei"
 	],
 	"contact": {
-		"homepage": "",
-		"sources": ""
+		"homepage": "https://github.com/Yeah-Zero/Subtitle-Highlight",
+		"issues": "https://github.com/Yeah-Zero/Subtitle-Highlight/issues"
 	},
 	"license": "LGPL-3.0",
-	"icon": "assets/shur/textures/gui/logo.png",
+	"icon": "assets/subtitle_highlight/textures/gui/logo.png",
 	"environment": "client",
 	"entrypoints": {
 		"client": [
-			"com.qituo.shur.Initializer"
+			"Yeah_Zero.Subtitle_Highlight.Initializer"
 		],
 		"modmenu": [
-			"com.qituo.shur.Configure.ScreenAPI"
+			"Yeah_Zero.Subtitle_Highlight.Configure.ScreenAPI"
 		]
 	},
 	"mixins": [
 		{
-			"config": "shur.client.mixins.json",
+			"config": "subtitle_highlight.client.mixins.json",
 			"environment": "client"
 		}
 	],

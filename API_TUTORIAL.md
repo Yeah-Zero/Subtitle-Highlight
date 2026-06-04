@@ -19,7 +19,7 @@ Subtitle Highlight API 提供了一个灵活的接口，允许其他模组注册
 
 ```gradle
 dependencies {
-    modImplementation "com.qituo:shur:1.0.3-1.21.11"
+    modImplementation "Yeah_Zero.Subtitle_Highlight:Subtitle-Highlight:1.0.3-rc.2-1.21.11"
 }
 ```
 
@@ -30,8 +30,8 @@ dependencies {
 要创建一个自定义的字幕处理器，你需要实现 `SubtitleAPI.SubtitleProcessor` 接口：
 
 ```java
-import com.qituo.shur.Configure.Settings;
-import com.qituo.shur.api.SubtitleAPI;
+import Yeah_Zero.Subtitle_Highlight.Configure.Settings;
+import Yeah_Zero.Subtitle_Highlight.api.SubtitleAPI;
 import net.minecraft.text.Text;
 
 public class MySubtitleProcessor implements SubtitleAPI.SubtitleProcessor {
@@ -41,12 +41,6 @@ public class MySubtitleProcessor implements SubtitleAPI.SubtitleProcessor {
         // 例如：添加前缀、修改颜色、过滤内容等
         return processedText;
     }
-
-    @Override
-    public int getPriority() {
-        // 设置优先级，数值越小优先级越高
-        return 10;
-    }
 }
 ```
 
@@ -55,7 +49,7 @@ public class MySubtitleProcessor implements SubtitleAPI.SubtitleProcessor {
 在你的模组初始化时，注册你的处理器：
 
 ```java
-import com.qituo.shur.api.SubtitleAPI;
+import Yeah_Zero.Subtitle_Highlight.api.SubtitleAPI;
 import net.fabricmc.api.ModInitializer;
 
 public class MyModInitializer implements ModInitializer {
@@ -70,8 +64,8 @@ public class MyModInitializer implements ModInitializer {
 ## 示例：自定义颜色处理器
 
 ```java
-import com.qituo.shur.Configure.Settings;
-import com.qituo.shur.api.SubtitleAPI;
+import Yeah_Zero.Subtitle_Highlight.Configure.Settings;
+import Yeah_Zero.Subtitle_Highlight.api.SubtitleAPI;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 import net.minecraft.text.TextColor;
@@ -89,19 +83,14 @@ public class CustomColorProcessor implements SubtitleAPI.SubtitleProcessor {
         
         return mutableText;
     }
-
-    @Override
-    public int getPriority() {
-        return 5; // 较高优先级
-    }
 }
 ```
 
 ## 示例：字幕过滤处理器
 
 ```java
-import com.qituo.shur.Configure.Settings;
-import com.qituo.shur.api.SubtitleAPI;
+import Yeah_Zero.Subtitle_Highlight.Configure.Settings;
+import Yeah_Zero.Subtitle_Highlight.api.SubtitleAPI;
 import net.minecraft.text.Text;
 
 public class SubtitleFilterProcessor implements SubtitleAPI.SubtitleProcessor {
@@ -116,19 +105,14 @@ public class SubtitleFilterProcessor implements SubtitleAPI.SubtitleProcessor {
         
         return originalText;
     }
-
-    @Override
-    public int getPriority() {
-        return 1; // 最高优先级
-    }
 }
 ```
 
 ## 示例：信息增强处理器
 
 ```java
-import com.qituo.shur.Configure.Settings;
-import com.qituo.shur.api.SubtitleAPI;
+import Yeah_Zero.Subtitle_Highlight.Configure.Settings;
+import Yeah_Zero.Subtitle_Highlight.api.SubtitleAPI;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
@@ -143,41 +127,27 @@ public class InfoEnhancerProcessor implements SubtitleAPI.SubtitleProcessor {
         
         return mutableText;
     }
-
-    @Override
-    public int getPriority() {
-        return 15; // 较低优先级
-    }
 }
 ```
 
-## 处理器优先级
+## 处理器执行顺序
 
-处理器的优先级决定了它们的执行顺序：
-- 优先级数值越小，执行顺序越靠前
-- 优先级相同的处理器，执行顺序不确定
-
-建议的优先级范围：
-- 0-5：高优先级，用于基础处理（如过滤）
-- 6-15：中等优先级，用于常规处理（如颜色修改）
-- 16+：低优先级，用于最终增强（如添加额外信息）
+处理器按照注册顺序依次执行，后注册的处理器会接收到前一个处理器处理后的结果。
 
 ## 最佳实践
 
 1. **保持处理器简单**：每个处理器只负责一个功能，便于维护和调试
-2. **设置合理的优先级**：根据处理器的功能设置适当的优先级
-3. **处理空值**：在处理文本时，确保处理空文本的情况
-4. **性能考虑**：避免在处理器中执行耗时操作，影响游戏性能
-5. **兼容性**：确保你的处理器与其他处理器兼容，避免冲突
+2. **处理空值**：在处理文本时，确保处理空文本的情况
+3. **性能考虑**：避免在处理器中执行耗时操作，影响游戏性能
+4. **兼容性**：确保你的处理器与其他处理器兼容，避免冲突
 
 ## 故障排除
 
 如果你的处理器不生效，请检查：
 1. 是否正确实现了 `SubtitleProcessor` 接口
 2. 是否正确注册了处理器
-3. 处理器的优先级是否合理
-4. 处理器的逻辑是否正确
-5. 是否有其他处理器覆盖了你的处理结果
+3. 处理器的逻辑是否正确
+4. 是否有其他处理器覆盖了你的处理结果
 
 ## 注意事项
 

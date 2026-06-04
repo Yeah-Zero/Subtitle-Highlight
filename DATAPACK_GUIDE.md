@@ -1,6 +1,6 @@
 # 数据包使用指南
 
-本指南将帮助你创建和使用数据包来自定义 Subtitle Highlight Unofficial Reset 模组的字幕类型和颜色。
+本指南将帮助你创建和使用数据包来自定义 Subtitle Highlight 模组的字幕类型和颜色。
 
 ## 什么是数据包？
 
@@ -14,7 +14,7 @@
 your_datapack/
 ├── pack.mcmeta
 └── data/
-    └── shur/
+    └── subtitle_highlight/
         └── subtitle_types.json
 ```
 
@@ -35,7 +35,7 @@ your_datapack/
 
 ### 2. 创建字幕类型配置文件
 
-在 `data/shur/` 目录下创建 `subtitle_types.json` 文件：
+在 `data/subtitle_highlight/` 目录下创建 `subtitle_types.json` 文件：
 
 ```json
 {
@@ -240,7 +240,7 @@ A: 可以，你可以将数据包文件夹压缩为 ZIP 文件，然后分享给
 如果你是模组开发者，可以通过本模组的 API 来集成自定义字幕处理：
 
 ```java
-import com.qituo.shur.api.SubtitleAPI;
+import Yeah_Zero.Subtitle_Highlight.api.SubtitleAPI;
 
 // 注册自定义字幕处理器
 SubtitleAPI.registerProcessor((text, settings) -> {
