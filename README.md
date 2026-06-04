@@ -1,3 +1,7 @@
+<h3 align="center">
+	此处是旧版本归档，新版本移植请前往<a href="https://github.com/19136644525lxy/Subtitle-Highlight-Unofficial-reset">19136644525lxy/Subtitle-Highlight-Unofficial-reset</a>。
+</h3>
+
 <p align="right">
 	<a href="./README-en.md"><b>English Version</b></a>
 </p>
