@@ -1,7 +1,10 @@
+> [!CAUTION]
+> **此处是旧版本归档。**
+<!--
 <h3 align="center">
 	此处是旧版本归档，高版本移植请前往<a href="https://github.com/19136644525lxy/Subtitle-Highlight-Unofficial-reset">19136644525lxy/Subtitle-Highlight-Unofficial-reset</a>。
 </h3>
-
+-->
 <p align="right">
 	<a href="./README-en.md"><b>English Version</b></a>
 </p>
@@ -27,7 +30,6 @@
     <img src="./演示图片/效果演示1.png" />
     <img src="./演示图片/效果演示3.png" />
 </p>
-
 
 ## 链接
 
