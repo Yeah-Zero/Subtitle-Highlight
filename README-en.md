@@ -6,12 +6,12 @@
 	This is an archive of the old version, please go to <a href="https://github.com/19136644525lxy/Subtitle-Highlight-Unofficial-reset">19136644525lxy/Subtitle-Highlight-Unofficial-reset</a> to see the reset version for newer game.
 </h3>
 -->
-<p align="left">
-	<img src="./1.19.4/src/main/resources/assets/subtitle_highlight/icon.png" />
-</p>
-
 <p align="right">
 	<a href="./README.md"><b>中文版</b></a>
+</p>
+
+<p align="left">
+	<img src="./1.19.4/src/main/resources/assets/subtitle_highlight/icon.png" />
 </p>
 
 <h1 align="center">
