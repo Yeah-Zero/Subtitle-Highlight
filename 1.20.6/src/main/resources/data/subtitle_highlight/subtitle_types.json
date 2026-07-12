@@ -1,0 +1,89 @@
+{
+  "subtitle_types": {
+    "ambient": {
+      "color": "dark_blue"
+    },
+    "block": {
+      "generic": {
+        "color": "gray"
+      },
+      "interact": {
+        "color": "green"
+      },
+      "working": {
+        "color": "yellow"
+      },
+      "dangerous": {
+        "color": "red"
+      },
+      "crop": {
+        "color": "green"
+      },
+      "other": {
+        "color": "gray"
+      }
+    },
+    "enchant": {
+      "color": "light_purple"
+    },
+    "entity": {
+      "mob": {
+        "player": {
+          "attack": {
+            "color": "red"
+          },
+          "hurt": {
+            "color": "red"
+          },
+          "other": {
+            "color": "white"
+          }
+        },
+        "passive": {
+          "color": "green"
+        },
+        "neutral": {
+          "color": "yellow"
+        },
+        "hostile": {
+          "color": "red"
+        },
+        "boss": {
+          "color": "dark_purple"
+        }
+      },
+      "vehicle": {
+        "color": "gray"
+      },
+      "projectile": {
+        "color": "aqua"
+      },
+      "explosive": {
+        "color": "red"
+      },
+      "decoration": {
+        "color": "gray"
+      },
+      "other": {
+        "color": "gray"
+      }
+    },
+    "item": {
+      "weapon": {
+        "color": "red"
+      },
+      "armor": {
+        "color": "gold"
+      },
+      "tool": {
+        "color": "aqua"
+      },
+      "other": {
+        "color": "gray"
+      }
+    },
+    "other": {
+      "color": "gray"
+    }
+  }
+}
