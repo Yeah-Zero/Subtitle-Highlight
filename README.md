@@ -20,7 +20,11 @@ Minecraft 字幕高亮模组 - 为字幕添加颜色和样式，提升游戏体�
 - ⌨️ **快捷键支持**：快速调整字幕设置
 
 ## 支持版本
-- Minecraft 1.21.11 (Fabric)
+- Minecraft 1.21.11 (Fabric) - 主项目
+- Minecraft 1.21.10 (Fabric) - 位于 `1.21.10/` 目录
+- Minecraft 1.21.4 (Fabric) - 位于 `1.21.4/` 目录
+- Minecraft 1.21.1 (Fabric) - 位于 `1.21.1/` 目录
+- Minecraft 1.20.6 (Fabric) - 位于 `1.20.6/` 目录
 
 ## 安装方法
 1. 安装 Fabric Loader
